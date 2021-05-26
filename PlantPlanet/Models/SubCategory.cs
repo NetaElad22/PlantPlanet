@@ -11,7 +11,7 @@ namespace PlantPlanet.Models
 
         public string Name { get; set; }
 
-        public string ImageURL { get; set; }
-
+        public string ImageURL { get; set; } 
+        axmkxs  bxvbnm,./'[=-\\\\
     }
 }

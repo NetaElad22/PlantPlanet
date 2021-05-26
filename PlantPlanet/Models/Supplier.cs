@@ -11,7 +11,7 @@ namespace PlantPlanet.Models
 
         public string CompanyName { get; set; }
 
-        public string Address { get; set; }
+        public Address Address { get; set; }
 
         public int PhoneNumber { get; set; }
 
