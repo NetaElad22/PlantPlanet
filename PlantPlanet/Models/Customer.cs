@@ -29,8 +29,4 @@ namespace PlantPlanet.Models
 
         public List<Order> PreviousOrders { get; set; }
     }
-
-    internal class DataTypeAttribute : Attribute
-    {
-    }
 }

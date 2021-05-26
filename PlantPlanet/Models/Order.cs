@@ -21,5 +21,25 @@ namespace PlantPlanet.Models
         public Address ShippingAddress { get; set; }
 
         public string Message { get; set; }
+
+        public Employee Employee { get; set; }
+
+        public string OrderComments { get; set; }
+
+        public Boolean IsGift { get; set; }
+
+        public string PaymentMethod { get; set; }
+
+        public int PaymentsNumber { get; set; }
+
+        public Boolean IsPremiumDiscount { get; set; }
+
+        public  DeliveryType DeliveryType { get; set; }
+
+        public const int MinSumForOrder = 100;
+
+        public const int DeliveryFee = 15;
+
+        public const int MinForNoDeliveryFee = 350;
     }
 }

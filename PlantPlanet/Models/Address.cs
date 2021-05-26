@@ -16,5 +16,7 @@ namespace PlantPlanet.Models
         public int FloorNumber { get; set; }
 
         public int ApartmentNumber { get; set; }
+
+        public int Zipcode { get; set; }
     }
 }

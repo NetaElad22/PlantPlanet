@@ -5,14 +5,10 @@ using System.Threading.Tasks;
 
 namespace PlantPlanet.Models
 {
-    public class SubCategory
+    public class DeliveryType
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
-
-        public string ImageURL { get; set; } 
-
-        public Category ParentCategory { get; set; }
+        public string Type { get; set; }
     }
 }

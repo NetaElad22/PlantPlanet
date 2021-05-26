@@ -17,8 +17,14 @@ namespace PlantPlanet.Models
 
         public string Content { get; set; }
 
-        public DateTime CreationTime { get; set; }
-
         public DateTime PublicationDate { get; set; }
+
+        public DateTime OrderTime { get; set; }
+
+        public string Name { get; set; }
+
+        public Boolean IsAnnonymous { get; set; }
+
+        // add option to add pictures
     }
 }
