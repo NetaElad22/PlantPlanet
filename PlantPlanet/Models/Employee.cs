@@ -14,7 +14,7 @@ namespace PlantPlanet.Models
 
         public string LastName { get; set; }
 
-        public string Address { get; set; }
+        public Address Address { get; set; }
 
         public DateTime StartDate { get; set; }
 

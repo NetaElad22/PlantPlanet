@@ -18,5 +18,8 @@ namespace PlantPlanet.Models
 
         public float OrderSumPayment { get; set; }
 
+        public Address ShippingAddress { get; set; }
+
+        public string Message { get; set; }
     }
 }

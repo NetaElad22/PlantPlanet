@@ -17,7 +17,7 @@ namespace PlantPlanet.Models
 
         [StringLength(50, MinimumLength = 5)]
         [Required(ErrorMessage = "You must input Address")]
-        public string Address { get; set; }
+        public Address Address { get; set; }
 
         [EmailAddress]
         [Required(ErrorMessage = "You must input Email")]

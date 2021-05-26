@@ -8,14 +8,18 @@ namespace PlantPlanet.Models
     public class Product
     {
         public int ProductId { get; set; }
+        
+        public string Summary { get; set; }
 
         public SubCategory SubCategory { get; set; }
 
         public Category Category { get; set; }
 
-        public int BuyingCost { get; set; }
+        public float BuyingCost { get; set; }
 
         public float SellingPrice { get; set; }
+
+        public float Discount { get; set; }
 
         public string Color { get; set; }
 
