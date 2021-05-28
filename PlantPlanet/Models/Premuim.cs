@@ -7,7 +7,7 @@ namespace PlantPlanet.Models
 {
     public class Premuim
     {
-        public int PremiumId { get; set; }
+        public int Id { get; set; }
 
         public DateTime StartDate { get; set; }
 
