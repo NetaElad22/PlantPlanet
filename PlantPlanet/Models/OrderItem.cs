@@ -5,15 +5,14 @@ using System.Threading.Tasks;
 
 namespace PlantPlanet.Models
 {
-    public class Stock
+    public class OrderItem
     {
-        public int StockId { get; set; }
+        public int OrderItemId { get; set; }
+
+        public int OrderId { get; set; }
 
         public int ProductId { get; set; }
 
         public int Quantity { get; set; }
-
-        public DateTime LastUpdatedQuantity { get; set; }
-
     }
 }

@@ -7,7 +7,7 @@ namespace PlantPlanet.Models
 {
     public class ProductReview
     {
-        public int Id { get; set; }
+        public int ProductReviewId { get; set; }
 
         public int ProductId { get; set; }
 

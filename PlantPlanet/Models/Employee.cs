@@ -8,7 +8,7 @@ namespace PlantPlanet.Models
 {
     public class Employee
     {
-        public int Id { get; set; }
+        public int EmployeeId { get; set; }
 
         public int TeudatZehut { get; set; }
 
@@ -16,7 +16,8 @@ namespace PlantPlanet.Models
 
         public string LastName { get; set; }
 
-        public Address Address { get; set; }
+        // connects to Address id in Address class
+        public int Address { get; set; }
 
         public DateTime StartDate { get; set; }
 

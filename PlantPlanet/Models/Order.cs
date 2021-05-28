@@ -8,21 +8,24 @@ namespace PlantPlanet.Models
 {
     public class Order
     {
-        public int Id { get; set; }
+        public int OrderId { get; set; }
 
+        // connects to Customer id in Customer class
         [Required(ErrorMessage = "You must input Customer")]
-        public Customer CustomerId { get; set; }
+        public int CustomerId { get; set; }
 
-        [Required(ErrorMessage = "You must input Products")]
-        public List<Product> Products { get; set; }
+        //[Required(ErrorMessage = "You must input Products")]
+        //public List<OrderItem> Products { get; set; }
 
         public float OrderSumPayment { get; set; }
 
-        public Address ShippingAddress { get; set; }
+        // connects to Address id in Address class
+        public int ShippingAddress { get; set; }
 
         public string Message { get; set; }
 
-        public Employee Employee { get; set; }
+        //connects to Employee id in Employee class
+        public int EmployeeId { get; set; }
 
         public string OrderComments { get; set; }
 
@@ -34,7 +37,10 @@ namespace PlantPlanet.Models
 
         public Boolean IsPremiumDiscount { get; set; }
 
-        public  DeliveryType DeliveryType { get; set; }
+        // connects to DeliveryTpe id in DeliveryType class
+        public  int DeliveryType { get; set; }
+
+        public string PaymentVerification { get; set; }
 
         public const int MinSumForOrder = 100;
 

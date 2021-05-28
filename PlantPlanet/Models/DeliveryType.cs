@@ -7,7 +7,7 @@ namespace PlantPlanet.Models
 {
     public class DeliveryType
     {
-        public int Id { get; set; }
+        public int DeliveryTypeId { get; set; }
 
         public string Type { get; set; }
     }

@@ -9,7 +9,7 @@ namespace PlantPlanet.Models
 {
     public class Customer
     {
-        public int Id { get; set; }
+        public int CustomerId { get; set; }
 
         public string FirstName { get; set; }
 
@@ -17,7 +17,7 @@ namespace PlantPlanet.Models
 
         [StringLength(50, MinimumLength = 5)]
         [Required(ErrorMessage = "You must input Address")]
-        public Address Address { get; set; }
+        public string Address { get; set; }
 
         [EmailAddress]
         [Required(ErrorMessage = "You must input Email")]

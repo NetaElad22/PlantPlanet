@@ -7,7 +7,7 @@ namespace PlantPlanet.Models
 {
     public class SubCategory
     {
-        public int Id { get; set; }
+        public int SubCategoryId { get; set; }
 
         public string Name { get; set; }
 

@@ -11,9 +11,15 @@ namespace PlantPlanet.Models
         
         public string Description { get; set; }
 
-        public SubCategory SubCategory { get; set; }
+        public string Treatment { get; set; }
 
-        public Category Category { get; set; }
+        public string TreatmentTips { get; set; }
+
+        // connects to SubCategory id in SubCategory class
+        public int SubCategory { get; set; }
+
+        // connects to Category id in Category class
+        public int Category { get; set; }
 
         public float BuyingCost { get; set; }
 
