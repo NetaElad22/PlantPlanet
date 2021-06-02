@@ -12,6 +12,12 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Description)
         </dt>
         <dd class = "col-sm-10">
@@ -30,18 +36,6 @@
             @Html.DisplayFor(model => model.TreatmentTips)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.SubCategory)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.SubCategory)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Category)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.BuyingCost)
         </dt>
         <dd class = "col-sm-10">
@@ -57,8 +51,8 @@
             @Html.DisplayNameFor(model => model.Supplier)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Supplier)
-        </dd>
+            @Html.DisplayFor(model => model.Supplier.CompanyName)
+        </dd class>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Discount)
         </dt>
@@ -78,10 +72,10 @@
             @Html.DisplayFor(model => model.Size)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AvailableStock)
+            @Html.DisplayNameFor(model => model.StockId)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AvailableStock)
+            @Html.DisplayFor(model => model.StockId)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.ImageURL)

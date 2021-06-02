@@ -37,5 +37,7 @@ namespace PlantPlanet.Data
         public DbSet<PlantPlanet.Models.Stock> Stock { get; set; }
 
         public DbSet<PlantPlanet.Models.SubCategory> SubCategory { get; set; }
+
+        public DbSet<PlantPlanet.Models.Supplier> Supplier { get; set; }
     }
 }

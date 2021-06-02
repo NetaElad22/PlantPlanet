@@ -22,7 +22,8 @@ namespace PlantPlanet.Controllers
         // GET: SubCategories
         public async Task<IActionResult> Index()
         {
-            return View(await _context.SubCategory.ToListAsync());
+            var plantPlanetContext = _context.SubCategory.Include(s => s.ParentCategory);
+            return View(await plantPlanetContext.ToListAsync());
         }
 
         // GET: SubCategories/Details/5
@@ -34,6 +35,7 @@ namespace PlantPlanet.Controllers
             }
 
             var subCategory = await _context.SubCategory
+                .Include(s => s.ParentCategory)
                 .FirstOrDefaultAsync(m => m.SubCategoryId == id);
             if (subCategory == null)
             {
@@ -46,6 +48,7 @@ namespace PlantPlanet.Controllers
         // GET: SubCategories/Create
         public IActionResult Create()
         {
+            ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubCategoryId,Name,ImageURL")] SubCategory subCategory)
+        public async Task<IActionResult> Create([Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace PlantPlanet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", subCategory.ParentCategoryId);
             return View(subCategory);
         }
 
@@ -78,6 +82,7 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
+            ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", subCategory.ParentCategoryId);
             return View(subCategory);
         }
 
@@ -86,7 +91,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SubCategoryId,Name,ImageURL")] SubCategory subCategory)
+        public async Task<IActionResult> Edit(int id, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
         {
             if (id != subCategory.SubCategoryId)
             {
@@ -113,6 +118,7 @@ namespace PlantPlanet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", subCategory.ParentCategoryId);
             return View(subCategory);
         }
 
@@ -125,6 +131,7 @@ namespace PlantPlanet.Controllers
             }
 
             var subCategory = await _context.SubCategory
+                .Include(s => s.ParentCategory)
                 .FirstOrDefaultAsync(m => m.SubCategoryId == id);
             if (subCategory == null)
             {

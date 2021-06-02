@@ -30,6 +30,7 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("City")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("FloorNumber")
@@ -39,6 +40,7 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Street")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Zipcode")
@@ -57,6 +59,7 @@ namespace PlantPlanet.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("CategoryName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageURL")
@@ -74,28 +77,30 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
+                    b.Property<int?>("AddressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<bool>("IsRegistered")
+                    b.Property<bool>("IsPremium")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");
 
                     b.HasKey("CustomerId");
+
+                    b.HasIndex("AddressId");
 
                     b.ToTable("Customer");
                 });
@@ -108,6 +113,7 @@ namespace PlantPlanet.Migrations
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Type")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("DeliveryTypeId");
@@ -122,7 +128,7 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Address")
+                    b.Property<int?>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<float>("BonusRate")
@@ -133,15 +139,18 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsCurrentlyEmployed")
                         .HasColumnType("bit");
 
                     b.Property<string>("LastName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("PhoneNumber")
@@ -157,9 +166,12 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("AddressId");
 
                     b.ToTable("Employee");
                 });
@@ -174,7 +186,7 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DeliveryType")
+                    b.Property<int?>("DeliveryTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("EmployeeId")
@@ -204,12 +216,18 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("PaymentsNumber")
                         .HasColumnType("int");
 
-                    b.Property<int>("ShippingAddress")
+                    b.Property<int?>("ShippingAddressAddressId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
 
                     b.HasIndex("CustomerId");
+
+                    b.HasIndex("DeliveryTypeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ShippingAddressAddressId");
 
                     b.ToTable("Order");
                 });
@@ -232,6 +250,8 @@ namespace PlantPlanet.Migrations
 
                     b.HasKey("OrderItemId");
 
+                    b.HasIndex("OrderId");
+
                     b.ToTable("OrderItem");
                 });
 
@@ -242,7 +262,7 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Customer")
+                    b.Property<int?>("CustomerId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("ExpirationDate")
@@ -252,6 +272,8 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("datetime2");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CustomerId");
 
                     b.ToTable("Premuim");
                 });
@@ -263,16 +285,17 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AvailableStock")
+                    b.Property<int?>("AvailableStockStockId")
                         .HasColumnType("int");
 
                     b.Property<float>("BuyingCost")
                         .HasColumnType("real");
 
-                    b.Property<int>("Category")
+                    b.Property<int?>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("Color")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -284,6 +307,10 @@ namespace PlantPlanet.Migrations
                     b.Property<string>("ImageURL")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<float>("NetIncome")
                         .HasColumnType("real");
 
@@ -293,11 +320,14 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("Size")
                         .HasColumnType("int");
 
-                    b.Property<int>("SubCategory")
+                    b.Property<int>("StockId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Supplier")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("SubCategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SupplierId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Treatment")
                         .HasColumnType("nvarchar(max)");
@@ -309,6 +339,14 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("ProductId");
+
+                    b.HasIndex("AvailableStockStockId");
+
+                    b.HasIndex("CategoryId");
+
+                    b.HasIndex("SubCategoryId");
+
+                    b.HasIndex("SupplierId");
 
                     b.ToTable("Product");
                 });
@@ -346,6 +384,8 @@ namespace PlantPlanet.Migrations
 
                     b.HasKey("ProductReviewId");
 
+                    b.HasIndex("ProductId");
+
                     b.ToTable("ProductReview");
                 });
 
@@ -381,39 +421,190 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ParentCategoryCategoryId")
+                    b.Property<int>("ParentCategoryId")
                         .HasColumnType("int");
 
                     b.HasKey("SubCategoryId");
 
-                    b.HasIndex("ParentCategoryCategoryId");
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("SubCategory");
                 });
 
+            modelBuilder.Entity("PlantPlanet.Models.Supplier", b =>
+                {
+                    b.Property<int>("SupplierId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CompanyName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PhoneNumber")
+                        .HasColumnType("int");
+
+                    b.HasKey("SupplierId");
+
+                    b.ToTable("Supplier");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Customer", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Employee", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
+                });
+
             modelBuilder.Entity("PlantPlanet.Models.Order", b =>
                 {
-                    b.HasOne("PlantPlanet.Models.Customer", null)
+                    b.HasOne("PlantPlanet.Models.Customer", "Customer")
                         .WithMany("PreviousOrders")
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("PlantPlanet.Models.DeliveryType", "DeliveryType")
+                        .WithMany()
+                        .HasForeignKey("DeliveryTypeId");
+
+                    b.HasOne("PlantPlanet.Models.Employee", "Employee")
+                        .WithMany("Orders")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PlantPlanet.Models.Address", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressId");
+
+                    b.Navigation("Customer");
+
+                    b.Navigation("DeliveryType");
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("ShippingAddress");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.OrderItem", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Order", "Order")
+                        .WithMany("Products")
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Order");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Premuim", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Customer", "Customer")
+                        .WithMany()
+                        .HasForeignKey("CustomerId");
+
+                    b.Navigation("Customer");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Product", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Stock", "AvailableStock")
+                        .WithMany()
+                        .HasForeignKey("AvailableStockStockId");
+
+                    b.HasOne("PlantPlanet.Models.Category", "Category")
+                        .WithMany()
+                        .HasForeignKey("CategoryId");
+
+                    b.HasOne("PlantPlanet.Models.SubCategory", "SubCategory")
+                        .WithMany()
+                        .HasForeignKey("SubCategoryId");
+
+                    b.HasOne("PlantPlanet.Models.Supplier", "Supplier")
+                        .WithMany("SuppliedProducts")
+                        .HasForeignKey("SupplierId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AvailableStock");
+
+                    b.Navigation("Category");
+
+                    b.Navigation("SubCategory");
+
+                    b.Navigation("Supplier");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.ProductReview", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Product", "Product")
+                        .WithMany("ProductReviews")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.SubCategory", b =>
                 {
                     b.HasOne("PlantPlanet.Models.Category", "ParentCategory")
-                        .WithMany()
-                        .HasForeignKey("ParentCategoryCategoryId");
+                        .WithMany("SubCategories")
+                        .HasForeignKey("ParentCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Category", b =>
+                {
+                    b.Navigation("SubCategories");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.Customer", b =>
                 {
                     b.Navigation("PreviousOrders");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Employee", b =>
+                {
+                    b.Navigation("Orders");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Order", b =>
+                {
+                    b.Navigation("Products");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Product", b =>
+                {
+                    b.Navigation("ProductReviews");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Supplier", b =>
+                {
+                    b.Navigation("SuppliedProducts");
                 });
 #pragma warning restore 612, 618
         }

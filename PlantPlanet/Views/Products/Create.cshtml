@@ -13,6 +13,11 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="Description" class="control-label"></label>
                 <input asp-for="Description" class="form-control" />
                 <span asp-validation-for="Description" class="text-danger"></span>
@@ -28,16 +33,6 @@
                 <span asp-validation-for="TreatmentTips" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="SubCategory" class="control-label"></label>
-                <input asp-for="SubCategory" class="form-control" />
-                <span asp-validation-for="SubCategory" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Category" class="control-label"></label>
-                <input asp-for="Category" class="form-control" />
-                <span asp-validation-for="Category" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <label asp-for="BuyingCost" class="control-label"></label>
                 <input asp-for="BuyingCost" class="form-control" />
                 <span asp-validation-for="BuyingCost" class="text-danger"></span>
@@ -48,9 +43,8 @@
                 <span asp-validation-for="SellingPrice" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Supplier" class="control-label"></label>
-                <input asp-for="Supplier" class="form-control" />
-                <span asp-validation-for="Supplier" class="text-danger"></span>
+                <label asp-for="SupplierId" class="control-label"></label>
+                <select asp-for="SupplierId" class ="form-control" asp-items="ViewBag.SupplierId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Discount" class="control-label"></label>
@@ -68,9 +62,9 @@
                 <span asp-validation-for="Size" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="AvailableStock" class="control-label"></label>
-                <input asp-for="AvailableStock" class="form-control" />
-                <span asp-validation-for="AvailableStock" class="text-danger"></span>
+                <label asp-for="StockId" class="control-label"></label>
+                <input asp-for="StockId" class="form-control" />
+                <span asp-validation-for="StockId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="ImageURL" class="control-label"></label>

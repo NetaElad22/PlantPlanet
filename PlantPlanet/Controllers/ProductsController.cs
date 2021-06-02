@@ -22,7 +22,8 @@ namespace PlantPlanet.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Product.ToListAsync());
+            var plantPlanetContext = _context.Product.Include(p => p.Supplier);
+            return View(await plantPlanetContext.ToListAsync());
         }
 
         // GET: Products/Details/5
@@ -34,6 +35,7 @@ namespace PlantPlanet.Controllers
             }
 
             var product = await _context.Product
+                .Include(p => p.Supplier)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {
@@ -46,6 +48,7 @@ namespace PlantPlanet.Controllers
         // GET: Products/Create
         public IActionResult Create()
         {
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName");
             return View();
         }
 
@@ -54,7 +57,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ProductId,Description,Treatment,TreatmentTips,SubCategory,Category,BuyingCost,SellingPrice,Supplier,Discount,Color,Size,AvailableStock,ImageURL,NetIncome,UnitsSold")] Product product)
+        public async Task<IActionResult> Create([Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,StockId,ImageURL,NetIncome,UnitsSold")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +65,7 @@ namespace PlantPlanet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
             return View(product);
         }
 
@@ -78,6 +82,7 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
             return View(product);
         }
 
@@ -86,7 +91,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Description,Treatment,TreatmentTips,SubCategory,Category,BuyingCost,SellingPrice,Supplier,Discount,Color,Size,AvailableStock,ImageURL,NetIncome,UnitsSold")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,StockId,ImageURL,NetIncome,UnitsSold")] Product product)
         {
             if (id != product.ProductId)
             {
@@ -113,6 +118,7 @@ namespace PlantPlanet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
             return View(product);
         }
 
@@ -125,6 +131,7 @@ namespace PlantPlanet.Controllers
             }
 
             var product = await _context.Product
+                .Include(p => p.Supplier)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

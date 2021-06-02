@@ -22,7 +22,8 @@ namespace PlantPlanet.Controllers
         // GET: OrderItems
         public async Task<IActionResult> Index()
         {
-            return View(await _context.OrderItem.ToListAsync());
+            var plantPlanetContext = _context.OrderItem.Include(o => o.Order);
+            return View(await plantPlanetContext.ToListAsync());
         }
 
         // GET: OrderItems/Details/5
@@ -34,6 +35,7 @@ namespace PlantPlanet.Controllers
             }
 
             var orderItem = await _context.OrderItem
+                .Include(o => o.Order)
                 .FirstOrDefaultAsync(m => m.OrderItemId == id);
             if (orderItem == null)
             {
@@ -46,6 +48,7 @@ namespace PlantPlanet.Controllers
         // GET: OrderItems/Create
         public IActionResult Create()
         {
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace PlantPlanet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId", orderItem.OrderId);
             return View(orderItem);
         }
 
@@ -78,6 +82,7 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId", orderItem.OrderId);
             return View(orderItem);
         }
 
@@ -113,6 +118,7 @@ namespace PlantPlanet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["OrderId"] = new SelectList(_context.Order, "OrderId", "OrderId", orderItem.OrderId);
             return View(orderItem);
         }
 
@@ -125,6 +131,7 @@ namespace PlantPlanet.Controllers
             }
 
             var orderItem = await _context.OrderItem
+                .Include(o => o.Order)
                 .FirstOrDefaultAsync(m => m.OrderItemId == id);
             if (orderItem == null)
             {

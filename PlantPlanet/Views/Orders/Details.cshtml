@@ -11,16 +11,16 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.Email)
+        </dd>
+        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OrderSumPayment)
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.OrderSumPayment)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ShippingAddress)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ShippingAddress)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Message)
@@ -29,10 +29,10 @@
             @Html.DisplayFor(model => model.Message)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.EmployeeId)
+            @Html.DisplayNameFor(model => model.Employee)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.EmployeeId)
+            @Html.DisplayFor(model => model.Employee.Email)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.OrderComments)
@@ -63,12 +63,6 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IsPremiumDiscount)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.DeliveryType)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.DeliveryType)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.PaymentVerification)

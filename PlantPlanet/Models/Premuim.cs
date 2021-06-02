@@ -13,8 +13,7 @@ namespace PlantPlanet.Models
 
         public DateTime ExpirationDate { get; set; }
 
-        // connects to Customer id in Customer class
-        public int Customer { get; set; }
+        public Customer Customer { get; set; }
 
         public const int DiscountPercentage = 10;
     }

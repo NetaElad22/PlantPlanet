@@ -54,7 +54,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("EmployeeId,TeudatZehut,FirstName,LastName,Address,StartDate,Email,PhoneNumber,Salary,BonusRate,IsCurrentlyEmployed,UserName,Password")] Employee employee)
+        public async Task<IActionResult> Create([Bind("EmployeeId,TeudatZehut,FirstName,LastName,StartDate,Email,PhoneNumber,Salary,BonusRate,IsCurrentlyEmployed,UserName,Password")] Employee employee)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,TeudatZehut,FirstName,LastName,Address,StartDate,Email,PhoneNumber,Salary,BonusRate,IsCurrentlyEmployed,UserName,Password")] Employee employee)
+        public async Task<IActionResult> Edit(int id, [Bind("EmployeeId,TeudatZehut,FirstName,LastName,StartDate,Email,PhoneNumber,Salary,BonusRate,IsCurrentlyEmployed,UserName,Password")] Employee employee)
         {
             if (id != employee.EmployeeId)
             {

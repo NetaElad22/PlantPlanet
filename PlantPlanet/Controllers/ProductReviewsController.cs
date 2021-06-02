@@ -22,7 +22,8 @@ namespace PlantPlanet.Controllers
         // GET: ProductReviews
         public async Task<IActionResult> Index()
         {
-            return View(await _context.ProductReview.ToListAsync());
+            var plantPlanetContext = _context.ProductReview.Include(p => p.Product);
+            return View(await plantPlanetContext.ToListAsync());
         }
 
         // GET: ProductReviews/Details/5
@@ -34,6 +35,7 @@ namespace PlantPlanet.Controllers
             }
 
             var productReview = await _context.ProductReview
+                .Include(p => p.Product)
                 .FirstOrDefaultAsync(m => m.ProductReviewId == id);
             if (productReview == null)
             {
@@ -46,6 +48,7 @@ namespace PlantPlanet.Controllers
         // GET: ProductReviews/Create
         public IActionResult Create()
         {
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Color");
             return View();
         }
 
@@ -62,6 +65,7 @@ namespace PlantPlanet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Color", productReview.ProductId);
             return View(productReview);
         }
 
@@ -78,6 +82,7 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Color", productReview.ProductId);
             return View(productReview);
         }
 
@@ -113,6 +118,7 @@ namespace PlantPlanet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ProductId"] = new SelectList(_context.Product, "ProductId", "Color", productReview.ProductId);
             return View(productReview);
         }
 
@@ -125,6 +131,7 @@ namespace PlantPlanet.Controllers
             }
 
             var productReview = await _context.ProductReview
+                .Include(p => p.Product)
                 .FirstOrDefaultAsync(m => m.ProductReviewId == id);
             if (productReview == null)
             {

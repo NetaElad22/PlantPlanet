@@ -13,16 +13,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.OrderSumPayment)
+                @Html.DisplayNameFor(model => model.Customer)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShippingAddress)
+                @Html.DisplayNameFor(model => model.OrderSumPayment)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Message)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmployeeId)
+                @Html.DisplayNameFor(model => model.Employee)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.OrderComments)
@@ -40,9 +40,6 @@
                 @Html.DisplayNameFor(model => model.IsPremiumDiscount)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.DeliveryType)
-            </th>
-            <th>
                 @Html.DisplayNameFor(model => model.PaymentVerification)
             </th>
             <th></th>
@@ -52,16 +49,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.OrderSumPayment)
+                @Html.DisplayFor(modelItem => item.Customer.Email)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ShippingAddress)
+                @Html.DisplayFor(modelItem => item.OrderSumPayment)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmployeeId)
+                @Html.DisplayFor(modelItem => item.Employee.Email)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderComments)
@@ -77,9 +74,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IsPremiumDiscount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryType)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.PaymentVerification)

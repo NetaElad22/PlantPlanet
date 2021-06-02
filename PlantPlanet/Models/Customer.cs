@@ -11,22 +11,31 @@ namespace PlantPlanet.Models
     {
         public int CustomerId { get; set; }
 
+        [Required(ErrorMessage = "יש להזין שם פרטי")]
+        [Display(Name = "שם פרטי")]
         public string FirstName { get; set; }
 
+        [Required(ErrorMessage = "יש להזין שם משפחה")]
+        [Display(Name = "שם משפחה")]
         public string LastName { get; set; }
 
-        [StringLength(50, MinimumLength = 5)]
-        [Required(ErrorMessage = "You must input Address")]
-        public string Address { get; set; }
+        [Display(Name = "הזמנות קודמות")]
+        public List<Order> PreviousOrders { get; set; }
+
+        [Required(ErrorMessage = "יש להזין כתובת")]
+        [Display(Name = "כתובת")]
+        public Address Address { get; set; }
 
         [EmailAddress]
-        [Required(ErrorMessage = "You must input Email")]
+        [Required(ErrorMessage = "יש להזין מייל")]
+        [Display(Name = "מייל")]
         public string Email { get; set; }
 
+        [Required(ErrorMessage = "יש להזין מספר טלפון")]
+        [Display(Name = "מספר טלפון")]
         public int PhoneNumber { get; set; }
 
-        public Boolean IsRegistered { get; set; }
+        public Boolean IsPremium { get; set; }
 
-        public List<Order> PreviousOrders { get; set; }
     }
 }
