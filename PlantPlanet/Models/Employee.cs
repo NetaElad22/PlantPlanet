@@ -39,15 +39,7 @@ namespace PlantPlanet.Models
 
         public Boolean IsCurrentlyEmployed { get; set; }
 
-        [Required(ErrorMessage = "יש להזין שם משתמש למערכת")]
-        public string UserName { get; set; }
-
-        [Required(ErrorMessage = "יש להזין סיסמא למערכת")]
-        public string Password { get; set; }
-
         public enum Rank { Manager, StoreManager, ShiftManager, Employee, Trainee }
-
-        public enum AuthorizationLevel { Manager, StoreMAnager, Employee }
 
         public List<Order> Orders { get; set; }
     }

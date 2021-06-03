@@ -16,5 +16,6 @@ namespace PlantPlanet.Models
         public Customer Customer { get; set; }
 
         public const int DiscountPercentage = 10;
+
     }
 }
