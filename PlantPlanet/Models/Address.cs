@@ -31,5 +31,8 @@ namespace PlantPlanet.Models
         [Required(ErrorMessage = "יש להזין מיקוד")]
         [Display(Name = "מיקוד")]
         public int Zipcode { get; set; }
+
+        [Display(Name = "הערות לשליח")]
+        public string ExtraInfo { get; set; }
     }
 }

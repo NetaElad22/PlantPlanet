@@ -54,7 +54,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SupplierId,CompanyName,PhoneNumber,Email")] Supplier supplier)
+        public async Task<IActionResult> Create([Bind("SupplierId,CompanyName,PhoneNumber,Email,IsActive")] Supplier supplier)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SupplierId,CompanyName,PhoneNumber,Email")] Supplier supplier)
+        public async Task<IActionResult> Edit(int id, [Bind("SupplierId,CompanyName,PhoneNumber,Email,IsActive")] Supplier supplier)
         {
             if (id != supplier.SupplierId)
             {
