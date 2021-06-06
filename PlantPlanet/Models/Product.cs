@@ -63,6 +63,7 @@ namespace PlantPlanet.Models
         [Display(Name = "חוות דעת על המוצר")]
         public List<ProductReview> ProductReviews { get; set; }
 
+        [Display(Name = "תמונה")]
         public string ImageURL { get; set; }
 
         [Display(Name = "רווח כולל מהמוצר")]

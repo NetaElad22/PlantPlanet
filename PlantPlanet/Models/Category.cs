@@ -13,7 +13,8 @@ namespace PlantPlanet.Models
         [Required(ErrorMessage = "יש להזין שם קטגוריה")]
         [Display(Name = "שם קטגוריה")]
         public string CategoryName { get; set; }
-        
+
+        [Display(Name = "תמונה")]
         public string ImageURL { get; set; }
 
         [Display(Name = "תתי קטגוריות")]
