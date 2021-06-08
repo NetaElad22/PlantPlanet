@@ -7,27 +7,46 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 </head>
-<body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">PlantPlanet</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+<body style="direction:rtl">
+    <header style="display: flex; justify-content:center">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+            <img src="~/images/logo.jpeg" alt="Plant Planet" style=" height: 170px;" />
+        </a>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3" style="height:55px; margin-top: 5%">
+            <div class="container" style="direction:rtl">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Catalog">קטלוג מוצרים</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">הרשמה</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CommonQuestions">שאלות נפוצות</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">צור קשר</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart">הסל שלי</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+        <a style="margin-top: 6%; margin-right: 12px;">
+            <img src="~/images/facebook.png" style=" height: 30px; " />
+        </a>
+        <a style="margin-top: 6%">
+            <img src="~/images/instagram.png" style="height: 30px" />
+        </a>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
@@ -37,7 +56,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="About">אודות</a>
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
