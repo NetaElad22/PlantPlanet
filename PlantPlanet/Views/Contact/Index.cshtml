@@ -1,12 +1,12 @@
 ﻿
-    @{
-        ViewData["Title"] = "Index";
-    }
+@{
+    ViewData["Title"] = "Index";
+}
 
 <div class="container" style="direction:rtl; text-align:right; font-family: 'Courier New'">
     <div class="row">
         <div class="col-sm">
-            <h5>מוזמנים להשאיר פרטים ונחזור אליכם בהקדם האפשרי</h5> <br />
+            <h5>מוזמנים להשאיר פרטים ונחזור אליכם בהקדם האפשרי</h5> 
             <a> שעות הפעילות הן:</a> <br />
             <a>בימי א-ה בין השעות 8:00-19:00</a> <br />
             <a>בימי ו-ש בין השעות 10:00-15:00</a> <br />
@@ -15,7 +15,8 @@
                 <div class="form-group">
                     <label for="privatename">שם פרטי</label>
                     <input type="text" class="form-control" id="privatename" placeholder="שם פרטי">
-                </div><div class="form-group">
+                </div>
+                <div class="form-group">
                     <label for="familyname">שם משפחה</label>
                     <input type="text" class="form-control" id="familyname" placeholder="שם משפחה">
                 </div>
@@ -32,19 +33,38 @@
                     <label for="reason">סיבה הפנייה</label>
                     <textarea class="form-control" id="reason"></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary" onclick="sendEmail()">שלח פנייה</button>
+                <button type="submit" class="btn btn-primary">שלח פנייה</button>
             </form>
         </div>
         <div class="col-sm" style="padding-right: 8%">
-            <h5>משתלת Plant Planet</h5> <br />
+            <h5>משתלת Plant Planet</h5> 
             <a>כתובתנו היא הסייפן 35, רמת השרון</a> <br />
             <a>ניתן לפנות אלינו בטלפון - 0544568541</a> <br />
-            <a> או במייל - plantplanetisrael@gmail.com</a>
+            <a> או במייל - plantplanetisrael@gmail.com</a><br />
+            <script>
+                // Initialize and add the map
+                function initMap() {
+
+                    // The location of Plant Planet
+                    const PlantPlanet = { lat: 32.1343066, lng: 34.8365885 };
+
+                    // The map, centered at Plant Planet
+                    const map = new google.maps.Map(document.getElementById("map"), {
+                        zoom: 15,
+                        center: PlantPlanet,
+                    });
+
+                    // The marker, positioned at Plant Planet
+                    const marker = new google.maps.Marker({
+                        position: PlantPlanet,
+                        map: map,
+                    });
+                }
+            </script>
+            <div id="map" style="height: 450px; width: 550px; margin-top:20px"></div>
         </div>
     </div>
 </div>
 
-<script>
 
-
-</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
