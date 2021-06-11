@@ -33,9 +33,6 @@ namespace PlantPlanet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ExtraInfo")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("FloorNumber")
                         .HasColumnType("int");
 
@@ -448,9 +445,6 @@ namespace PlantPlanet.Migrations
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsActive")
-                        .HasColumnType("bit");
 
                     b.Property<int>("PhoneNumber")
                         .HasColumnType("int");

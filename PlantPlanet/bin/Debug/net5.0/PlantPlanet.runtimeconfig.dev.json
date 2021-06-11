@@ -1,9 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\netae\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\netae\\.nuget\\packages",
-      "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      "C:\\Users\\romko\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\romko\\.nuget\\packages"
     ]
   }
 }
