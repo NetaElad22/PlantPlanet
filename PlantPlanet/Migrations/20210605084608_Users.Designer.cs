@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlantPlanet.Data;
 
 namespace PlantPlanet.Migrations
 {
     [DbContext(typeof(PlantPlanetContext))]
-    partial class PlantPlanetContextModelSnapshot : ModelSnapshot
+    [Migration("20210605084608_Users")]
+    partial class Users
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -557,7 +559,7 @@ namespace PlantPlanet.Migrations
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("PlantPlanet.Models.SubCategory", "SubCategory")
-                        .WithMany("Products")
+                        .WithMany()
                         .HasForeignKey("SubCategoryId");
 
                     b.HasOne("PlantPlanet.Models.Supplier", "Supplier")
@@ -620,11 +622,6 @@ namespace PlantPlanet.Migrations
             modelBuilder.Entity("PlantPlanet.Models.Product", b =>
                 {
                     b.Navigation("ProductReviews");
-                });
-
-            modelBuilder.Entity("PlantPlanet.Models.SubCategory", b =>
-                {
-                    b.Navigation("Products");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.Supplier", b =>

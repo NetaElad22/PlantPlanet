@@ -54,7 +54,7 @@ namespace PlantPlanet.Models
 
         public float NetIncome { get; set; }
 
-        public int UnitsSold { get; set; }
+        public int UnitsSold { get; set; } = 0;
 
     }
 }

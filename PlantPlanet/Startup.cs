@@ -10,6 +10,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace PlantPlanet
 {
@@ -29,6 +30,12 @@ namespace PlantPlanet
 
             services.AddDbContext<PlantPlanetContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("PlantPlanetContext")));
+
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options => 
+            { 
+                options.LoginPath = "/Users/Login";
+                options.AccessDeniedPath = "/Users/AccessDenied"; 
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -48,6 +55,8 @@ namespace PlantPlanet
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
 
             app.UseAuthorization();
 

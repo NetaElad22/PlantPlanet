@@ -55,13 +55,18 @@ namespace PlantPlanet.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email,PhoneNumber,IsPremium")] Customer customer)
+
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
+                var user = new User();
+                user.UserName = customer.Email;
+                user.Password = "pass";
+                _context.Add(user);
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
-            }
+            //}
             return View(customer);
         }
 
