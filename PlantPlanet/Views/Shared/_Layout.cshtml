@@ -6,13 +6,15 @@
     <title>@ViewData["Title"] - PlantPlanet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/layout.css" />
 </head>
-<body style="direction:rtl">
-    <header style="display: flex; justify-content:center">
+<body>
+    <header>
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-            <img src="~/images/logo.jpeg" alt="Plant Planet" style=" height: 170px;" />
+            <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet"/>
         </a>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3" style="height:55px; margin-top: 5%">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3">
             <div class="container" style="direction:rtl">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -20,34 +22,38 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Catalog">קטלוג מוצרים</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">קטלוג מוצרים</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Register">הרשמה</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Create">הרשמה</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">אודות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="CommonQuestions">שאלות נפוצות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">שאלות נפוצות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="ContactUs">צור קשר</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Cart">הסל שלי</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Edit">הסל שלי</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <a style="margin-top: 6%; margin-right: 12px;">
-            <img src="~/images/facebook.png" style=" height: 30px; " />
-        </a>
-        <a style="margin-top: 6%">
-            <img src="~/images/instagram.png" style="height: 30px" />
-        </a>
+        <input class="search-input" type="search" placeholder="חיפוש"/>
+        <div class="circles-container">
+            <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
+                <img class="circle-img" src="~/images/facebook.png"/>
+            </a>
+            <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
+                <img class="circle-img" src="~/images/instagram.png"/>
+            </a>
+        </div>
     </header>
+
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()

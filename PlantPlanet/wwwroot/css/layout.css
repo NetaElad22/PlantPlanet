@@ -1,0 +1,48 @@
+﻿body {
+    direction: rtl;
+}
+
+header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.logo {
+    height: 170px;
+}
+
+nav {
+    height: 55px;
+    margin-top: 5%;
+}
+
+ul {
+    padding: 0;
+}
+
+li :hover {
+    font-weight: bold;
+}
+
+.search-input {
+    margin-top: 6%;
+    font-size: 16px;
+    height: 34px;
+    border-radius: 5px;
+    width: 159px;
+    border-style: solid;
+}
+
+.circles-container {
+    margin-top: 6%;
+}
+
+.circle-link {
+    margin-top: 6%;
+    text-decoration: none !important;
+}
+
+.circle-img {
+    height: 30px;
+}
+
