@@ -21,8 +21,8 @@ namespace PlantPlanet.Models
 
         public SubCategory SubCategory { get; set; }
 
-        [Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
-        public Category Category { get; set; }
+        //[Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
+        //public Category Category { get; set; }
 
         [Required(ErrorMessage = "יש להזין את מחיר עלות המוצר")]
         public float BuyingCost { get; set; }

@@ -15,9 +15,10 @@ namespace PlantPlanet.Models
 
         public string ImageURL { get; set; }
 
+        [Required(ErrorMessage = "יש להזין קטגוריה")]
+
         public int ParentCategoryId { get; set; }
 
-        [Required(ErrorMessage = "יש להזין קטגוריה")]
         public Category ParentCategory { get; set; }
 
         public List<Product> Products { get; set; }
