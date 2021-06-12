@@ -27,8 +27,33 @@ namespace PlantPlanet.Controllers
             return View();
         }
 
-        [Authorize(Roles = "Manager")]
         public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        public IActionResult Catalog()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+        public IActionResult About()
+        {
+            return View();
+        }
+        public IActionResult Cart()
+        {
+            return View();
+        }
+        public IActionResult CommonQuestions()
+        {
+            return View();
+        }
+        public IActionResult ContactUs()
         {
             return View();
         }
