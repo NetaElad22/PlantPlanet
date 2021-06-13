@@ -19,7 +19,7 @@ namespace PlantPlanet.Models
 
         public string TreatmentTips { get; set; }
 
-        public SubCategory SubCategory { get; set; }
+        public List<SubCategory> SubCategories { get; set; }
 
         [Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
         public Category Category { get; set; }

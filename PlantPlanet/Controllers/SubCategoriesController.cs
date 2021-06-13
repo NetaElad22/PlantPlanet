@@ -1,22 +1,27 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
 using PlantPlanet.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace PlantPlanet.Controllers
 {
     public class SubCategoriesController : Controller
     {
         private readonly PlantPlanetContext _context;
+        private readonly IHostingEnvironment _hosting;
 
-        public SubCategoriesController(PlantPlanetContext context)
+        public SubCategoriesController(PlantPlanetContext context, IHostingEnvironment hosting)
         {
             _context = context;
+            _hosting = hosting;
         }
 
         // GET: SubCategories
@@ -57,11 +62,14 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
+        public async Task<IActionResult> Create(IFormFile ImageURL, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
         {
             if (ModelState.IsValid)
             {
+                var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                subCategory.ImageURL = ImageURL.FileName;
                 _context.Add(subCategory);
+                ImageURL.CopyTo(new FileStream(filename, FileMode.Create));
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

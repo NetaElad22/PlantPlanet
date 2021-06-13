@@ -66,6 +66,7 @@ namespace PlantPlanet.Controllers
                 var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
                 category.ImageURL = ImageURL.FileName;
                 _context.Add(category);
+                ImageURL.CopyTo(new FileStream (filename, FileMode.Create));
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

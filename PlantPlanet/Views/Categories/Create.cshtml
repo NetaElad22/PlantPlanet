@@ -18,7 +18,7 @@
                 </div>
                 <div class="form-group">
                     <label asp-for="ImageURL" class="control-label"></label>
-                    <input type="file" asp-for="ImageURL" class="form-control" />
+                    <input type="file" asp-for="ImageURL" class="form-control" name="ImageURL"/>
                     <span asp-validation-for="ImageURL" class="text-danger"></span>
                 </div>
                 <br />
@@ -33,9 +33,6 @@
         <a asp-action="Index">חזרה לרשימת הקטגוריות</a>
     </div>
 </div>
-
-
-
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
