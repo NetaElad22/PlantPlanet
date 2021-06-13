@@ -23,8 +23,6 @@ namespace PlantPlanet.Models
         [Display(Name = "מייל")]
         public string Email { get; set; }
 
-        public Boolean IsActive { get; set; }
-
         [Display(Name = "רשימת מוצרים")]
         public List<Product> SuppliedProducts { get; set; }
     }
