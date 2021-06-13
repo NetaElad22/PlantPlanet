@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -13,10 +16,12 @@ namespace PlantPlanet.Controllers
     public class CategoriesController : Controller
     {
         private readonly PlantPlanetContext _context;
+        private readonly IHostingEnvironment _hosting;
 
-        public CategoriesController(PlantPlanetContext context)
+        public CategoriesController(PlantPlanetContext context, IHostingEnvironment hosting)
         {
             _context = context;
+            _hosting = hosting;
         }
 
         // GET: Categories
@@ -54,10 +59,12 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CategoryId,CategoryName,ImageURL")] Category category)
+        public async Task<IActionResult> Create(IFormFile ImageURL, [Bind("CategoryId,CategoryName,ImageURL")] Category category)
         {
             if (ModelState.IsValid)
             {
+                var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                category.ImageURL = ImageURL.FileName;
                 _context.Add(category);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
