@@ -339,7 +339,6 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.TagHelpers.output.cache
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.RazorCoreGenerate.cache
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -999,3 +998,9 @@ C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר 
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.pdb
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.genruntimeconfig.cache
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.csproj.AssemblyReference.cache
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\MailKit.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\MimeKit.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\NETCore.MailKit.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\BouncyCastle.Crypto.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
