@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="~/css/site.css" />
     <link rel="stylesheet" href="~/css/layout.css" />
 </head>
-<body>
+<bodyn>
     <header>
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
             <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet"/>
         </a>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3">
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3" style="font-family:Gisha">
             <div class="container" style="direction:rtl">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
@@ -28,13 +28,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Create">הרשמה</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">אודות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">אודות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">שאלות נפוצות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="QuestionsAndAnswers" asp-action="Index">שאלות נפוצות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">צור קשר</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Edit">הסל שלי</a>
@@ -69,5 +69,5 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</body>
+</bodyn>
 </html>
