@@ -11,29 +11,39 @@ namespace PlantPlanet.Models
         public int EmployeeId { get; set; }
 
         [Required(ErrorMessage = "יש להזין את מספר תעודת הזהות של העובד")]
+        [Display(Name = "תעודת זהות")]
         public int TeudatZehut { get; set; }
 
         [Required(ErrorMessage = "יש להזין שם פרטי")]
+        [Display(Name = "שם פרטי")]
         public string FirstName { get; set; }
 
         [Required(ErrorMessage = "יש להזין שם משפחה")]
+        [Display(Name = "שם משפחה")]
         public string LastName { get; set; }
 
         [Required(ErrorMessage = "יש להזין תאריך העסקה")]
+        [Display(Name = "תאריך העסקה")]
         public DateTime StartDate { get; set; }
 
         [EmailAddress]
         [Required(ErrorMessage = "יש להזין מייל")]
+        [Display(Name = "מייל")]
         public string Email { get; set; }
 
         [Required(ErrorMessage = "יש להזין מספר טלפון")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "יש להזין מספר טלפון נייד בלבד")]
+        [Display(Name = "מספר טלפון")]
         public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "יש להזין את משכורת העובד")]
+        [Display(Name = "משכורת")]
         public float Salary { get; set; }
 
+        [Display(Name = "תעריף בונוס")]
         public float BonusRate { get; set; }
 
+        [Display(Name = "האם מועסק?")]
         public Boolean IsCurrentlyEmployed { get; set; }
 
         public enum Rank { Manager, StoreManager, ShiftManager, Employee, Trainee }
