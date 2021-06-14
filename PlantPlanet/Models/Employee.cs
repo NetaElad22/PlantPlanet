@@ -30,7 +30,7 @@ namespace PlantPlanet.Models
         public string Email { get; set; }
 
         [Required(ErrorMessage = "יש להזין מספר טלפון")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         [Required(ErrorMessage = "יש להזין את משכורת העובד")]
         public float Salary { get; set; }
