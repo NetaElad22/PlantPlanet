@@ -15,6 +15,7 @@ namespace PlantPlanet.Models
         public string CompanyName { get; set; }
 
         [Required(ErrorMessage = "יש להזין מספר טלפון")]
+        [RegularExpression(@"^\d{10}$", ErrorMessage = "יש להזין מספר טלפון נייד בלבד")]
         [Display(Name = "מספר טלפון")]
         public string PhoneNumber { get; set; }
 
