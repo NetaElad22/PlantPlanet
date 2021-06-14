@@ -4,27 +4,34 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
 
-<div>
-    <h4>DeliveryType</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
+<div class="container" style="font-family: 'Gisha'; direction:rtl; text-align:center">
+    <br />
+    <div class="row" style="font-size:x-large">
+        <div class="col-md-4">
             @Html.DisplayNameFor(model => model.Type)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Type)
-        </dd>
-        <dt class = "col-sm-2">
+        </div>
+        <div class="col-md-4">
             @Html.DisplayNameFor(model => model.DeliveryCostAddition)
-        </dt>
-        <dd class = "col-sm-10">
+        </div>
+        <div class="col-md-4">
+            אפשרויות ניהול
+        </div>
+    </div>
+    <br />
+    <div class="row" style="font-size:medium">
+        <div class="col-md-4">
+            @Html.DisplayFor(model => model.Type)
+        </div>
+        <div class="col-md-4">
             @Html.DisplayFor(model => model.DeliveryCostAddition)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.DeliveryTypeId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+        </div>
+        <div class="col-md-4">
+            <a asp-action="Edit" asp-route-id="@Model.DeliveryTypeId">עריכה</a> |
+            <a asp-action="Delete" asp-route-id="@Model.DeliveryTypeId">מחיקה</a>
+        </div>
+    </div>
+    <div class="row" style="margin-top:15%">
+        <a asp-action="Index">חזרה לרשימת סוגי המשלוח</a>
+    </div>
 </div>
