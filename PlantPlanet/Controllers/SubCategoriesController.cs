@@ -1,22 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
 using PlantPlanet.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace PlantPlanet.Controllers
 {
     public class SubCategoriesController : Controller
     {
         private readonly PlantPlanetContext _context;
+        private readonly IHostingEnvironment _hosting;
+        public const string DefaultPictureURL = "DefaultPicture.jpg";
 
-        public SubCategoriesController(PlantPlanetContext context)
+        public SubCategoriesController(PlantPlanetContext context, IHostingEnvironment hosting)
         {
             _context = context;
+            _hosting = hosting;
         }
 
         // GET: SubCategories
@@ -57,13 +63,26 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
+        public async Task<IActionResult> Create(IFormFile ImageURL, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(subCategory);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if (subCategory.ImageURL == null)
+                {
+                    subCategory.ImageURL = DefaultPictureURL;
+                    _context.Add(subCategory);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                } 
+                else
+                {
+                    var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                    subCategory.ImageURL = ImageURL.FileName;
+                    _context.Add(subCategory);
+                    ImageURL.CopyTo(new FileStream(filename, FileMode.Create));
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName", subCategory.ParentCategoryId);
             return View(subCategory);
@@ -91,7 +110,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
+        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
         {
             if (id != subCategory.SubCategoryId)
             {
@@ -102,6 +121,16 @@ namespace PlantPlanet.Controllers
             {
                 try
                 {
+                    if (ImageURL == null)
+                    {
+                        subCategory.ImageURL = _context.SubCategory.Where(c => c.SubCategoryId == id).AsNoTracking().First().ImageURL;
+                    }
+                    else
+                    {
+                        var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                        subCategory.ImageURL = ImageURL.FileName;
+                        ImageURL.CopyTo(new FileStream(filename, FileMode.Create));
+                    }
                     _context.Update(subCategory);
                     await _context.SaveChangesAsync();
                 }

@@ -320,9 +320,6 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("StockId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("SubCategoryId")
-                        .HasColumnType("int");
-
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
 
@@ -340,8 +337,6 @@ namespace PlantPlanet.Migrations
                     b.HasIndex("AvailableStockStockId");
 
                     b.HasIndex("CategoryId");
-
-                    b.HasIndex("SubCategoryId");
 
                     b.HasIndex("SupplierId");
 
@@ -468,6 +463,21 @@ namespace PlantPlanet.Migrations
                     b.ToTable("User");
                 });
 
+            modelBuilder.Entity("ProductSubCategory", b =>
+                {
+                    b.Property<int>("ProductsProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubCategoriesSubCategoryId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ProductsProductId", "SubCategoriesSubCategoryId");
+
+                    b.HasIndex("SubCategoriesSubCategoryId");
+
+                    b.ToTable("ProductSubCategory");
+                });
+
             modelBuilder.Entity("PlantPlanet.Models.Customer", b =>
                 {
                     b.HasOne("PlantPlanet.Models.Address", "Address")
@@ -553,10 +563,6 @@ namespace PlantPlanet.Migrations
                         .WithMany()
                         .HasForeignKey("CategoryId");
 
-                    b.HasOne("PlantPlanet.Models.SubCategory", "SubCategory")
-                        .WithMany()
-                        .HasForeignKey("SubCategoryId");
-
                     b.HasOne("PlantPlanet.Models.Supplier", "Supplier")
                         .WithMany("SuppliedProducts")
                         .HasForeignKey("SupplierId")
@@ -566,8 +572,6 @@ namespace PlantPlanet.Migrations
                     b.Navigation("AvailableStock");
 
                     b.Navigation("Category");
-
-                    b.Navigation("SubCategory");
 
                     b.Navigation("Supplier");
                 });
@@ -592,6 +596,21 @@ namespace PlantPlanet.Migrations
                         .IsRequired();
 
                     b.Navigation("ParentCategory");
+                });
+
+            modelBuilder.Entity("ProductSubCategory", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Product", null)
+                        .WithMany()
+                        .HasForeignKey("ProductsProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PlantPlanet.Models.SubCategory", null)
+                        .WithMany()
+                        .HasForeignKey("SubCategoriesSubCategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.Category", b =>

@@ -323,7 +323,6 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\ru\Microsof
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\tr\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.csprojAssemblyReference.cache
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.AssemblyInfoInputs.cache
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.AssemblyInfo.cs
@@ -1004,3 +1003,5 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\NETCore.Mai
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\BouncyCastle.Crypto.dll
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\QuestionsAndAnswers\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.csprojAssemblyReference.cache
