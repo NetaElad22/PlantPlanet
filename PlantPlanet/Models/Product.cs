@@ -43,10 +43,7 @@ namespace PlantPlanet.Models
         [Required(ErrorMessage = "יש להזין את גודל המוצר")]
         public int Size { get; set; }
 
-        public int StockId { get; set; }
-
-        [Required(ErrorMessage = "יש להזין את כמות היחידות במלאי")]
-        public Stock AvailableStock { get; set; }
+        public int Quantity { get; set; }
 
         public List<ProductReview> ProductReviews { get; set; }
 

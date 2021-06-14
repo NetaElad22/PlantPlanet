@@ -33,7 +33,7 @@ namespace PlantPlanet.Models
 
         [Required(ErrorMessage = "יש להזין מספר טלפון")]
         [Display(Name = "מספר טלפון")]
-        public int PhoneNumber { get; set; }
+        public string PhoneNumber { get; set; }
 
         public User User { get; set; }
 
