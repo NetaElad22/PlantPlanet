@@ -22,10 +22,6 @@ namespace PlantPlanet.Models
         [Display(Name = "הזמנות קודמות")]
         public List<Order> PreviousOrders { get; set; }
 
-        [Required(ErrorMessage = "יש להזין כתובת")]
-        [Display(Name = "כתובת")]
-        public Address Address { get; set; }
-
         [EmailAddress]
         [Required(ErrorMessage = "יש להזין מייל")]
         [Display(Name = "מייל")]
@@ -38,6 +34,28 @@ namespace PlantPlanet.Models
         public User User { get; set; }
 
         public Boolean IsPremium { get; set; }
+
+        [Required(ErrorMessage = "יש להזין עיר")]
+        [Display(Name = "עיר")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "יש להזין רחוב")]
+        [Display(Name = "רחוב")]
+        public string Street { get; set; }
+
+        [Required(ErrorMessage = "יש להזין מספר בית")]
+        [Display(Name = "מספר בית")]
+        public string HouseNumber { get; set; }
+
+        [Display(Name = "קומה")]
+        public string FloorNumber { get; set; }
+
+        [Display(Name = "מספר דירה")]
+        public string FlatNumber { get; set; }
+
+        [Required(ErrorMessage = "יש להזין מיקוד")]
+        [Display(Name = "מיקוד")]
+        public string ZipCode { get; set; }
 
     }
 }

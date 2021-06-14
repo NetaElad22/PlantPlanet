@@ -54,7 +54,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("DeliveryTypeId,Type")] DeliveryType deliveryType)
+        public async Task<IActionResult> Create([Bind("DeliveryTypeId,Type,DeliveryCostAddition")] DeliveryType deliveryType)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("DeliveryTypeId,Type")] DeliveryType deliveryType)
+        public async Task<IActionResult> Edit(int id, [Bind("DeliveryTypeId,Type,DeliveryCostAddition")] DeliveryType deliveryType)
         {
             if (id != deliveryType.DeliveryTypeId)
             {
