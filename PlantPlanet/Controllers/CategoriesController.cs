@@ -17,6 +17,7 @@ namespace PlantPlanet.Controllers
     {
         private readonly PlantPlanetContext _context;
         private readonly IHostingEnvironment _hosting;
+        public const string DefaultPictureURL = "DefaultPicture.jpg";
 
         public CategoriesController(PlantPlanetContext context, IHostingEnvironment hosting)
         {
@@ -63,12 +64,22 @@ namespace PlantPlanet.Controllers
         {
             if (ModelState.IsValid)
             {
-                var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
-                category.ImageURL = ImageURL.FileName;
-                _context.Add(category);
-                ImageURL.CopyTo(new FileStream (filename, FileMode.Create));
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                if(category.ImageURL == null)
+                {
+                    category.ImageURL = DefaultPictureURL;
+                    _context.Add(category);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                else
+                {
+                    var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                    category.ImageURL = ImageURL.FileName;
+                    _context.Add(category);
+                    ImageURL.CopyTo(new FileStream(filename, FileMode.Create));
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
             }
             return View(category);
         }
@@ -94,17 +105,26 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("CategoryId,CategoryName,ImageURL")] Category category)
+        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("CategoryId,CategoryName,ImageURL")] Category category)
         {
             if (id != category.CategoryId)
             {
                 return NotFound();
-            }
-
+            }            
             if (ModelState.IsValid)
             {
                 try
                 {
+                    if (ImageURL == null)
+                    {
+                        category.ImageURL = _context.Category.Where(c => c.CategoryId == id).AsNoTracking().First().ImageURL;
+                    }
+                    else
+                    {
+                        var filename = Path.Combine(_hosting.WebRootPath, Path.GetFileName(ImageURL.FileName));
+                        category.ImageURL = ImageURL.FileName;
+                        ImageURL.CopyTo(new FileStream(filename, FileMode.Create));
+                    }
                     _context.Update(category);
                     await _context.SaveChangesAsync();
                 }
@@ -120,6 +140,7 @@ namespace PlantPlanet.Controllers
                     }
                 }
                 return RedirectToAction(nameof(Index));
+
             }
             return View(category);
         }
