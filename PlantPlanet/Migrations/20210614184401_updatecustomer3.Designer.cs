@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlantPlanet.Data;
 
 namespace PlantPlanet.Migrations
 {
     [DbContext(typeof(PlantPlanetContext))]
-    partial class PlantPlanetContextModelSnapshot : ModelSnapshot
+    [Migration("20210614184401_updatecustomer3")]
+    partial class updatecustomer3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -102,9 +104,6 @@ namespace PlantPlanet.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DeliveryCostAddition")
-                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()

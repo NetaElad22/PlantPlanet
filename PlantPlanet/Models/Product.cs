@@ -21,8 +21,8 @@ namespace PlantPlanet.Models
 
         public List<SubCategory> SubCategories { get; set; }
 
-        [Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
-        public Category Category { get; set; }
+        //[Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
+        //public Category Category { get; set; }
 
         [Required(ErrorMessage = "יש להזין את מחיר עלות המוצר")]
         public float BuyingCost { get; set; }
@@ -32,7 +32,6 @@ namespace PlantPlanet.Models
 
         public int SupplierId { get; set; }
 
-        [Required(ErrorMessage = "יש להזין את ספק המוצר")]
         public Supplier Supplier { get; set; }
 
         public float Discount { get; set; }

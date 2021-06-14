@@ -19,9 +19,6 @@ namespace PlantPlanet.Models
         [Required(ErrorMessage = "יש להזין שם משפחה")]
         public string LastName { get; set; }
 
-        [Required(ErrorMessage = "יש להזין כתובת")]
-        public Address Address { get; set; }
-
         [Required(ErrorMessage = "יש להזין תאריך העסקה")]
         public DateTime StartDate { get; set; }
 
@@ -42,5 +39,27 @@ namespace PlantPlanet.Models
         public enum Rank { Manager, StoreManager, ShiftManager, Employee, Trainee }
 
         public List<Order> Orders { get; set; }
+
+        [Required(ErrorMessage = "יש להזין עיר")]
+        [Display(Name = "עיר")]
+        public string City { get; set; }
+
+        [Required(ErrorMessage = "יש להזין רחוב")]
+        [Display(Name = "רחוב")]
+        public string Street { get; set; }
+
+        [Required(ErrorMessage = "יש להזין מספר בית")]
+        [Display(Name = "מספר בית")]
+        public string HouseNumber { get; set; }
+
+        [Display(Name = "קומה")]
+        public string FloorNumber { get; set; }
+
+        [Display(Name = "מספר דירה")]
+        public string FlatNumber { get; set; }
+
+        [Required(ErrorMessage = "יש להזין מיקוד")]
+        [Display(Name = "מיקוד")]
+        public string ZipCode { get; set; }
     }
 }

@@ -14,5 +14,7 @@ namespace PlantPlanet.Models
         [Display(Name = "סוג משלוח")]
         public string Type { get; set; }
 
+        [Display(Name ="תוספת תשלום")]
+        public int DeliveryCostAddition { get; set; } = 0;
     }
 }

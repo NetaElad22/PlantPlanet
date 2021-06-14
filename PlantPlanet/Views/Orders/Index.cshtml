@@ -40,7 +40,28 @@
                 @Html.DisplayNameFor(model => model.IsPremiumDiscount)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.DeliveryType)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.PaymentVerification)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Street)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HouseNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FloorNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FlatNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ZipCode)
             </th>
             <th></th>
         </tr>
@@ -49,7 +70,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Customer.Email)
+                @Html.DisplayFor(modelItem => item.Customer.City)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderSumPayment)
@@ -58,7 +79,7 @@
                 @Html.DisplayFor(modelItem => item.Message)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Employee.Email)
+                @Html.DisplayFor(modelItem => item.Employee.City)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.OrderComments)
@@ -76,7 +97,28 @@
                 @Html.DisplayFor(modelItem => item.IsPremiumDiscount)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.DeliveryType.Type)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.PaymentVerification)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Street)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HouseNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FloorNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FlatNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |

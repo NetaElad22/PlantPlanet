@@ -22,7 +22,7 @@ namespace PlantPlanet.Controllers
         // GET: Orders
         public async Task<IActionResult> Index()
         {
-            var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.Employee);
+            var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee);
             return View(await plantPlanetContext.ToListAsync());
         }
 
@@ -36,6 +36,7 @@ namespace PlantPlanet.Controllers
 
             var order = await _context.Order
                 .Include(o => o.Customer)
+                .Include(o => o.DeliveryType)
                 .Include(o => o.Employee)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)
@@ -49,8 +50,9 @@ namespace PlantPlanet.Controllers
         // GET: Orders/Create
         public IActionResult Create()
         {
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Email");
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Email");
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City");
+            ViewData["DeliveryTypeId"] = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type");
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "City");
             return View();
         }
 
@@ -59,7 +61,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,PaymentVerification")] Order order)
+        public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,DeliveryTypeId,PaymentVerification,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Order order)
         {
             if (ModelState.IsValid)
             {
@@ -67,8 +69,9 @@ namespace PlantPlanet.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Email", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Email", order.EmployeeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", order.CustomerId);
+            ViewData["DeliveryTypeId"] = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type", order.DeliveryTypeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "City", order.EmployeeId);
             return View(order);
         }
 
@@ -85,8 +88,9 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Email", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Email", order.EmployeeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", order.CustomerId);
+            ViewData["DeliveryTypeId"] = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type", order.DeliveryTypeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "City", order.EmployeeId);
             return View(order);
         }
 
@@ -95,7 +99,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,PaymentVerification")] Order order)
+        public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,DeliveryTypeId,PaymentVerification,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Order order)
         {
             if (id != order.OrderId)
             {
@@ -122,8 +126,9 @@ namespace PlantPlanet.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "Email", order.CustomerId);
-            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "Email", order.EmployeeId);
+            ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City", order.CustomerId);
+            ViewData["DeliveryTypeId"] = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type", order.DeliveryTypeId);
+            ViewData["EmployeeId"] = new SelectList(_context.Employee, "EmployeeId", "City", order.EmployeeId);
             return View(order);
         }
 
@@ -137,6 +142,7 @@ namespace PlantPlanet.Controllers
 
             var order = await _context.Order
                 .Include(o => o.Customer)
+                .Include(o => o.DeliveryType)
                 .Include(o => o.Employee)
                 .FirstOrDefaultAsync(m => m.OrderId == id);
             if (order == null)

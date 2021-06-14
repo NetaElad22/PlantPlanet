@@ -3,21 +3,55 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PlantPlanet.Data;
 
 namespace PlantPlanet.Migrations
 {
     [DbContext(typeof(PlantPlanetContext))]
-    partial class PlantPlanetContextModelSnapshot : ModelSnapshot
+    [Migration("20210614174558_deletecategoryfromproduct")]
+    partial class deletecategoryfromproduct
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.6")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("PlantPlanet.Models.Address", b =>
+                {
+                    b.Property<int>("AddressId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("ApartmentNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("FloorNumber")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HouseNumber")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Street")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Zipcode")
+                        .HasColumnType("int");
+
+                    b.HasKey("AddressId");
+
+                    b.ToTable("Address");
+                });
 
             modelBuilder.Entity("PlantPlanet.Models.Category", b =>
                 {
@@ -45,25 +79,14 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("AddressId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FlatNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FloorNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HouseNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -78,18 +101,12 @@ namespace PlantPlanet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("CustomerId");
+
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("UserName");
 
@@ -102,9 +119,6 @@ namespace PlantPlanet.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("DeliveryCostAddition")
-                        .HasColumnType("int");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -122,28 +136,17 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("AddressId")
+                        .HasColumnType("int");
+
                     b.Property<float>("BonusRate")
                         .HasColumnType("real");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FlatNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FloorNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HouseNumber")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -164,18 +167,12 @@ namespace PlantPlanet.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("TeudatZehut")
                         .HasColumnType("int");
 
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("EmployeeId");
+
+                    b.HasIndex("AddressId");
 
                     b.ToTable("Employee");
                 });
@@ -187,28 +184,14 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<int>("DeliveryTypeId")
+                    b.Property<int?>("DeliveryTypeId")
                         .HasColumnType("int");
 
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
-
-                    b.Property<string>("FlatNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("FloorNumber")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HouseNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsGift")
                         .HasColumnType("bit");
@@ -234,13 +217,8 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("PaymentsNumber")
                         .HasColumnType("int");
 
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("ShippingAddressAddressId")
+                        .HasColumnType("int");
 
                     b.HasKey("OrderId");
 
@@ -249,6 +227,8 @@ namespace PlantPlanet.Migrations
                     b.HasIndex("DeliveryTypeId");
 
                     b.HasIndex("EmployeeId");
+
+                    b.HasIndex("ShippingAddressAddressId");
 
                     b.ToTable("Order");
                 });
@@ -474,11 +454,26 @@ namespace PlantPlanet.Migrations
 
             modelBuilder.Entity("PlantPlanet.Models.Customer", b =>
                 {
+                    b.HasOne("PlantPlanet.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
                     b.HasOne("PlantPlanet.Models.User", "User")
                         .WithMany()
                         .HasForeignKey("UserName");
 
+                    b.Navigation("Address");
+
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("PlantPlanet.Models.Employee", b =>
+                {
+                    b.HasOne("PlantPlanet.Models.Address", "Address")
+                        .WithMany()
+                        .HasForeignKey("AddressId");
+
+                    b.Navigation("Address");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.Order", b =>
@@ -491,9 +486,7 @@ namespace PlantPlanet.Migrations
 
                     b.HasOne("PlantPlanet.Models.DeliveryType", "DeliveryType")
                         .WithMany()
-                        .HasForeignKey("DeliveryTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("DeliveryTypeId");
 
                     b.HasOne("PlantPlanet.Models.Employee", "Employee")
                         .WithMany("Orders")
@@ -501,11 +494,17 @@ namespace PlantPlanet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PlantPlanet.Models.Address", "ShippingAddress")
+                        .WithMany()
+                        .HasForeignKey("ShippingAddressAddressId");
+
                     b.Navigation("Customer");
 
                     b.Navigation("DeliveryType");
 
                     b.Navigation("Employee");
+
+                    b.Navigation("ShippingAddress");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.OrderItem", b =>

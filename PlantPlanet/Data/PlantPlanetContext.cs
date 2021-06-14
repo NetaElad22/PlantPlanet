@@ -16,8 +16,6 @@ namespace PlantPlanet.Data
 
         public DbSet<PlantPlanet.Models.Product> Product { get; set; }
 
-        public DbSet<PlantPlanet.Models.Address> Address { get; set; }
-
         public DbSet<PlantPlanet.Models.Category> Category { get; set; }
 
         public DbSet<PlantPlanet.Models.Customer> Customer { get; set; }
