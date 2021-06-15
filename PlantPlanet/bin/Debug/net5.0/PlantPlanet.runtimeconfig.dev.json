@@ -1,8 +1,8 @@
 {
   "runtimeOptions": {
     "additionalProbingPaths": [
-      "C:\\Users\\romko\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\romko\\.nuget\\packages"
+      "C:\\Users\\nurit\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\nurit\\.nuget\\packages"
     ]
   }
 }
