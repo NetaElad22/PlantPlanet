@@ -67,7 +67,7 @@ namespace PlantPlanet.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (subCategory.ImageURL == null)
+                if (ImageURL == null)
                 {
                     subCategory.ImageURL = DefaultPictureURL;
                     _context.Add(subCategory);
