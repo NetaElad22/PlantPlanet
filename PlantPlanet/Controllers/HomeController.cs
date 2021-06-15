@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PlantPlanet.Models;
@@ -18,8 +19,12 @@ namespace PlantPlanet.Controllers
             _logger = logger;
         }
 
+        //[Authorize]
         public IActionResult Index()
         {
+            var isAuth = HttpContext.User.IsInRole("Customer");
+            isAuth = HttpContext.User.IsInRole("Manager");
+
             return View();
         }
 
