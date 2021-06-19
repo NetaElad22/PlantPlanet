@@ -3,15 +3,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlantPlanet</title>
+    <link rel="stylesheet" href="~/css/customer.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="~/css/layout.css"/>
 </head>
-<bodyn>
+<body>
     <header>
         <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-            <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet"/>
+            <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet" />
         </a>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3" style="font-family:Gisha">
             <div class="container" style="direction:rtl">
@@ -43,13 +43,8 @@
             </div>
         </nav>
         <input class="search-input" type="search" placeholder="חיפוש"/>
-        <div class="circles-container">
-            <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
-                <img class="circle-img" src="~/images/facebook.png"/>
-            </a>
-            <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
-                <img class="circle-img" src="~/images/instagram.png"/>
-            </a>
+        <div class="sign-in-btn-container">
+            <button class="btn sign-in-btn">כניסה</button>
         </div>
     </header>
 
@@ -59,8 +54,16 @@
         </main>
     </div>
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+        <div class="circles-container">
+            <div class="about-text">
+                &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+            </div>
+            <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
+                <img class="circle-img" src="~/images/facebook.png" />
+            </a>
+            <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
+                <img class="circle-img" src="~/images/instagram.png" />
+            </a>
         </div>
     </footer>
 
@@ -68,4 +71,4 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
-</bodyn>
+</body>
