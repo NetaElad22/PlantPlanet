@@ -3,10 +3,12 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlantPlanet</title>
-    <link rel="stylesheet" href="~/css/customer.css" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="~/css/customer.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/layout.css"/>
+    <link rel="stylesheet" href="~/css/layout.css" />
 </head>
 <body>
     <header>
@@ -42,33 +44,55 @@
                 </div>
             </div>
         </nav>
-        <input class="search-input" type="search" placeholder="חיפוש"/>
+        <div class="search-container">
+            <input class="search-input" type="search" placeholder="חיפוש" />
+            <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+        </div>
         <div class="sign-in-btn-container">
-            <button class="btn sign-in-btn">כניסה</button>
+            <button class="btn btn-outline-success">כניסה</button>
         </div>
     </header>
 
     <div class="container">
         <main role="main" class="pb-3">
-            @RenderBody()
+           @RenderBody()
         </main>
     </div>
+
     <footer class="border-top footer text-muted">
-        <div class="circles-container">
-            <div class="about-text">
-                &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+        <div style="display: flex; flex-direction:row; justify-content:space-around; margin-top: 5px">
+            <div style="display: flex; flex-direction:column">
+                <span><span style="font-size:18px;">טלפון</span> 0544568541</span>
+                <span><span style="font-size:18px;">מייל</span> plantplanetisrael@gmail.com</span>
+                <div class="circles-container">
+                    <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
+                        <img class="circle-img" src="~/images/facebook.png" />
+                    </a>
+                    <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
+                        <img class="circle-img" src="~/images/instagram.png" />
+                    </a>
+                </div>
             </div>
-            <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
-                <img class="circle-img" src="~/images/facebook.png" />
-            </a>
-            <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
-                <img class="circle-img" src="~/images/instagram.png" />
-            </a>
+
+
+            <div style="display: flex; flex-direction: column; line-height: 30px">
+                <span style="font-size:18px;">שעות פתיחה</span>
+                <span>א-ה בין השעות 8:00-19:00</span>
+                <span>ו-ש בין השעות 10:00-15:00</span>
+                <span style="font-size:18px;">כתובת</span>
+                <span>הסייפן 35, רמת השרון</span>
+            </div>
+       
+        </div>
+
+        <div class="about-text">
+            &copy; 2021 - PlantPlanet
         </div>
     </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-    @await RenderSectionAsync("Scripts", required: false)
+      @await RenderSectionAsync("Scripts", required: false)
 </body>
