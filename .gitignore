@@ -97,8 +97,8 @@ StyleCopReport.xml
 *.pidb
 *.svclog
 *.scc
-*.obj\Debug\net5.0
-*.bin\Debug\net5.0
+obj\Debug\
+bin\Debug\
 
 # Chutzpah Test files
 _Chutzpah*

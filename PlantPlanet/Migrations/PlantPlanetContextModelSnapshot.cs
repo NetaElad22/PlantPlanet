@@ -452,6 +452,9 @@ namespace PlantPlanet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
                     b.HasKey("UserName");
 
                     b.ToTable("User");
