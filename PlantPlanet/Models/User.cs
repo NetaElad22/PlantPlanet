@@ -11,10 +11,13 @@ namespace PlantPlanet.Models
     public class User
     {
         [Key]
+        [Required(ErrorMessage = "יש להזין שם משתמש")]
+        [Display(Name = "שם משתמש")]
         public string UserName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "יש להזין סיסמא")]
         [DataType(DataType.Password)]
+        [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
         public AuthorizationLevel Type { get; set; }
