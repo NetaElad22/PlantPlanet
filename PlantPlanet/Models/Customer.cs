@@ -34,6 +34,7 @@ namespace PlantPlanet.Models
 
         public User User { get; set; }
 
+        [Display(Name = "משתמש פרימיום")]
         public Boolean IsPremium { get; set; }
 
         [Required(ErrorMessage = "יש להזין עיר")]
