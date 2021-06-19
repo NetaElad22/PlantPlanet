@@ -1,0 +1,24 @@
+﻿.create-customer-page {
+    justify-content: center;
+    font-family: 'Gisha';
+}
+
+.title {
+    margin-bottom: 20px;
+}
+
+.inputs {
+    justify-content: center;
+}
+
+.input-container {
+    text-align: right !important;
+}
+
+.address{
+    display: flex;
+}
+
+.save-button {
+    font-size: 20px !important;
+}
