@@ -1,6 +1,10 @@
 ﻿.create-customer-page {
     justify-content: center;
     font-family: 'Gisha';
+    background-image: url(/images/b1.jfif);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size:contain;
 }
 
 .title {
