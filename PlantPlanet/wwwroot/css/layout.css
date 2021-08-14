@@ -58,3 +58,25 @@ li :hover {
 .about-text{
     text-align: center;
 }
+
+.bottom-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.bottom-nav-right-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-nav-left-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.large-text {
+    font-size: 18px;
+}
