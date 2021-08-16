@@ -40,7 +40,7 @@ li :hover {
 
 .circles-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .circle-link {
@@ -77,6 +77,6 @@ li :hover {
     line-height: 30px;
 }
 
-.large-text {
-    font-size: 18px;
+.small-text {
+    font-size: 16px;
 }
