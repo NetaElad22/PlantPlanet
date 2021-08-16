@@ -1,41 +1,46 @@
 ﻿
 @{
+
+
     ViewData["Title"] = "Index";
 }
 
-<div class="container" style="direction:rtl; text-align:right; font-family: 'Gisha'">
+<div class="container contact-us">
     <div class="row">
         <div class="col-sm">
-            <h5>מוזמנים להשאיר פרטים ונחזור אליכם בהקדם האפשרי</h5> 
+            <h5>מוזמנים להשאיר פרטים ונחזור אליכם בהקדם האפשרי</h5>
             <a> שעות הפעילות הן:</a> <br />
             <a>בימי א-ה בין השעות 8:00-19:00</a> <br />
             <a>בימי ו-ש בין השעות 10:00-15:00</a> <br />
+
             <br />
             <form>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="privatename" placeholder="שם פרטי">
+                    <input type="text" class="form-control" name="privateName" placeholder="שם פרטי" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" id="familyname" placeholder="שם משפחה">
+                    <input type="text" class="form-control" name="familyName" placeholder="שם משפחה" required>
                 </div>
                 <div class="form-group">
-                    <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="כתובת מייל">
+                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" placeholder="כתובת מייל" required>
                     <small id="emailHelp" class="form-text text-muted">לא נשתף את כתובת המייל עם אף גורם אחר</small>
                 </div>
                 <div class="form-group">
-                    <input type="number" class="form-control" id="phone" placeholder="טלפון">
+                    <input type="number" class="form-control" name="phone" placeholder="טלפון" required>
                 </div>
-                <div class="form-group" style="height:140px">
-                    <textarea class="form-control" id="reason" placeholder="סיבת הפנייה"></textarea>
+                <div class="form-group">
+                    <textarea class="form-control" name="reason" placeholder="סיבת הפנייה" maxlength="150" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">שלח פנייה</button>
+                <button type="submit" value="Submit" class="btn btn-primary">שלח פנייה</button>
             </form>
         </div>
-        <div class="col-sm" style="padding-right: 8%">
-            <h5>משתלת Plant Planet</h5> 
+
+        <div class="col-sm info">
+            <h5>משתלת Plant Planet</h5>
             <a>כתובתנו היא הסייפן 35, רמת השרון</a> <br />
             <a>ניתן לפנות אלינו בטלפון - 0544568541</a> <br />
             <a> או במייל - plantplanetisrael@gmail.com</a><br />
+
             <script>
                 // Initialize and add the map
                 function initMap() {
@@ -56,7 +61,8 @@
                     });
                 }
             </script>
-            <div id="map" style="height: 450px; width: 550px; margin-top:20px"></div>
+
+            <div id="map"></div>
         </div>
     </div>
 </div>
