@@ -7,19 +7,22 @@
 <link rel="stylesheet" href="~/css/catalog.css" />
 
 <div class="sidenav">
-    <button class="dropdown-btn">
-        check
-        <i class="fa fa-caret-down"></i>
-    </button>
-    <div class="dropdown-container">
-        <a href="#">Link 1</a>
-        <a href="#">Link 2</a>
-        <a href="#">Link 3</a>
-    </div>
-    <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    @foreach (var category in ViewData["categoriesList"] as IList<Category>)
+    {
+        <button class="dropdown-btn" style="font-size: small">
+            @category.CategoryName
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @foreach (var item in Model)
+            {
+                if (item.ParentCategoryId == category.CategoryId)
+                {
+                    <a asp-action="SubCategories" asp-route-id="@category.CategoryId" style="font-size: small">@item.Name</a>
+                }
+            }
+        </div>
+    }
 </div>
 
 <div class="body">

@@ -24,6 +24,11 @@ namespace PlantPlanet.Controllers
 
         public async Task<IActionResult> Index()
         {
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
             var plantPlanetContext = _context.Category.OrderBy(a => a.CategoryName);
             return View(await plantPlanetContext.ToListAsync());
 
@@ -31,6 +36,10 @@ namespace PlantPlanet.Controllers
 
         public async Task<IActionResult> SubCategories(int? id)
         {
+            // sending all categories to the index catalog view
+            IList<Category> categoriesList = new List<Category>();
+            categoriesList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoriesList;
 
             var plantPlanetContext = _context.SubCategory.Include(s => s.ParentCategory).Where(a => a.ParentCategoryId.Equals(id)).OrderBy(a => a.Name);
             return View(await plantPlanetContext.ToListAsync());           
