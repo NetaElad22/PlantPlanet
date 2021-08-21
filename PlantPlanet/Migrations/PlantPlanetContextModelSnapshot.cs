@@ -16,7 +16,7 @@ namespace PlantPlanet.Migrations
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.6")
+                .HasAnnotation("ProductVersion", "5.0.8")
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("PlantPlanet.Models.Category", b =>
@@ -395,6 +395,27 @@ namespace PlantPlanet.Migrations
                     b.ToTable("ProductReview");
                 });
 
+            modelBuilder.Entity("PlantPlanet.Models.Store", b =>
+                {
+                    b.Property<int>("StoreId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<float>("StoreLocationX")
+                        .HasColumnType("real");
+
+                    b.Property<float>("StoreLocationY")
+                        .HasColumnType("real");
+
+                    b.Property<string>("StoreName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("StoreId");
+
+                    b.ToTable("Store");
+                });
+
             modelBuilder.Entity("PlantPlanet.Models.SubCategory", b =>
                 {
                     b.Property<int>("SubCategoryId")
@@ -452,8 +473,8 @@ namespace PlantPlanet.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("UserName");
 

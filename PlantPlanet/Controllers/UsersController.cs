@@ -67,6 +67,24 @@ namespace PlantPlanet.Controllers
             return View(user);
         }
 
+        // GET: Users/Logout
+        [HttpGet]
+        public async Task<IActionResult> Logout()
+        {
+            await HttpContext.SignOutAsync();
+            return RedirectToAction(nameof(Index), "Home");
+        }
+
+        // POST: Users/Login
+        // To protect from overposting attacks, enable the specific properties you want to bind to.
+        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> Logout(User u)
+        //{
+
+        //}
+
         // GET: Users/Login
         public IActionResult Login()
         {

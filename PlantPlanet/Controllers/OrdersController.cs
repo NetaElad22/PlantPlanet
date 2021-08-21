@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Orders
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
             var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee);

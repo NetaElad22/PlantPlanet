@@ -20,7 +20,7 @@ namespace PlantPlanet.Models
         [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
-        public AuthorizationLevel Type { get; set; }
+        public string Type { get; set; } = "Manager";
 
     }
 }

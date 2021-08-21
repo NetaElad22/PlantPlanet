@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PlantPlanet.Models.SubCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/catalog.css" />
+
+<div class="sidenav">
+    <button class="dropdown-btn">
+        check
+        <i class="fa fa-caret-down"></i>
+    </button>
+    <div class="dropdown-container">
+        <a href="#">Link 1</a>
+        <a href="#">Link 2</a>
+        <a href="#">Link 3</a>
+    </div>
+    <a href="#">About</a>
+    <a href="#">Services</a>
+    <a href="#">Clients</a>
+    <a href="#">Contact</a>
+</div>
+
+<div class="body">
+    <div class="cards">
+        @foreach (var item in Model)
+        {
+            <a class="card" asp-controller="Catalog" asp-action="Products" asp-route-id="@item.SubCategoryId">
+                <div class="cont">
+                    <img class="picture" src="/@item.ImageURL" />
+                </div>
+                <div class="details">
+                    <h5>@item.Name</h5>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>

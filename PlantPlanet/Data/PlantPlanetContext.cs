@@ -37,5 +37,7 @@ namespace PlantPlanet.Data
         public DbSet<PlantPlanet.Models.Supplier> Supplier { get; set; }
 
         public DbSet<PlantPlanet.Models.User> User { get; set; }
+
+        public DbSet<PlantPlanet.Models.Store> Store { get; set; }
     }
 }

@@ -1,0 +1,93 @@
+﻿@model IEnumerable<PlantPlanet.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/catalog.css" />
+
+<div class="sidenav">
+    @foreach (var item in Model)
+    {
+        <button class="dropdown-btn" style=" font-size: smaller">
+            @item.CategoryName
+            <i class="fa fa-caret-down"></i>
+        </button>
+        @*<div class="dropdown-container">
+                <a href="#">Link 1</a>
+                <a href="#">Link 2</a>
+                <a href="#">Link 3</a>
+            </div>*@
+    }
+</div>
+
+<div class="body">
+    <div class="cards">
+        @foreach (var item in Model)
+        {
+            <a class="card" asp-controller="Catalog" asp-action="SubCategories" asp-route-id="@item.CategoryId" style="overflow: hidden">
+                <div class="cont">
+                    <img class="picture" src="/@item.ImageURL" />
+                </div>
+                <div class="details">
+                    <h5>@item.CategoryName</h5>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+    @*<div class="main container">
+            <div class="row" style="padding-bottom:2%">
+                @foreach (var item in Model)
+                {
+                    <a class="col-md-3 card style="padding-block:2%" asp-action="Details" asp-route-id="@item.ProductId">
+                        <img class="card-img-top" src="/@item.ImageURL" alt="Card image cap" style="width:200px; height:200px">
+                        <h5 class="card-text">@item.Name</h5>
+                    </a>
+                }
+            </div>
+        </div>*@
+
+    @*<div class="main container">
+            @foreach (var item in Model)
+            {
+                <img class="card-img-top" src="/@item.ImageURL" alt="Card image cap" style="width:200px; height:200px">
+                <div class="bottom-right">Bottom Right</div>
+            }
+        </div>*@
+
+    @*<div class="main container">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3">
+                        <a class="card" style="width: 18rem;" asp-action="Details" asp-route-id="@item.ProductId">
+                            <img id="productimg" src="/@item.ImageURL">
+                            <div class="card-body">
+                                <h5 class="card-header">@item.Name</h5>
+                                <p class="card-text">@item.SellingPrice</p>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>*@
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
