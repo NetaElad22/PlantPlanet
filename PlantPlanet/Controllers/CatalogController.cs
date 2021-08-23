@@ -41,37 +41,44 @@ namespace PlantPlanet.Controllers
             categoriesList = _context.Category.ToArray();
             ViewData["categoriesList"] = categoriesList;
 
+            // selecting all the subcategories that belong to a certain category
             var plantPlanetContext = _context.SubCategory.Include(s => s.ParentCategory).Where(a => a.ParentCategoryId.Equals(id)).OrderBy(a => a.Name);
             return View(await plantPlanetContext.ToListAsync());           
         }
 
         public async Task<IActionResult> Products(int? id)
         {
-            var products = _context.Product.Include(p => p.Supplier);
-            var list = new List<System.Linq.IQueryable<PlantPlanet.Models.Product>>();
-            foreach(var product in products)
-            {
-                if (product.SubCategories != null)
-                {
-                    foreach (var subcategory in product.SubCategories)
-                    {
-                        if (subcategory.SubCategoryId == id)
-                        {
-                            var insert = _context.Product.Include(p => p.Supplier).Where(a => a.ProductId == product.ProductId).OrderBy(a => a.Name);
-                            list.Add(insert);
-                        }
-                    }
-                } else {
-                    return NotFound();
-                }
-            }
-            return View(await products.ToListAsync());
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoryList;
+
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoriesList"] = subCategoryList;
+
+            // selecting all the products that belong to a certain subcategory
+            var productsByCategory = _context.Product.Include(p => p.Supplier).Include(p => p.SubCategories)
+                .Where(p => p.SubCategories.Where(subCategory => subCategory.SubCategoryId.Equals(id)).Any());
+
+            return View(await productsByCategory.ToListAsync());
         }
 
         public async Task<IActionResult> Search(string query)
         {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoryList;
+
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoriesList"] = subCategoryList;
+
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
-            return View("Index", await plantPlanetContext.ToListAsync());
+            return View("Products", await plantPlanetContext.ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)

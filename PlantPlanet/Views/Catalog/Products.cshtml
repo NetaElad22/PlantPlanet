@@ -1,5 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model IEnumerable<PlantPlanet.Models.Product>
+
 @{
+    ViewData["Title"] = "Index";
 }
+
+<link rel="stylesheet" href="~/css/catalog.css" />
+
+<div class="sidenav">
+    @foreach (var category in ViewData["categoriesList"] as IList<Category>)
+    {
+        <button class="dropdown-btn" style="font-size: small">
+            @category.CategoryName
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @foreach (var subCategory in ViewData["subCategoriesList"] as IList<SubCategory>)
+            {
+                if (subCategory.ParentCategoryId == category.CategoryId)
+                {
+            <a asp-action="SubCategories" asp-route-id="@category.CategoryId" style="font-size: small">@subCategory.Name</a>
+                }
+            }
+        </div>
+    }
+</div>
+
+<div class="body">
+    <div class="cards">
+        @foreach (var item in Model)
+        {
+            <a class="card" asp-controller="Catalog" asp-action="ProductPage" asp-route-id="@item.ProductId">
+                <div class="cont">
+                    <img class="picture" src="/@item.ImageURL" />
+                </div>
+                <div class="details">
+                    <h5>@item.Name</h5>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>
+
