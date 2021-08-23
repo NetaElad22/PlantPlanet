@@ -32,7 +32,7 @@ a {
 -------------------------------------------------- */
 html {
     font-size: 20px;
-    font-family: plantPlanetFont;
+    font-family: plantPlanetFont !important;
     text-align: right
 }
 @media (min-width: 768px) {
@@ -62,7 +62,7 @@ button.accept-policy {
 html {
     position: relative;
     min-height: 100%;
-    font-family: plantPlanetFont;
+    font-family: plantPlanetFont !important;
 }
 
 body {

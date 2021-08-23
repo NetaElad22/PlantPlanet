@@ -13,13 +13,14 @@
 </head>
 <body>
     <header>
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+        <a class="navbar-brand logo-container" asp-area="" asp-controller="Home" asp-action="Index">
             <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet" />
+            <span class="logo-text">עולם הצמחים</span>
         </a>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3">
             <div class="container" style="direction:rtl">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul id="navigation" class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
@@ -39,7 +40,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Edit">הסל שלי</a>
+                            <img class="nav-link cart-icon" src="./images/shopping_cart_black_24dp.svg"/>
                         </li>
                     </ul>
                 </div>
@@ -62,10 +63,10 @@
 
     <footer class="border-top footer text-muted">
 
-        <div class="bottom-nav">
+        <div class="bottom-nav small-text">
             <div class="bottom-nav-right-info">
-                <span><span class="large-text">טלפון</span> 0544568541</span>
-                <span><span class="large-text">מייל</span> plantplanetisrael@gmail.com</span>
+                <span><span>טלפון</span> 0544568541</span>
+                <span><span>מייל</span> plantplanetisrael@gmail.com</span>
                 <div class="circles-container">
                     <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
                         <img class="circle-img" src="~/images/facebook.png" />
@@ -73,19 +74,22 @@
                     <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
                         <img class="circle-img" src="~/images/instagram.png" />
                     </a>
+                    <a href="https://wa.me/972544568541" class="circle-link">
+                        <img class="circle-img" src="~/images/whatsapp.png" />
+                    </a>
                 </div>
             </div>
 
             <div class="bottom-nav-left-info">
-                <span class="large-text">שעות פתיחה</span>
+                <span>שעות פתיחה</span>
                 <span>א-ה בין השעות 8:00-19:00</span>
                 <span>ו-ש בין השעות 10:00-15:00</span>
-                <span class="large-text">כתובת</span>
+                <span>כתובת</span>
                 <span>הסייפן 35, רמת השרון</span>
             </div>
         </div>
 
-        <div class="about-text">
+        <div class="about-text small-text">
             &copy; 2021 - PlantPlanet
         </div>
     </footer>
