@@ -13,13 +13,14 @@
 </head>
 <body>
     <header>
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
+        <a class="navbar-brand logo-container" asp-area="" asp-controller="Home" asp-action="Index">
             <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet" />
+            <span class="logo-text">עולם הצמחים</span>
         </a>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3">
             <div class="container" style="direction:rtl">
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+                    <ul id="navigation" class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
@@ -39,8 +40,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
-                            <img class="nav-link" src="./images/shopping_cart_black_24dp.svg"/>
-                           
+                            <img class="nav-link cart-icon" src="./images/shopping_cart_black_24dp.svg"/>
                         </li>
                     </ul>
                 </div>
