@@ -1011,3 +1011,4 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\Products.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\SubCategories.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\ProductPage.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs

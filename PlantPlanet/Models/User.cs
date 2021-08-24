@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PlantPlanet.Models
 {
-    public enum AuthorizationLevel { Manager, StoreManager, Employee, Customer }
+    public enum AuthorizationLevel { Manager, Employee, Customer }
 
     public class User
     {

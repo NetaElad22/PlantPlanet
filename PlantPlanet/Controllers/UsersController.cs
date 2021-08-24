@@ -22,7 +22,6 @@ namespace PlantPlanet.Controllers
             _context = context;
         }
 
-
         private async void Signin(User account)
         {
 

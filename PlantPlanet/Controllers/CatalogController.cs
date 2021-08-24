@@ -64,7 +64,34 @@ namespace PlantPlanet.Controllers
 
             return View(await productsByCategory.ToListAsync());
         }
+        public async Task<IActionResult> ProductPage(int? id)
+        {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoryList;
 
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoriesList"] = subCategoryList;
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var product = await _context.Product
+                .Include(p => p.Supplier)
+                .FirstOrDefaultAsync(m => m.ProductId == id);
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return View(product);
+        }
+        
         public async Task<IActionResult> Search(string query)
         {
             // sending all subcategories to the index catalog view

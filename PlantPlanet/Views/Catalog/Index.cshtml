@@ -18,7 +18,7 @@
                 {
                     if(subcategory.ParentCategoryId == item.CategoryId)
                     {
-                        <a asp-action="SubCategories" asp-route-id="@item.CategoryId" style="font-size: small">@subcategory.Name</a>
+                        <a asp-action="Products" asp-route-id="@subcategory.SubCategoryId" style="font-size: small">@subcategory.Name</a>
                     }
                 }
         </div>
