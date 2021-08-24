@@ -2,14 +2,29 @@
     direction: rtl;
 }
 
+a {
+    text-decoration: none !important;
+}
+
 header {
     display: flex;
     justify-content: space-around;
 }
 
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    text-shadow: 2px 2px #0000009e;
+    color: #60cb60;
+}
 
 .logo {
     height: 170px;
+}
+
+.logo-text {
+    color: #60cb60 !important;
+    font-size: 22px !important;
 }
 
 nav {
@@ -21,8 +36,19 @@ ul {
     padding: 0;
 }
 
+ul#navigation .active {
+    font-weight: bold;
+} 
+
 li :hover {
     font-weight: bold;
+}
+
+
+.cart-icon {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
 }
 
 .search-container {
@@ -41,7 +67,7 @@ li :hover {
 
 .circles-container {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .circle-link {
@@ -58,4 +84,26 @@ li :hover {
 
 .about-text{
     text-align: center;
+}
+
+.bottom-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 5px;
+}
+
+.bottom-nav-right-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.bottom-nav-left-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px;
+}
+
+.small-text {
+    font-size: 16px;
 }

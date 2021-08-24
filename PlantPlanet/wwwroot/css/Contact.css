@@ -1,0 +1,18 @@
+﻿.contact-us {
+    direction: rtl;
+    text-align: right;
+}
+
+.info {
+    padding-right: 8%
+}
+
+#map {
+    height: 450px;
+    width: 550px;
+    margin-top: 20px
+}
+
+.online-time-text {
+    margin-top: 20px;
+}
