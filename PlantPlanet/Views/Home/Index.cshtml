@@ -2,6 +2,51 @@
     ViewData["Title"] = "ראשי";
 }
 
-<div class="text-center">
-    <p>ברוכים הבאים למשתלה</p>
+<link rel="stylesheet" href="~/css/Home.css" />
+
+<div class="home-page">
+    <img class="top-image" src="/Images/nursery.jpg">
+    <div class="home-title">
+        plant planet
+    </div>
+    <div class="divider"></div>
+    <div class="home-text">
+        <section>
+            את המשתלה שלנו כבר לא מעט אנשים מכירים. הצוות, הצעיר והדינאמי, ישמח לשרת אתכם במקום.
+        </section>
+        <section>
+            אצלנו תמצאו מגוון צמחי בית, סחלבים, צמחים פורחים לחצר וגינה, עצי נוי ועצי פרי, שיחים, זרי פרחים טריים ומבחר של אדניות וכלים דקורטיביים ממגוון חומרים. כמו כן, ציוד נלווה לגינון, תערובות שתילה, דשנים מעולים וחומרי הדברה יעילים.
+        </section>
+
+        <section>
+            המשתלה ממוקמת במרכז הארץ ומשתרעת על פני מעל 35 דונם.
+        </section>
+    </div>
+
+    <div class="plants-catalog-container">
+        <a asp-area="" asp-controller="Products" asp-action="Index">
+            <img class="middle-image" src="~/Images/little-cactus.jfif" />
+            <div>לצמחים שלנו</div>
+        </a>
+    </div>
+
+    <div class="sales">
+        <div class="sale-container">
+            <img class="sale-image" src="~/images/home-page-1.jpg" />
+            <div class="sale-text" style=" color: #252525;">
+                <div class="sale-text-header"> מבצע</div>
+                <div class="sale-text-info">על כל סוגי הסחלבים</div>
+
+            </div>
+        </div>
+        <div class="sale-container">
+            <img class="sale-image" src="~/images/home-page-2.jpg" />
+            <div class="sale-text">
+                <div class="sale-text-header"> מבצע</div>
+                <div class="sale-text-info">על הקקטוסים שלנו </div>
+
+            </div>
+        </div>
+    </div>
+
 </div>
