@@ -24,5 +24,17 @@ namespace PlantPlanet.Controllers
 
             return View();
         }
+
+        public void SubmitForm(object sender, System.EventArgs e)
+        {
+            String privateName = Request.Form["privateName"];
+            String familyName = Request.Form["familyName"];
+            String email = Request.Form["email"];
+            String phone = Request.Form["phone"];
+            String reason = Request.Form["reason"];
+
+
+        }
+
     }
 }

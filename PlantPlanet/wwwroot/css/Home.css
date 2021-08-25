@@ -1,0 +1,87 @@
+﻿.home-page {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.top-image {
+    width: 70%;
+    align-self: center;
+}
+
+.home-title {
+    text-align: center;
+    font-family: logoFont;
+    font-size: 70px;
+    text-shadow: 1px 2px #0000009e;
+    margin-top: 3%;
+}
+
+.divider {
+    outline: 1px dashed;
+    width: 30%;
+    align-self: center;
+    margin-top: 5%;
+}
+
+
+.home-text {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.plants-catalog-container {
+    text-align: center;
+    margin-top: 5%;
+}
+
+.plants-catalog-container div {
+    text-decoration: none;
+    color: black !important;
+}
+
+.middle-image {
+    align-self: center;
+    width: 100px;
+}
+
+.sales {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+    justify-content: space-around;
+    margin-top: 5%;
+}
+
+.sale-container {
+    position: relative;
+    text-align: center;
+    color: white;
+    height: 350px;
+}
+
+.sale-image {
+    height: 350px;
+}
+
+.sale-container:hover {
+    opacity: 0.8;
+}
+
+.sale-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.sale-text-header {
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.sale-text-info{
+    font-size: 25px;
+    font-weight: bold;
+}
