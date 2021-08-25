@@ -9,7 +9,9 @@
     <link rel="stylesheet" href="~/css/Customer.css" />
     <link rel="stylesheet" href="~/css/Contact.css" />
     <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/layout.css" />
+    <script src="/js/layout.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+
 </head>
 <body>
     <header>
@@ -24,7 +26,7 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">קטלוג מוצרים</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Catalog" asp-action="Index">קטלוג מוצרים</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Create">הרשמה</a>
@@ -33,30 +35,48 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="About" asp-action="Index">אודות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="QuestionsAndAnswers" asp-action="Index">שאלות נפוצות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="FrequentQuestions" asp-action="Index">שאלות נפוצות</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="QuestionsAndAnswers" asp-action="Index">שימוש באתר</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
-                            <img title="סל קניות" class="nav-link cart-icon" src="./images/shopping_cart_black_24dp.svg"/>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><img title="סל קניות" class="nav-link cart-icon" src="./images/shopping_cart_black_24dp.svg"/></a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <div class="search-container">
-            <input class="search-input" type="search" placeholder="חיפוש" />
-            <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-        </div>
+
+        <form asp-action="Search" asp-controller="Catalog" style="margin-top: 4%">
+            <input name="query" class="search-input" type="search" placeholder="חיפוש" />
+            <button class="search-container" style="border:none; background-color:transparent">
+                <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+            </button>
+        </form>
+
         <div class="sign-in-btn-container">
-            <button class="btn btn-outline-success">כניסה</button>
+            <button class="btn btn-outline-success">
+                @{
+                    if (User.IsInRole("Customer"))
+                    {
+                        <a asp-controller="Users" asp-action="Logout">התנתקות</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Users" asp-action="Login">התחברות</a>
+                    }
+                }
+            </button>
         </div>
     </header>
 
     <div class="container">
         <main role="main" class="pb-3">
-           @RenderBody()
+            @RenderBody()
         </main>
     </div>
 
@@ -79,7 +99,19 @@
                 </div>
             </div>
 
-            <div class="bottom-nav-left-info">
+            <div style="display: flex; flex-direction: column; line-height: 30px">
+                <button id="privacy" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות פרטיות
+                </button>
+                <button id="cookies" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות שימוש בקוקיז
+                </button>
+                <button id="usage" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות ותנאי שימוש
+                </button>
+            </div>
+
+            <div classs="bottom-nav-left-info">
                 <span>שעות פתיחה</span>
                 <span>א-ה בין השעות 8:00-19:00</span>
                 <span>ו-ש בין השעות 10:00-15:00</span>
@@ -97,5 +129,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
-      @await RenderSectionAsync("Scripts", required: false)
+    @await RenderSectionAsync("Scripts", required: false)
 </body>

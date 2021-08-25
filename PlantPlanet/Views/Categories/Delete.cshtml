@@ -15,21 +15,21 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6" style="max-height:220px;">
             @Html.DisplayFor(model => model.CategoryName)
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6" style="max-height:220px;">
             <img src="~/@Html.DisplayFor(model => model.ImageURL)" style="height:80%; width:80%" />
         </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-top:0; margin: 5%; width: 100%;">
         <form asp-action="Delete">
             <input type="hidden" asp-for="CategoryId" />
-            <input type="submit" value="מחיקת קטגוריה" class="btn btn-outline-danger" /> 
+            <input type="submit" value="מחיקת קטגוריה" class="btn btn-outline-danger" />
             <a asp-action="Index" class="btn btn-outline-info"> ביטול מחיקה</a>
         </form>
     </div>
-    <div class="row">
+    <div class="row" style="padding-top:1%">
         <a asp-action="Index">חזרה לרשימת הקטגוריות</a>
     </div>
 </div>

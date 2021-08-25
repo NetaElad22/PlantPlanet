@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 
 namespace PlantPlanet.Models
 {
+    public enum AuthorizationLevel { Manager, Employee, Customer }
+
     public class User
     {
         [Key]
@@ -18,7 +20,7 @@ namespace PlantPlanet.Models
         [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
-        public enum AuthorizationLevel { Manager, StoreMAnager, Employee, Customer }
+        public string Type { get; set; } = "Manager";
 
     }
 }

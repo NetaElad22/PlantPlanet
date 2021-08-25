@@ -1,0 +1,134 @@
+﻿@model PlantPlanet.Models.Product
+
+@{
+    var quantity = 1;
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/css/productPage.css" />
+    @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="/js/productPage.js"></script>*@
+</head>
+<body>
+    <div class="sidenav">
+        @foreach (var category in ViewData["categoriesList"] as IList<Category>)
+        {
+            <button class="dropdown-btn" style="font-size: small">
+                @category.CategoryName
+                <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-container">
+                @foreach (var subCategory in ViewData["subCategoriesList"] as IList<SubCategory>)
+                {
+                    if (subCategory.ParentCategoryId == category.CategoryId)
+                    {
+                        <a asp-action="Products" asp-route-id="@subCategory.SubCategoryId" style="font-size: small">@subCategory.Name</a>
+                    }
+                }
+            </div>
+        }
+    </div>
+
+    <div class="product row">
+        <div class="col-md-5">
+            <h3>@Model.Name</h3>
+            <h6 style="text-align: right">@Model.Description</h6>
+            <h4>אופן טיפול</h4>
+            <span>@Model.Treatment</span>
+            <h4>טיפים</h4>
+            <span>@Model.TreatmentTips</span>
+            <h4>שימו לב</h4>
+            <span>יש לכם שאלות? משהו לא ברור? לא לדאוג, בתום כל הזמנה ייצרו עמכם קשר טלפוני לסיום העסקה.</span>
+            <div class="container">
+                <div class="card">
+                    <button onclick="decreaseCount()">-</button>
+                    <h2 id="quantity"></h2>
+                    <button onclick="increaseCount()">+</button>
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="document.getElementById('quantity').innerText">הוספה</a>
+
+                </div>
+                </div>
+            @*<div class="addToCart">
+                    <div class="counter">
+                        <button id="decrease" class="down">-</button>
+                        <input id="quantity" type="number" value="@quantity">
+                        <button id="increase" class="up">+</button>
+                    </div>
+                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="@quantity">הוספה</a>
+                </div>*@
+            @*<button onclick="addToCart(@Model,4)"> add</button>*@
+        </div>
+        <div class="col-md-6">
+            <img style="width:450px; height:450px; align-items:flex-end" src="/@Model.ImageURL" />
+        </div>
+    </div>
+
+    <script>
+        var data = 0;
+        document.getElementById("quantity").innerText = data;
+
+        function decreaseCount() {
+            console.log("quanity",@quantity)
+            data = data - 1;
+            document.getElementById("quantity").innerText = data;
+        }
+        
+        function increaseCount() {
+            data = data + 1;
+            @*@quantity = @quantity + 1;*@
+            document.getElementById("quantity").innerText = data;
+        }
+        </script>
+    @*//document.getElementById("decrease").addEventListener("click", function () {
+            //    alert("decrease")
+            //});
+            //document.getElementById("increase").addEventListener("click", function () {
+            //    alert("Hello increase!");
+            //});
+        </script>-->*@
+    @*<script>
+                document.getElementById("increase").addEventListener("click", increaseCount());
+                document.getElementById("decrease").addEventListener("click", decreaseCount());
+
+                function increaseCount() {
+            //var input = b.previousElementSibling;
+            @quantity++;
+
+
+            //var value = parseInt(input.value, 10);
+            //value = isNaN(value) ? 0 : value;
+            //value++;
+            //input.value = value;
+        }
+
+        function decreaseCount() {
+            //var input = b.nextElementSibling;
+            @quantity--;
+            //var value = parseInt(input.value, 10);
+            //if (value > 1) {
+            //    value = isNaN(value) ? 0 : value;
+            //    value--;
+            //    input.value = value;
+            //}
+        }
+            </script>*@
+
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        var dropdown = document.getElementsByClassName("dropdown-btn");
+        var i;
+
+        for (i = 0; i < dropdown.length; i++) {
+            dropdown[i].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var dropdownContent = this.nextElementSibling;
+                if (dropdownContent.style.display === "block") {
+                    dropdownContent.style.display = "none";
+                } else {
+                    dropdownContent.style.display = "block";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<PlantPlanet.Models.Category>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<link rel="stylesheet" href="~/css/catalog.css" />
+
+<div class="sidenav">
+    @foreach (var item in Model)
+    {
+        <button class="dropdown-btn" style="font-size: small">
+            @item.CategoryName
+            <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-container">
+            @foreach (var subcategory in ViewData["subCategoryList"] as IList<SubCategory>)
+                {
+                    if(subcategory.ParentCategoryId == item.CategoryId)
+                    {
+                        <a asp-action="Products" asp-route-id="@subcategory.SubCategoryId" style="font-size: small">@subcategory.Name</a>
+                    }
+                }
+        </div>
+    }
+</div>
+
+<div class="body">
+    <div class="cards">
+        @foreach (var item in Model)
+        {
+            <a class="card" asp-controller="Catalog" asp-action="SubCategories" asp-route-id="@item.CategoryId" style="overflow: hidden">
+                <div class="cont">
+                    <img class="picture" src="/@item.ImageURL" />
+                </div>
+                <div class="details">
+                    <h5>@item.CategoryName</h5>
+                </div>
+            </a>
+        }
+    </div>
+</div>
+
+<script>
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+
+    for (i = 0; i < dropdown.length; i++) {
+        dropdown[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var dropdownContent = this.nextElementSibling;
+            if (dropdownContent.style.display === "block") {
+                dropdownContent.style.display = "none";
+            } else {
+                dropdownContent.style.display = "block";
+            }
+        });
+    }
+</script>

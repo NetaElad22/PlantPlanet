@@ -462,11 +462,6 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Suppliers\Details.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Suppliers\Edit.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Suppliers\Index.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Details.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\appsettings.json
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\PlantPlanet.exe
@@ -882,6 +877,11 @@ C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר 
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.TagHelpers.input.cache
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.TagHelpers.output.cache
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.RazorCoreGenerate.cache
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Addresses\Create.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Addresses\Delete.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Addresses\Details.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Addresses\Edit.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Addresses\Index.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Categories\Create.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Categories\Delete.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Categories\Details.cshtml.g.cs
@@ -931,6 +931,11 @@ C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר 
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stocks\Create.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stocks\Delete.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stocks\Details.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stocks\Edit.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stocks\Index.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\SubCategories\Create.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\SubCategories\Delete.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\SubCategories\Details.cshtml.g.cs
@@ -985,10 +990,25 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Details.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Edit.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Index.cshtml.g.cs
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\MailKit.dll
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\MimeKit.dll
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\NETCore.MailKit.dll
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\bin\Debug\net5.0\BouncyCastle.Crypto.dll
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\About\Index.cshtml.g.cs
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Contact\Index.cshtml.g.cs
-C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\QuestionsAndAnswers\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_ManagerLayout.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\ManagerHome\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Details.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Edit.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Login.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\AccessDenied.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Create.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Delete.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Details.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Edit.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\FrequentQuestions\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\Details.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\Products.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\SubCategories.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\ProductPage.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
