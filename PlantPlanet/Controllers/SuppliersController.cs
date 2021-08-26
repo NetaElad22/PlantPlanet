@@ -47,6 +47,10 @@ namespace PlantPlanet.Controllers
                 return NotFound();
             }
 
+            IList<Product> ProductList = new List<Product>();
+            ProductList = _context.Product.Where(p => p.SupplierId == id).ToArray();
+            ViewData["ProductList"] = ProductList;
+
             return View(supplier);
         }
 

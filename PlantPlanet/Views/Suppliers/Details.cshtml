@@ -29,10 +29,12 @@
         </div>
         <div class="col-md-3">
             @{ 
-                foreach(var item in Model.SuppliedProducts)
+                foreach (var item in ViewData["ProductList"] as IList<Product>)
             {
                     @Html.DisplayName(item.Name)
-            }
+                    <br />
+                }
+
             }
         </div>
         <div class="col-md-3">
