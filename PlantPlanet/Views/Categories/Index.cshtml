@@ -5,11 +5,23 @@
 }
 
 <div class="container" style="direction:rtl; text-align:center">
-    <div class="row" style="direction:ltr">
-        <p>
+    <div class="row">
+        <div class="col-md-4">
             <a asp-action="Create" class="btn btn-outline-info">יצירת קטגוריה חדשה</a>
-        </p>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <form asp-action="Search" asp-controller="Categories" style="margin-right:3%">
+                <input name="query" class="search-input" type="search" placeholder="חיפוש קטגוריה" />
+                <button class="search-container" style="border:none; background-color:transparent">
+                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
     </div>
+    <br />
     <div class="row" style="font-weight:bold">
         <div class="col-md-4">
             <h4>@Html.DisplayNameFor(model => model.CategoryName)</h4>
@@ -29,7 +41,7 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </div>
             <div class="col-md-4">
-                <img src="~/@item.ImageURL" style="width:200px; height:200px"/>
+                <img src="~/@item.ImageURL" style="width:200px; height:200px" />
             </div>
             <div class="col-md-4">
                 <a asp-action="Edit" asp-route-id="@item.CategoryId">עריכה</a> |

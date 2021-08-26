@@ -4,7 +4,9 @@
     ViewData["Title"] = "Delete";
 }
 
-<div class="container" style="font-family:Gisha; direction:rtl; text-align:center">
+<link rel="stylesheet" href="~/css/delete.css" />
+
+<div class="container">
     <h4>מחיקת ספק</h4>
     <div class="row" style="font-weight:bold; padding-top:5%">
         <div class="col-md-4">
@@ -13,10 +15,9 @@
         <div class="col-md-4">
             @Html.DisplayNameFor(model => model.PhoneNumber)
         </div>
-        <div class="col-md-4">
-            @Html.DisplayNameFor(model => model.Email)
-        </div>
+        <div class="col-md-4">אפשרויות</div>
     </div>
+    <br />
     <div class="row">
         <div class="col-md-4">
             @Html.DisplayFor(model => model.CompanyName)
@@ -25,30 +26,14 @@
             @Html.DisplayFor(model => model.PhoneNumber)
         </div>
         <div class="col-md-4">
-            @Html.DisplayFor(model => model.Email)
-        </div>
-    </div>
-    <br />
-    <div class="row" style="padding-top:10%; margin: 5%; width: 100%;">
-        <div class="col-md-4">
-
-        </div>
-        <div col-md-4>
             <form asp-action="Delete">
                 <input type="hidden" asp-for="SupplierId" />
-                <input type="submit" value="מחיקת ספק" class="btn btn-outline-danger" />
-                <a asp-action="Index" class="btn btn-outline-info">ביטול מחיקה</a>
+                <input type="submit" value="מחיקה" class="btn btn-outline-danger" />
+                <a asp-action="Index" class="btn btn-outline-info">ביטול</a>
             </form>
         </div>
-        <div class="col-md-4">
-
-        </div>
     </div>
-    <div class="row">
+    <div class="row" style="padding-top:8%">
         <a asp-action="Index">חזרה לרשימת הספקים</a>
     </div>
-</div>       
-        
-    
-
-
+</div>

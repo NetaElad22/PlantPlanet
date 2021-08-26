@@ -25,6 +25,12 @@ namespace PlantPlanet.Controllers
             return View(await _context.DeliveryType.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.DeliveryType.Where(a => a.Type.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: DeliveryTypes/Details/5
         public async Task<IActionResult> Details(int? id)
         {

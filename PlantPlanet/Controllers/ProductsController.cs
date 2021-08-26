@@ -32,6 +32,12 @@ namespace PlantPlanet.Controllers
             return View(await plantPlanetContext.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+        
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -114,7 +120,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,ImageURL,NetIncome,UnitsSold")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product)
         {
             if (id != product.ProductId)
             {

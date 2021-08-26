@@ -33,13 +33,34 @@
         <div class="col-md-5">
             <h3>@Model.Name</h3>
             <h6 style="text-align: right">@Model.Description</h6>
-            <h4>אופן טיפול</h4>
+            <h5>אופן טיפול</h5>
             <span>@Model.Treatment</span>
-            <h4>טיפים</h4>
+            <h5>טיפים</h5>
             <span>@Model.TreatmentTips</span>
-            <h4>שימו לב</h4>
+            <h5>שימו לב</h5>
             <span>יש לכם שאלות? משהו לא ברור? לא לדאוג, בתום כל הזמנה ייצרו עמכם קשר טלפוני לסיום העסקה.</span>
-            <div class="container">
+
+            <div class="addToCart">
+                <div class="quantity">
+                    <form>
+                        <span class="title">מחיר: </span>
+                        <span>@Model.SellingPrice</span>
+                        <br />
+                        <span class="title">גודל: </span>
+                        <span>@Model.Size</span>
+                        <br />
+                        <span class="title">צבע: </span>
+                        <span>@Model.Color</span>
+                        <br />
+                        <span class="title">כמות: </span>
+                        <input style="width:45px" type="number" placeholder="0" />
+                        <button class="btn btn-check" type="submit">הוספה לעגלה</button>
+                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="document.getElementById('quantity').innerText">הוספה</a>
+
+                    </form>
+                </div>
+            </div>
+            @*<div class="container">
                 <div class="card">
                     <button onclick="decreaseCount()">-</button>
                     <h2 id="quantity"></h2>
@@ -47,7 +68,7 @@
                     <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="document.getElementById('quantity').innerText">הוספה</a>
 
                 </div>
-                </div>
+            </div>*@
             @*<div class="addToCart">
                     <div class="counter">
                         <button id="decrease" class="down">-</button>
@@ -59,7 +80,7 @@
             @*<button onclick="addToCart(@Model,4)"> add</button>*@
         </div>
         <div class="col-md-6">
-            <img style="width:450px; height:450px; align-items:flex-end" src="/@Model.ImageURL" />
+            <img style="width:480px; height:480px; align-items:flex-end" src="/@Model.ImageURL" />
         </div>
     </div>
 

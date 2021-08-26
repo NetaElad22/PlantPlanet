@@ -6,10 +6,21 @@
 <link rel="stylesheet" href="~/css/employees.css" />
 
 <div class="container">
-    <div class="row" style="direction:ltr; padding-top:0%">
-        <p>
+    <div class="row">
+        <div class="col-md-4">
             <a asp-action="Create" class="btn btn-outline-info">יצירת עובד.ת חדש.ה</a>
-        </p>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <form asp-action="Search" asp-controller="Employees" style="margin-right:3%">
+                <input name="query" class="search-input" type="search" placeholder="חיפוש עובד.ת" />
+                <button class="search-container" style="border:none; background-color:transparent">
+                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
     </div>
     <br />
     <div class="row" style="padding-top: 0%">
@@ -27,7 +38,7 @@
         </div>
     </div>
     @foreach (var item in Model)
-     {
+    {
         <div class="row">
             <br />
             <div class="col-md-3">
@@ -44,8 +55,7 @@
                 <a asp-action="Details" asp-route-id="@item.EmployeeId">פרטים</a> |
                 <a asp-action="Delete" asp-route-id="@item.EmployeeId">מחיקה</a>
             </div>
-            
         </div>
-     }
+    }
 </div>
       

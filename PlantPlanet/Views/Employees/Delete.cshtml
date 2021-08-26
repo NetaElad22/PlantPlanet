@@ -4,36 +4,26 @@
     ViewData["Title"] = "Delete";
 }
 
-<link rel="stylesheet" href="~/css/employees.css" />
+<link rel="stylesheet" href="~/css/delete.css" />
 
 <div class="container">
     <h4>מחיקת עובד.ת</h4>
     <div class="row" style="font-weight:bold; padding-top:5%">
-        <div class="col-md-4">
-            @Html.DisplayNameFor(model => model.TeudatZehut)
-        </div>
         <div class="col-md-4">
             @Html.DisplayNameFor(model => model.FirstName)
         </div>
         <div class="col-md-4">
             @Html.DisplayNameFor(model => model.LastName)
         </div>
+        <div class="col-md-4">אפשרויות</div>
     </div>
     <br />
     <div class="row">
-        <div class="col-md-4">
-            @Html.DisplayFor(model => model.TeudatZehut)
-        </div>
         <div class="col-md-4">
             @Html.DisplayFor(model => model.FirstName)
         </div>
         <div class="col-md-4">
             @Html.DisplayFor(model => model.LastName)
-        </div>
-    </div>
-    <div class="row" style="padding-top:10%">
-        <div class="col-md-4">
-
         </div>
         <div class="col-md-4">
             <form asp-action="Delete">
@@ -42,11 +32,8 @@
                 <a asp-action="Index" class="btn btn-outline-info">ביטול</a>
             </form>
         </div>
-        <div class="col-md-4">
-
-        </div>
     </div>
     <div class="row" style="padding-top:8%">
-        <a asp-action="Index">חזרה לרשימת העובדים</a>
+        <a asp-action="Index">חזרה לרשימת עובדים.ות</a>
     </div>
 </div>

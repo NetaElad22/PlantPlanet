@@ -3,155 +3,76 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/details.css" />
 
-<div class="container" style="font-family:Gisha; direction:rtl; text-align:center">
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.ProductId)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.ProductId)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Name)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Name)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Description)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Description)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Treatment)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Treatment)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.TreatmentTips)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.TreatmentTips)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.SubCategories)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.SubCategories)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.BuyingCost)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.BuyingCost)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.SellingPrice)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.SellingPrice)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.SupplierId)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.SupplierId)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Discount)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Discount)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Color)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Color)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Size)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Size)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.Quantity)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.Quantity)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.ProductReviews)</h4>
-        </div>
-        <div class="col-md-6">
-            <button class="btn btn-outline-info">מעבר לעמוד חוות דעת</button>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.ImageURL)</h4>
-        </div>
-        <div class="col-md-6">
-            <img src="~/@Html.DisplayFor(model => model.ImageURL)" style="height:80%; width:80%" />
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.NetIncome)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.NetIncome)</h4>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <h4>@Html.DisplayNameFor(model => model.UnitsSold)</h4>
-        </div>
-        <div class="col-md-6">
-            <h4>@Html.DisplayFor(model => model.UnitsSold)</h4>
-        </div>
-    </div>
+<h4>@Html.DisplayFor(model => model.Name)</h4>
 
-    <div class="col-md-4">
-        <h4>אפשרויות ניהול</h4>
-    </div>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Description)</th>
+        <th>@Html.DisplayFor(model => model.Description)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Treatment)</th>
+        <th>@Html.DisplayFor(model => model.Treatment)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TreatmentTips)</th>
+        <th>@Html.DisplayFor(model => model.TreatmentTips)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.SubCategories)</th>
+        <th>@Html.DisplayFor(model => model.SubCategories)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.BuyingCost)</th>
+        <th>@Html.DisplayFor(model => model.BuyingCost)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.SellingPrice)</th>
+        <th>@Html.DisplayFor(model => model.SellingPrice)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Supplier)</th>
+        <th>@Html.DisplayFor(model => model.Supplier.CompanyName)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Discount)</th>
+        <th>@Html.DisplayFor(model => model.Discount)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Color)</th>
+        <th>@Html.DisplayFor(model => model.Color)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Size)</th>
+        <th>@Html.DisplayFor(model => model.Size)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Quantity)</th>
+        <th>@Html.DisplayFor(model => model.Quantity)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.NetIncome)</th>
+        <th>@Html.DisplayFor(model => model.NetIncome)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.UnitsSold)</th>
+        <th>@Html.DisplayFor(model => model.UnitsSold)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ImageURL)</th>
+        <th>
+            <img src="~/@Html.DisplayFor(model => model.ImageURL)" style="width:25%" />
+        </th>
+    </tr>
+</table>
+<br />
+<div class="right">
+    <a asp-action="Delete" asp-route-id="@Model.ProductId">מחיקת מוצר</a> |
+    <a asp-action="Edit" asp-route-id="@Model.ProductId">עריכת מוצר</a>
 </div>
-    <br />
-        <div class="col-md-4">
-            <a asp-action="Delete" asp-route-id="@Model.ProductId">מחיקת קטגוריה</a> |
-            <a asp-action="Edit" asp-route-id="@Model.ProductId">עריכת קטגוריה</a>
-        </div>
-    <div class="row">
-        <a asp-action="Index">חזרה לרשימת הקטגוריות</a>
-    </div>
+<div class="left">
+    <a asp-action="Index">חזרה לרשימת המוצרים</a>
 </div>

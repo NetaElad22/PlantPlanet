@@ -1,19 +1,20 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PlantPlanet</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/layout.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="~/css/managerlayout.css" />
+    <script src="/js/layout.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+
 </head>
 <body>
     <header>
-        <p>fdsasdfasfdaf</p>
-        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">
-            <img class="logo" src="~/images/logo.jpeg" alt="Plant Planet" />
+        <a class="navbar-brand logo-container" asp-area="" asp-controller="Home" asp-action="Index">
+            <img class="logo" title="משתלת עולם הצמחים - plant planet" src="~/images/logo.jpeg" alt="Plant Planet" />
         </a>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light border-bottom mb-3">
             <div class="container" style="direction:rtl">
@@ -23,35 +24,49 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">ראשי</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">קטלוג מוצרים</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Products" asp-action="Index">ניהול מוצרים</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Create">הרשמה</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Customers" asp-action="Index">ניהול לקוחות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">אודות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Employees" asp-action="Index">ניהול עובדים </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">שאלות נפוצות</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Categories" asp-action="Index">ניהול קטגוריות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">צור קשר</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="SubCategories" asp-action="Index">ניהול תתי קטגוריות</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Edit">הסל שלי</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Orders" asp-action="Index">ניהול הזמנות </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="DeliveryTypes" asp-action="Index">ניהול  סוגי משלוח</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Index">ניהול משתמשים </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Suppliers" asp-action="Index">ניהול ספקים </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <input class="search-input" type="search" placeholder="חיפוש" />
-        <div class="circles-container">
-            <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
-                <img class="circle-img" src="~/images/facebook.png" />
-            </a>
-            <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
-                <img class="circle-img" src="~/images/instagram.png" />
-            </a>
+        <div class="sign-in-btn-container">
+            <button class="btn btn-outline-success">
+                @{
+                    if ((User.IsInRole("Customer")) || (User.IsInRole("Manager")))
+                    {
+                        <a asp-controller="Users" asp-action="Logout" style="all:unset">התנתקות</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Users" asp-action="Login" style="all:unset">התחברות</a>
+                    }
+                }
+            </button>
         </div>
     </header>
 
@@ -62,13 +77,53 @@
     </div>
 
     <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2021 - PlantPlanet - <a asp-area="" asp-controller="Home" asp-action="About">אודות</a>
+
+        <div class="bottom-nav small-text">
+            <div class="bottom-nav-right-info">
+                <span><span>טלפון</span> 0544568541</span>
+                <span><span>מייל</span> plantplanetisrael@gmail.com</span>
+                <div class="circles-container">
+                    <a href="https://www.facebook.com/plantplanetisrael" class="circle-link">
+                        <img class="circle-img" src="~/images/facebook.png" />
+                    </a>
+                    <a href="https://www.instagram.com/plant.O.planet/" class="circle-link">
+                        <img class="circle-img" src="~/images/instagram.png" />
+                    </a>
+                    <a href="https://wa.me/972544568541" class="circle-link">
+                        <img class="circle-img" src="~/images/whatsapp.png" />
+                    </a>
+                </div>
+            </div>
+
+            <div style="display: flex; flex-direction: column; line-height: 30px">
+                <button id="privacy" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות פרטיות
+                </button>
+                <button id="cookies" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות שימוש בקוקיז
+                </button>
+                <button id="usage" style="border: none; background-color: transparent; padding-top: 2%;">
+                    מדיניות ותנאי שימוש
+                </button>
+            </div>
+
+            <div class="bottom-nav-left-info">
+                <span>שעות פתיחה</span>
+                <span>א-ה בין השעות 8:00-19:00</span>
+                <span>ו-ש בין השעות 10:00-15:00</span>
+                <span>כתובת</span>
+                <span>הסייפן 35, רמת השרון</span>
+            </div>
+        </div>
+
+        <div class="about-text small-text">
+            &copy; 2021 - PlantPlanet
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
-</html>

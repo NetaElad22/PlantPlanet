@@ -31,6 +31,12 @@ namespace PlantPlanet.Controllers
             return View(await _context.Category.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.Category.Where(a => a.CategoryName.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Categories/Details/5
         public async Task<IActionResult> Details(int? id)
         {
