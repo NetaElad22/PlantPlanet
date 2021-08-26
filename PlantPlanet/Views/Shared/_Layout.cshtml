@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="~/css/layout.css" />
     <script src="/js/layout.js"></script>
     <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined"
+          rel="stylesheet">
 
 </head>
 <body>
@@ -45,7 +47,11 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Contact" asp-action="Index">צור קשר</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index"><img title="סל קניות" class="nav-link cart-icon" src="./images/shopping_cart_black_24dp.svg"/></a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Cart" asp-action="Index">
+                                <span title="סל קניות" class="cart-icon material-icons-outlined">
+                                    shopping_cart
+                                </span>
+                            </a>
                         </li>
                     </ul>
                 </div>

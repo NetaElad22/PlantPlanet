@@ -85,3 +85,15 @@
     font-size: 25px;
     font-weight: bold;
 }
+
+.weather-title {
+    margin-top: 5%;
+    align-self: center;
+}
+
+.weather-table {
+    margin-top: 2%;
+    width: 35%;
+    align-self: center;
+    text-align: center;
+}
