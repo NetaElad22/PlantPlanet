@@ -13,7 +13,7 @@
             <h4>@Html.DisplayNameFor(model => model.PhoneNumber)</h4>
         </div>
         <div class="col-md-3">
-            <h4>@Html.DisplayNameFor(model => model.Email)</h4>
+            <h4>@Html.DisplayNameFor(model => model.SuppliedProducts)</h4>
         </div>
         <div class="col-md-3">
             <h4>אפשרויות ניהול</h4>
@@ -28,7 +28,12 @@
             @Html.DisplayFor(model => model.PhoneNumber)
         </div>
         <div class="col-md-3">
-            @Html.DisplayFor(model => model.Email)
+            @{ 
+                foreach(var item in Model.SuppliedProducts)
+            {
+                    @Html.DisplayName(item.Name)
+            }
+            }
         </div>
         <div class="col-md-3">
             <a asp-action="Delete" asp-route-id="@Model.SupplierId">מחיקת ספק</a> |

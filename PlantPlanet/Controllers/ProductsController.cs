@@ -44,10 +44,10 @@ namespace PlantPlanet.Controllers
             if (id == null)
             {
                 return NotFound();
-            }
+            }                        
 
             var product = await _context.Product
-                .Include(p => p.Supplier)
+                .Include(p => p.Supplier).Include(p => p.SubCategories)
                 .FirstOrDefaultAsync(m => m.ProductId == id);
             if (product == null)
             {

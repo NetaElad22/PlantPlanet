@@ -990,7 +990,6 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Details.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Edit.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\DeliveryTypes\Index.cshtml.g.cs
-C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Shared\_ManagerLayout.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\ManagerHome\Index.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Create.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Delete.cshtml.g.cs
@@ -1012,3 +1011,4 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\SubCategories.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Catalog\ProductPage.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Cart\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Home\ManagerHome.cshtml.g.cs

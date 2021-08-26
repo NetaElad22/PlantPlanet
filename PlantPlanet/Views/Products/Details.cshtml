@@ -23,7 +23,16 @@
     </tr>
     <tr>
         <th>@Html.DisplayNameFor(model => model.SubCategories)</th>
-        <th>@Html.DisplayFor(model => model.SubCategories)</th>
+        <th>
+            @{
+                foreach (var item in Model.SubCategories)
+                {
+                    @Html.DisplayName(item.Name)
+                    <br />
+
+                }
+            }
+        </th>
     </tr>
     <tr>
         <th>@Html.DisplayNameFor(model => model.BuyingCost)</th>
