@@ -108,6 +108,22 @@ namespace PlantPlanet.Controllers
             return View("Products", await plantPlanetContext.ToListAsync());
         }
 
+        public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery)
+        {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoryList;
+
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoriesList"] = subCategoryList;
+
+            var plantPlanetContext = _context.Product.Where(p => (p.Name.Contains(NameQuery) || NameQuery == null) && (p.SellingPrice <= PriceQuery || PriceQuery == 0) && (p.Color.Contains(ColorQuery) || ColorQuery == null));
+            return View("Products", await plantPlanetContext.ToListAsync());
+        }
+
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
