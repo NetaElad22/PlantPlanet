@@ -28,6 +28,12 @@ namespace PlantPlanet.Controllers
             return View(await plantPlanetContext.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(int query)
+        {
+            var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee).Where(o => o.OrderId == query);
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Orders/Details/5
         public async Task<IActionResult> Details(int? id)
         {

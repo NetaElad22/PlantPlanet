@@ -4,128 +4,58 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4">
+            <a asp-action="Create" class="btn btn-outline-info">יצירת הזמנה חדשה</a>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Customer)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderSumPayment)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Message)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Employee)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.OrderComments)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsGift)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentMethod)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentsNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IsPremiumDiscount)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DeliveryType)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentVerification)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.City)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Street)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.HouseNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FloorNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FlatNumber)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderSumPayment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Employee.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.OrderComments)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsGift)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentMethod)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentsNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IsPremiumDiscount)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DeliveryType.Type)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PaymentVerification)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.City)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Street)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.HouseNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FloorNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FlatNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.OrderId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.OrderId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.OrderId">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-4">
+            <form asp-action="Search" asp-controller="Orders" style="margin-right:3%">
+                <input name="query" class="search-input" type="search" placeholder="חיפוש הזמנה" />
+                <button class="search-container" style="border:none; background-color:transparent">
+                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class="row" style="font-weight:bold">
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.OrderId)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.OrderSumPayment)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.DeliveryType)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>אפשרויות ניהול</h4>
+        </div>
+    </div>
+    @foreach (var item in Model)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-3">
+                <h4>@Html.DisplayFor(modelItem => item.OrderId)</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>@Html.DisplayFor(modelItem => item.OrderSumPayment)</h4>
+            </div>
+            <div class="col-md-3">
+                <h4>@Html.DisplayFor(modelItem => item.DeliveryType)</h4>
+            </div>
+            <div class="col-md-4">
+                <a asp-action="Edit" asp-route-id="@item.OrderId">עריכה</a> |
+                <a asp-action="Details" asp-route-id="@item.OrderId">פרטים</a> |
+                <a asp-action="Delete" asp-route-id="@item.OrderId">מחיקה</a>
+            </div>
+        </div>
+    }
+</div>
+

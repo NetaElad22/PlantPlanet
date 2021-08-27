@@ -29,6 +29,11 @@ namespace PlantPlanet.Controllers
             return View();
         }
 
+        public IActionResult ManagerHome()
+        {
+            return View("ManagerHome");
+        }
+
         public IActionResult Catalog()
         {
             return View();

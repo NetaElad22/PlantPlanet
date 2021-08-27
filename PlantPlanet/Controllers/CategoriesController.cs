@@ -45,6 +45,10 @@ namespace PlantPlanet.Controllers
                 return NotFound();
             }
 
+            IList<SubCategory> SubCategories = new List<SubCategory>();
+            SubCategories = _context.SubCategory.Where(s => s.ParentCategoryId == id).ToArray();
+            ViewData["SubCategories"] = SubCategories;
+
             var category = await _context.Category
                 .FirstOrDefaultAsync(m => m.CategoryId == id);
             if (category == null)

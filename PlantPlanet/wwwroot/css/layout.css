@@ -102,3 +102,14 @@ li :hover {
     font-size: 16px;
 }
 
+.logodiv {
+    transform-origin: top right;
+    height: 170px;
+    transition: transform width 2s;
+}
+
+    .logodiv:hover {
+        transform-origin: top right;
+        transform: scale(8);
+        transition: 60s;
+    }

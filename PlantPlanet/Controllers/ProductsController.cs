@@ -37,7 +37,7 @@ namespace PlantPlanet.Controllers
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
-        
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id)
         {
