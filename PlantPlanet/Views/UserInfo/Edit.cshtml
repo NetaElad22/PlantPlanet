@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "EditUserInfo";
+
+    Customer customer = (Customer)ViewData["customer"];
+}
+
+<link rel="stylesheet" href="~/css/UserInfo.css" />
+
+<div class="edit-page">
+    <div class="edit-header">
+        עריכת פרטי הפרופיל
+    </div>
+
+    <form class="edit-form" asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="@customer.CustomerId" />
+        <div class="form-group">
+            <label asp-for="@customer.FirstName" class="control-label"></label>
+            <input asp-for="@customer.FirstName" class="form-control" placeholder="@customer.FirstName"/>
+            <span asp-validation-for="@customer.FirstName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.LastName" class="control-label"></label>
+            <input asp-for="@customer.LastName" class="form-control" />
+            <span asp-validation-for="@customer.LastName" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.Email" class="control-label"></label>
+            <input asp-for="@customer.Email" class="form-control" />
+            <span asp-validation-for="@customer.Email" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.PhoneNumber" class="control-label"></label>
+            <input asp-for="@customer.PhoneNumber" class="form-control" />
+            <span asp-validation-for="@customer.PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.City" class="control-label"></label>
+            <input asp-for="@customer.City" class="form-control" />
+            <span asp-validation-for="@customer.City" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.Street" class="control-label"></label>
+            <input asp-for="@customer.Street" class="form-control" />
+            <span asp-validation-for="@customer.Street" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.HouseNumber" class="control-label"></label>
+            <input asp-for="@customer.HouseNumber" class="form-control" />
+            <span asp-validation-for="@customer.HouseNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.FloorNumber" class="control-label"></label>
+            <input asp-for="@customer.FloorNumber" class="form-control" />
+            <span asp-validation-for="@customer.FloorNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.FlatNumber" class="control-label"></label>
+            <input asp-for="@customer.FlatNumber" class="form-control" />
+            <span asp-validation-for="@customer.FlatNumber" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@customer.ZipCode" class="control-label"></label>
+            <input asp-for="@customer.ZipCode" class="form-control" />
+            <span asp-validation-for="@customer.ZipCode" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="שמירת שינויים" class="btn btn-primary" />
+        </div>
+    </form>
+</div>

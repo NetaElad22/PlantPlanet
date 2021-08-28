@@ -1026,3 +1026,5 @@ C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר 
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Index.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\AccessDenied.cshtml.g.cs
 C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Users\Login.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Index.cshtml.g.cs
+C:\Users\romko\OneDrive\שולחן העבודה\תואר\שנה ב\סימסטר ב\פיתוח אפליקציות אינטרנטיות\פרויקט סיכום\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Edit.cshtml.g.cs

@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    @*var conroller = (UsersController)ViewContext.Controller;*@
+}
+
+<!DOCTYPE html>
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,20 +70,29 @@
             </button>
         </form>
 
-        <div class="sign-in-btn-container">
-            <button class="btn btn-outline-success">
-                @{
-                    if (User.IsInRole("Customer"))
-                    {
-                        <a asp-controller="Users" asp-action="Logout" style="all:unset">התנתקות</a>
-                    }
-                    else
-                    {
+        @{
+            if (User.IsInRole("Customer"))
+            {
+                <div class="dropdown user-info-container">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                היי,  @User.Identity.Name
+                            </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item user-info-option" asp-controller="UserInfo" asp-action="Index">הפרופיל שלי</a>
+                        <a class="dropdown-item user-info-option" asp-controller="Users" asp-action="Logout">התנתקות</a>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="sign-in-btn-container">
+                    <button class="btn btn-outline-success">
                         <a asp-controller="Users" asp-action="Login" style="all:unset">התחברות</a>
-                    }
-                }
-            </button>
-        </div>
+                    </button>
+                </div>
+            }
+        }
+
     </header>
 
     <div class="container">
@@ -106,14 +120,14 @@
                 </div>
             </div>
 
-            <div style="display: flex; flex-direction: column; line-height: 30px">
-                <button id="privacy" style="border: none; background-color: transparent; padding-top: 2%;">
+            <div class="bottom-nav-middle-info">
+                <button id="privacy">
                     מדיניות פרטיות
                 </button>
-                <button id="cookies" style="border: none; background-color: transparent; padding-top: 2%;">
+                <button id="cookies">
                     מדיניות שימוש בקוקיז
                 </button>
-                <button id="usage" style="border: none; background-color: transparent; padding-top: 2%;">
+                <button id="usage">
                     מדיניות ותנאי שימוש
                 </button>
             </div>
