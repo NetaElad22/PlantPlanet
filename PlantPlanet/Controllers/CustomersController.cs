@@ -60,10 +60,17 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email,PhoneNumber,IsPremium,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email,PhoneNumber,User,IsPremium,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+
+                //User user = new User();
+                //user.UserName = customer.User.UserName;
+                //user.Password = customer.User.Password;
+                //user.Type = "Customer";
+                //_context.User.Add(user);
+                //customer.Usename = user.UserName;
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
