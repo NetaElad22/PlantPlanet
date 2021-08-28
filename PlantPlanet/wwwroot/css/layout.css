@@ -58,6 +58,16 @@ li :hover {
     outline: none;
 }
 
+.user-info-container {
+    margin-top: 4%;
+    text-align: center;
+}
+
+.user-info-option {
+    text-align: center;
+}
+
+
 .circles-container {
     display: flex;
     justify-content: space-evenly;
@@ -96,6 +106,19 @@ li :hover {
     display: flex;
     flex-direction: column;
     line-height: 30px;
+}
+
+.bottom-nav-middle-info {
+    display: flex;
+    flex-direction: column;
+    line-height: 30px
+}
+
+.bottom-nav-middle-info button {
+    border: none;
+    background-color: transparent;
+    padding-top: 2%;
+    color: #6c757d;
 }
 
 .small-text {

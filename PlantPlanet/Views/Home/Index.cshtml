@@ -84,7 +84,7 @@
                 $('table').append(
                     $('#dates').append($('<th />').append(item.date)),
                     $('#icons').append($('<td />').append(`<img title='${item.day.condition.text}' src='${item.day.condition.icon}' />`)),
-                    $('#temp').append($('<td />').append(item.day.maxtemp_c))
+                    $('#temp').append($('<td />').append(`<span>&deg</span> ${item.day.maxtemp_c}`))
                 );
             })
         });
