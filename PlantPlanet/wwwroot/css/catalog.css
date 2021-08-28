@@ -95,7 +95,6 @@ body {
     transition: 0.3s;
     color: black !important;
     text-align: center;
-    z-index:1;
 }
 
     /* On mouse-over, add a deeper shadow */

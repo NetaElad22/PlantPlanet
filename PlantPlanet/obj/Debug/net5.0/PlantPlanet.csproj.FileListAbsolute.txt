@@ -1012,3 +1012,10 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Details.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Edit.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Stores\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.Mvc.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.Razor.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.Helpers.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.WebPages.dll
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll

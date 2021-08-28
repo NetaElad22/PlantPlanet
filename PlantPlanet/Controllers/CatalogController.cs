@@ -108,7 +108,7 @@ namespace PlantPlanet.Controllers
             return View("Products", await plantPlanetContext.ToListAsync());
         }
 
-        public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery)
+        public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery, int SaleQuery, string categoryQuery)
         {
             // sending all subcategories to the index catalog view
             IList<Category> categoryList = new List<Category>();
@@ -120,7 +120,13 @@ namespace PlantPlanet.Controllers
             subCategoryList = _context.SubCategory.ToArray();
             ViewData["subCategoriesList"] = subCategoryList;
 
-            var plantPlanetContext = _context.Product.Where(p => (p.Name.Contains(NameQuery) || NameQuery == null) && (p.SellingPrice <= PriceQuery || PriceQuery == 0) && (p.Color.Contains(ColorQuery) || ColorQuery == null));
+            var plantPlanetContext = _context.Product.Where(p => 
+            (p.Name.Contains(NameQuery) || NameQuery == null) && 
+            (p.SellingPrice <= PriceQuery || PriceQuery == 0) && 
+            (p.Color.Contains(ColorQuery) || ColorQuery == null) && 
+            ((p.Discount > 0 && SaleQuery == 1) || SaleQuery != 1) && 
+            (p.SubCategories.Where(s => s.Name.Equals(categoryQuery)).Any()));
+
             return View("Products", await plantPlanetContext.ToListAsync());
         }
 

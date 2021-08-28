@@ -43,29 +43,55 @@
                     <h4>סינון מוצרים</h4>
                     <br />
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <i>סינון לפי שם המוצר</i>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <input name="NameQuery" class="search-input" type="search" placeholder="שם מוצר" />
                         </div>
                     </div>
+                    <br />
                     <div class="row">
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <i>סינון לפי צבע המוצר</i>
                         </div>
-                        <div class="col-md-5">
+                        <div class="col-md-6">
                             <input name="ColorQuery" class="search-input" type="search" placeholder="צבע" />
                         </div>
                     </div>
+                    <br />
                     <div class="row">
-                        <div class="col-md-5">
-                            <i>סינון לפי המחיר המקסימלי של המוצר</i>
+                        <div class="col-md-6">
+                            <i>סינון לפי מחיר מקסימלי</i>
+                        </div>
+                        <div class="col-md-6">
+                            <input name="PriceQuery" class="search-input" type="number" placeholder="מחיר מקסימלי" />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <i>סינון לפי קטגוריה</i>
+                        </div>
+                        <div class="col-md-6">
+                            <select name="categoryQuery" class="search-input">
+                                @foreach (var subcategory in ViewData["subCategoryList"] as IList<SubCategory>)
+                                {
+                                    <option value="@subcategory.Name">@subcategory.Name</option>
+
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <i>סינון לפי מוצרים במבצע</i>
                         </div>
                         <div class="col-md-5">
-                            <input name="PriceQuery" class="search-input" type="number" placeholder="מחיר" />
+                            <input name="SaleQuery" value="1" class="search-input" type="checkbox" />
                         </div>
-                        <div class="col-md-2">
+                        <div class="col-md-1">
                             <button class="search-container" style="border:none; background-color:transparent">
                                 <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
                             </button>
@@ -76,6 +102,7 @@
         </div>
 
     </div>
+
     <div class="cards">
         @foreach (var item in Model)
         {

@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<PlantPlanet.Models.Store>
+
 @{
 
 
@@ -34,26 +35,40 @@
             <a>ניתן לפנות אלינו בטלפון - 0544568541</a> <br />
             <a> או במייל - plantplanetisrael@gmail.com</a><br />
 
-            <script>
+                                                          <script>
                 // Initialize and add the map
                 function initMap() {
 
                     // The location of Plant Planet
-                    const PlantPlanet = { lat: 32.1343066, lng: 34.8365885 };
-
+                    const neta = { lat: 32.1343066, lng: 34.8365885 };
+                     
                     // The map, centered at Plant Planet
                     const map = new google.maps.Map(document.getElementById("map"), {
                         zoom: 15,
                         center: PlantPlanet,
                     });
+                    var markers[];
 
+                    const markers[];
+                    markers[1] = new google.maps.Marker({
+                        position: {},
+                        map: map,
+                    });
+                    markers[1] = new google.maps.Marker({
+                        position: PlantPlanet,
+                        map: map,
+                    });
+                    markers[1] = new google.maps.Marker({
+                        position: PlantPlanet,
+                        map: map,
+                    });
                     // The marker, positioned at Plant Planet
                     const marker = new google.maps.Marker({
                         position: PlantPlanet,
                         map: map,
                     });
                 }
-            </script>
+                                                          </script>
 
             <div id="map"></div>
         </div>
