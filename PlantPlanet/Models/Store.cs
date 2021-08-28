@@ -15,21 +15,11 @@ namespace PlantPlanet.Models
         public string StoreName { get; set; }
 
         [Display(Name = "X")]
-        public float StoreLocationX { get; set; }
+        public double StoreLocationX { get; set; }
 
         [Display(Name = "Y")]
-        public float StoreLocationY { get; set; }
+        public double StoreLocationY { get; set; }
     }
 
 
 }
-
-//namespace PlantPlanet
-//{
-//   public struct Location
-//    {
-//        public decimal x;
-//        public decimal y;
-    
-//    }
-//}

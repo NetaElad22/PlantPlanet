@@ -1,12 +1,21 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
 *@
 @{
-    @foreach (var product in ViewData["cart"] as IList<CartProduct>)
-    {
-        <div>@product.product.Name</div>
-        <div>@product.quantity</div>
+   @using Microsoft.AspNetCore.Http
+   @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
-        @*<a asp-action="SubCategories" asp-route-id="@item.CategoryId" style="font-size: small">@subcategory.Name</a>*@
+    if (SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct> == null)
+    {
+                            <div>dsd</div>
     }
-}
+    else
+    {
+        @foreach (var product in SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct>)
+        {
+                <div>@product.product.Name</div>
+                <div>@product.quantity</div>
+        }
+        }
+    }

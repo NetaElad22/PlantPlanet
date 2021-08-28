@@ -4,7 +4,7 @@
     @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor*@
 ViewData["Title"] = "UserInfo";
 
-   @* Customer customer = SessionHelper.GetObjectFromJson<Customer>(HttpContextAccessor.HttpContext.Session, "customer");*@
+//Customer customer = SessionHelper.GetObjectFromJson<Customer>(HttpContextAccessor.HttpContext.Session, "customer");
 
 Customer customer = (Customer)ViewData["customer"];
 List<Order> customerOrders = (List<Order>)ViewData["customerOrders"];

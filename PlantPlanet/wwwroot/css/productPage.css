@@ -2,6 +2,21 @@
     box-sizing: border-box;
 }
 
+.title {
+    color: #29654D;
+    text-decoration: underline;
+}
+
+.addToCart {
+    padding-top: 3%;
+}
+
+h5 {
+    padding-top: 3%;
+    color: #29654D;
+    text-decoration: underline;
+}
+
 h3 {
     text-align:center;
     color: #29654D
@@ -66,11 +81,4 @@ h3 {
 .product {
     margin-right:8%;
     text-align:right;
-}
-
-.h4 {
-    padding-top:3%;
-    text-decoration-color:aquamarine;
-    color: #29654D;
-    text-decoration:underline;
 }

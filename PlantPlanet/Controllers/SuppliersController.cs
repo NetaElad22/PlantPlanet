@@ -25,6 +25,12 @@ namespace PlantPlanet.Controllers
             return View(await _context.Supplier.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.Supplier.Where(a => a.CompanyName.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Suppliers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -32,13 +38,18 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
-
-            var supplier = await _context.Supplier
+            
+            var supplier = await _context.Supplier.Include(s => s.SuppliedProducts)
                 .FirstOrDefaultAsync(m => m.SupplierId == id);
+           
             if (supplier == null)
             {
                 return NotFound();
             }
+
+            IList<Product> ProductList = new List<Product>();
+            ProductList = _context.Product.Where(p => p.SupplierId == id).ToArray();
+            ViewData["ProductList"] = ProductList;
 
             return View(supplier);
         }

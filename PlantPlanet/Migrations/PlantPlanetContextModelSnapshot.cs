@@ -402,11 +402,11 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<float>("StoreLocationX")
-                        .HasColumnType("real");
+                    b.Property<double>("StoreLocationX")
+                        .HasColumnType("float");
 
-                    b.Property<float>("StoreLocationY")
-                        .HasColumnType("real");
+                    b.Property<double>("StoreLocationY")
+                        .HasColumnType("float");
 
                     b.Property<string>("StoreName")
                         .HasColumnType("nvarchar(max)");

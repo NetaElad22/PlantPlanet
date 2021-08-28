@@ -3,82 +3,62 @@
 @{
     ViewData["Title"] = "Details";
 }
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/details.css" />
 
-<h1>Details</h1>
+<h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
 
-<div>
-    <h4>Customer</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Email)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IsPremium)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IsPremium)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.City)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.City)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Street)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Street)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.HouseNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FloorNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FloorNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FlatNumber)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FlatNumber)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ZipCode)
-        </dd>
-    </dl>
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+        <th>@Html.DisplayFor(model => model.PhoneNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayFor(model => model.Email)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IsPremium)</th>
+        <th>@Html.DisplayFor(model => model.IsPremium)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.User.UserName)</th>
+        <th>@Html.DisplayFor(model => model.User.UserName)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.User.Password)</th>
+        <th>@Html.DisplayFor(model => model.User.Password)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <th>@Html.DisplayFor(model => model.City)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Street)</th>
+        <th>@Html.DisplayFor(model => model.Street)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HouseNumber)</th>
+        <th>@Html.DisplayFor(model => model.HouseNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FloorNumber)</th>
+        <th>@Html.DisplayFor(model => model.FloorNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FlatNumber)</th>
+        <th>@Html.DisplayFor(model => model.FlatNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ZipCode)</th>
+        <th>@Html.DisplayFor(model => model.ZipCode)</th>
+    </tr>
+</table>
+<br />
+<div class="right">
+    <a asp-action="Delete" asp-route-id="@Model.CustomerId">מחיקת לקוח.ה</a> |
+    <a asp-action="Edit" asp-route-id="@Model.CustomerId">עריכת לקוח.ה</a>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.CustomerId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<div class="left">
+    <a asp-action="Index">חזרה לרשימת הלקוחות</a>
 </div>

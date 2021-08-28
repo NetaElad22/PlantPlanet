@@ -25,6 +25,12 @@ namespace PlantPlanet.Controllers
             return View(await _context.Employee.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.Employee.Where(a => (a.FirstName.Contains(query) || a.LastName.Contains(query)));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Employees/Details/5
         public async Task<IActionResult> Details(int? id)
         {

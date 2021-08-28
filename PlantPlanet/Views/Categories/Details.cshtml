@@ -6,25 +6,37 @@
 
 <div class="container" style="direction:rtl; text-align:center">
     <div class="row" style="font-weight:bold">
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>@Html.DisplayNameFor(model => model.CategoryName)</h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <h4>@Html.DisplayNameFor(model => model.ImageURL)</h4>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.SubCategories)</h4>
+        </div>
+        <div class="col-md-3">
             <h4>אפשרויות ניהול</h4>
         </div>
     </div>
     <br />
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-3">
             @Html.DisplayFor(model => model.CategoryName)
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
             <img src="~/@Html.DisplayFor(model => model.ImageURL)" style="height:80%; width:80%" />
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
+            @{
+                foreach (var item in ViewData["SubCategories"] as IList<SubCategory>)
+                {
+                    @Html.DisplayName(item.Name)
+                    <br />
+                }
+            }
+        </div>
+        <div class="col-md-3">
             <a asp-action="Delete" asp-route-id="@Model.CategoryId">מחיקת קטגוריה</a> |
             <a asp-action="Edit" asp-route-id="@Model.CategoryId">עריכת קטגוריה</a>
         </div>

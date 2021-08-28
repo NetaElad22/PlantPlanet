@@ -3,144 +3,71 @@
 @{
     ViewData["Title"] = "Details";
 }
-<link rel="stylesheet" href="~/css/employees.css"/>
+<link rel="stylesheet" href="~/css/employees.css" />
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/details.css" />
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h4>פרטי עובד.ת</h4>
-        </div>
-        <div class="col-md-6 manage">
-            <h4>אפשרויות ניהול</h4>
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.TeudatZehut)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.TeudatZehut)
-        </div>
-        <div class="col-md-6 manage">
-            <a asp-action="Edit" asp-route-id="@Model.EmployeeId">עריכה</a> |
-            <a asp-action="Delete" asp-route-id="@Model.EmployeeId">מחיקה</a>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.FirstName)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.FirstName)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.LastName)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.LastName)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.StartDate)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.StartDate)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.Email)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.Email)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.PhoneNumber)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.PhoneNumber)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.Salary)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.Salary)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.BonusRate)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.BonusRate)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.IsCurrentlyEmployed)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.IsCurrentlyEmployed)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.City)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.City)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.Street)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.Street)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.HouseNumber)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.HouseNumber)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.FloorNumber)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.FloorNumber)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.FlatNumber)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.FlatNumber)
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-3 bold">
-            @Html.DisplayNameFor(model => model.ZipCode)
-        </div>
-        <div class="col-md-3">
-            @Html.DisplayFor(model => model.ZipCode)
-        </div>
-    </div>
-    <br />
-    <div class="row">
-        <a asp-action="Index">חזרה לרשימת העובדים.ות</a>
-    </div>
+<h4>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h4>
+
+<table>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.TeudatZehut)</th>
+        <th>@Html.DisplayFor(model => model.TeudatZehut)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.PhoneNumber)</th>
+        <th>@Html.DisplayFor(model => model.PhoneNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Email)</th>
+        <th>@Html.DisplayFor(model => model.Email)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.StartDate)</th>
+        <th>@Html.DisplayFor(model => model.StartDate)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Salary)</th>
+        <th>@Html.DisplayFor(model => model.Salary)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.BonusRate)</th>
+        <th>@Html.DisplayFor(model => model.BonusRate)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.IsCurrentlyEmployed)</th>
+        <th>@Html.DisplayFor(model => model.IsCurrentlyEmployed)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.City)</th>
+        <th>@Html.DisplayFor(model => model.City)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Street)</th>
+        <th>@Html.DisplayFor(model => model.Street)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.HouseNumber)</th>
+        <th>@Html.DisplayFor(model => model.HouseNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FloorNumber)</th>
+        <th>@Html.DisplayFor(model => model.FloorNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.FlatNumber)</th>
+        <th>@Html.DisplayFor(model => model.FlatNumber)</th>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ZipCode)</th>
+        <th>@Html.DisplayFor(model => model.ZipCode)</th>
+    </tr>
+</table>
+<br />
+<div class="right">
+    <a asp-action="Delete" asp-route-id="@Model.EmployeeId">מחיקת עובד.ת</a> |
+    <a asp-action="Edit" asp-route-id="@Model.EmployeeId">עריכת עובד.ת</a>
+</div>
+<div class="left">
+    <a asp-action="Index">חזרה לרשימת העובדים.ות</a>
 </div>

@@ -25,6 +25,12 @@ namespace PlantPlanet.Controllers
             return View(await _context.Customer.ToListAsync());
         }
 
+        public async Task<IActionResult> Search(string query)
+        {
+            var plantPlanetContext = _context.Customer.Where(a => (a.FirstName.Contains(query) || a.LastName.Contains(query)));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Customers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -54,10 +60,17 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email,PhoneNumber,IsPremium,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Customer customer)
+        public async Task<IActionResult> Create([Bind("CustomerId,FirstName,LastName,Email,PhoneNumber,User,IsPremium,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Customer customer)
         {
             if (ModelState.IsValid)
             {
+
+                //User user = new User();
+                //user.UserName = customer.User.UserName;
+                //user.Password = customer.User.Password;
+                //user.Type = "Customer";
+                //_context.User.Add(user);
+                //customer.Usename = user.UserName;
                 _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");

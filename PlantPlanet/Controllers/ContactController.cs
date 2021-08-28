@@ -18,9 +18,17 @@ namespace PlantPlanet.Controllers
         {
             _context = context;
         }
+
         // GET: ContactController
         public ActionResult Index()
         {
+            IList<Store> storeLocations = _context.Store.ToArray();
+            //{double,double}[] array = { };
+
+
+
+
+            ViewData["subCategoryList"] = storeLocations;
 
             return View();
         }
@@ -32,8 +40,6 @@ namespace PlantPlanet.Controllers
             String email = Request.Form["email"];
             String phone = Request.Form["phone"];
             String reason = Request.Form["reason"];
-
-
         }
 
     }

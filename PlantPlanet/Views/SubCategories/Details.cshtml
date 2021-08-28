@@ -4,33 +4,41 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>SubCategory</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd class = "col-sm-10">
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.Name)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.ParentCategory)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>@Html.DisplayNameFor(model => model.ImageURL)</h4>
+        </div>
+        <div class="col-md-3">
+            <h4>אפשרויות ניהול</h4>
+        </div>
+    </div>
+    <br />
+    <div class="row">
+        <div class="col-md-3">
             @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImageURL)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImageURL)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ParentCategory)
-        </dt>
-        <dd class = "col-sm-10">
+        </div>
+        <div class="col-md-3">
             @Html.DisplayFor(model => model.ParentCategory.CategoryName)
-        </dd>
-    </dl>
+        </div>
+        <div class="col-md-3">
+            <img src="~/@Html.DisplayFor(model => model.ImageURL)" style="height:80%; width:80%" />
+        </div>
+        <div class="col-md-3">
+            <a asp-action="Delete" asp-route-id="@Model.SubCategoryId">מחיקת תת קטגוריה</a> 
+            <br />
+            <a asp-action="Edit" asp-route-id="@Model.SubCategoryId">עריכת תת קטגוריה</a>
+        </div>
+    </div>
+    <div class="row">
+        <a asp-action="Index">חזרה לרשימת תתי הקטגוריות</a>
+    </div>
 </div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model.SubCategoryId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
-</div>
+
+

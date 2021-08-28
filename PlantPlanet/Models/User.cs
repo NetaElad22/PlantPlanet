@@ -10,6 +10,13 @@ namespace PlantPlanet.Models
 
     public class User
     {
+        //public User(string userName, string password)
+        //{
+        //    UserName = userName;
+        //    Password = password;
+        //    Type = "Customer";
+        //}
+
         [Key]
         [Required(ErrorMessage = "יש להזין שם משתמש")]
         [Display(Name = "שם משתמש")]
@@ -20,7 +27,12 @@ namespace PlantPlanet.Models
         [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
-        public string Type { get; set; } = "Manager";
+        public string Type { get; set; } = "Customer";
+
+        //public int CustomerId { get; set; }
+
+        //public Customer Customer { get; set; }
+
 
     }
 }
