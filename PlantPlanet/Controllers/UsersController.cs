@@ -105,6 +105,9 @@ namespace PlantPlanet.Controllers
                 if (q.Count() > 0)
                 {
                     Signin(q.First());
+                    var userName = User.Identity.Name;
+                    var customer = _context.Customer.Where((customer) => customer.Email == userName).FirstOrDefault();
+                    SessionHelper.SetObjectAsJson(HttpContext.Session, "customer", customer);
                     return RedirectToAction(nameof(Index), "Home");
                 }
                 else

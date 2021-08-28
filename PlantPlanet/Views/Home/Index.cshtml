@@ -49,4 +49,45 @@
         </div>
     </div>
 
+    <div class="weather-title">
+        <span>אל תשכחו את הצמחים בימים החמים</span>
+        <span class="material-icons-outlined">
+            light_mode
+        </span>
+    </div>
+    <table class="weather-table table table-bordered table-dark">
+        <thead>
+            <tr id="dates"></tr>
+        </thead>
+        <tbody>
+            <tr id="icons"></tr>
+            <tr id="temp"></tr>
+        </tbody>
+    </table>
+
 </div>
+
+@section scripts {
+    <script>
+        const settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "https://api.weatherapi.com/v1/forecast.json?key=fdebcdb451cd4f07816131352212508&q=31.47,35.13&days=4&aqi=no&alerts=no",
+            "method": "GET",
+            "headers": {
+                "Access-Control-Allow-Origin": "*"
+            } 
+        };
+
+        $.ajax(settings).done(function (response) {
+            $.each(response.forecast.forecastday, function (i, item) {
+                $('table').append(
+                    $('#dates').append($('<th />').append(item.date)),
+                    $('#icons').append($('<td />').append(`<img title='${item.day.condition.text}' src='${item.day.condition.icon}' />`)),
+                    $('#temp').append($('<td />').append(`<span>&deg</span> ${item.day.maxtemp_c}`))
+                );
+            })
+        });
+    </script>
+}
+ 
