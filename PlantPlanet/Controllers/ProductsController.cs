@@ -120,7 +120,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product)
+        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product, int[] SubCategories)
         {
             if (id != product.ProductId)
             {
