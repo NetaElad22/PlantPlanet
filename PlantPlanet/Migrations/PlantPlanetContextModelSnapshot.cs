@@ -310,7 +310,6 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("real");
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")

@@ -33,78 +33,34 @@
             <a>ניתן לפנות אלינו בטלפון - 0544568541</a> <br />
             <a> או במייל - plantplanetisrael@gmail.com</a><br />
 
+            <div id="StoresMap" style="height: 450px; width: 550px; margin-top:20px"></div>
+            <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
             <script type="text/javascript">
-                var locations = [
-                    ['Bondi Beach', -33.890542, 151.274856, 4],
-                    ['Coogee Beach', -33.923036, 151.259052, 5],
-                    ['Cronulla Beach', -34.028249, 151.157507, 3],
-                    ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-                    ['Maroubra Beach', -33.950198, 151.259302, 1]
-                ];
-
-                var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 10,
-                    center: new google.maps.LatLng(-33.92, 151.25),
-                    mapTypeId: google.maps.MapTypeId.ROADMAP
-                });
-
-                var infowindow = new google.maps.InfoWindow();
-
-                var marker, i;
-
-                for (i = 0; i < locations.length; i++) {
-                    marker = new google.maps.Marker({
-                        position: new google.maps.LatLng(locations[i][1], locations[i][2]),
-                        map: map
-                    });
-
-                    google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                        return function () {
-                            infowindow.setContent(locations[i][0]);
-                            infowindow.open(map, marker);
-                        }
-                    })(marker, i));
+                var markers = @Html.Raw(ViewBag.Markers);
+                window.onload = function () {
+                    var mapOptions = {
+                        center: new google.maps.LatLng(markers[0].lat, markers[0].lng),
+                        zoom: 9,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP
+                    };
+                    var infoWindow = new google.maps.InfoWindow();
+                    var map = new google.maps.Map(document.getElementById("StoresMap"), mapOptions);
+                    for (i = 0; i < markers.length; i++) {
+                        var data = markers[i]
+                        var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+                        var marker = new google.maps.Marker({
+                            position: myLatlng,
+                            map: map,
+                        });
+                        (function (marker, data) {
+                            google.maps.event.addListener(marker, "click", function (e) {
+                                infoWindow.setContent(data.description);
+                                infoWindow.open(map, marker);
+                            });
+                        })(marker, data);
+                    }
                 }
             </script>
-            @*<script>
-            // Initialize and add the map
-            function initMap() {
-
-                // The location of Plant Planet
-                const neta = { lat: 32.1343066, lng: 34.8365885 };
-
-                // The map, centered at Plant Planet
-                const map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 15,
-                    center: PlantPlanet,
-                });
-                var markers[];
-
-                const markers[];
-                markers[1] = new google.maps.Marker({
-                    position: {},
-                    map: map,
-                });
-                markers[1] = new google.maps.Marker({
-                    position: PlantPlanet,
-                    map: map,
-                });
-                markers[1] = new google.maps.Marker({
-                    position: PlantPlanet,
-                    map: map,
-                });
-                // The marker, positioned at Plant Planet
-                const marker = new google.maps.Marker({
-                    position: PlantPlanet,
-                    map: map,
-                });
-            }
-        </script>*@
-
-            <div id="map"></div>
         </div>
     </div>
 </div>
-
-
-<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
