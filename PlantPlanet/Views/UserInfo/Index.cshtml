@@ -1,13 +1,8 @@
 ﻿
 @{
-   @* @using Microsoft.AspNetCore.Http
-    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor*@
-ViewData["Title"] = "UserInfo";
-
-//Customer customer = SessionHelper.GetObjectFromJson<Customer>(HttpContextAccessor.HttpContext.Session, "customer");
-
-Customer customer = (Customer)ViewData["customer"];
-List<Order> customerOrders = (List<Order>)ViewData["customerOrders"];
+    ViewData["Title"] = "UserInfo";
+    Customer customer = (Customer)ViewData["customer"];
+    List<Order> customerOrders = (List<Order>)ViewData["customerOrders"];
 }
 
 <link rel="stylesheet" href="~/css/UserInfo.css" />
@@ -15,47 +10,52 @@ List<Order> customerOrders = (List<Order>)ViewData["customerOrders"];
 <div class="user-info-container">
     <div>
         <div class="section-title">הפרטים שלי</div>
-        <div class="section-details">שם משתמש וסיסמא</div>
-        <div>@customer.FirstName @customer.LastName</div>
+        <div class="section-details">שם משתמש ומייל</div>
+        <div>@customer.User.UserName</div>
         <div>@customer.Email</div>
-        @*<div>@customer.Username</div>*@
 
         <div style="margin-top: 1%;">
             <button class="btn btn-outline-warning btn-sm">
                 <a asp-controller="UserInfo" asp-action="Edit" style="all:unset">עריכה</a>
             </button>
-          @*  <button class="btn btn-outline-warning btn-sm">
-                שינוי סיסמא
-            </button>*@
         </div>
 
     </div>
 
     <div>
-        <div class="section-title" style="margin-top: 5%">הזמנות קודמות</div>
-        <div class="section-details">
-            <span>מספר הזמנה</span>
-@*            <span>תאריך</span>*@
-            <span>סה"כ הזמנה</span>
-        </div>
-
+        <div class="prev-orders-title">הזמנות קודמות</div>
         @{
             if (customerOrders.Count != 0)
             {
-                @foreach (var order in customerOrders)
+                <table class="table orders-table">
+                    <thead>
+                        <tr>
+                            <th class="orders-table-header">מספר הזמנה</th>
+                            <th class="orders-table-header">סה"כ הזמנה</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var order in customerOrders)
+                        {
+                            <tr>
+                                <td>@order.OrderId</td>
+                                <td>@order.OrderSumPayment &#8362;</td>
+                                <td>
+                                    <button class="btn btn-outline-info">
+                                        <a asp-action="Order" asp-route-id="@order.OrderId"style="all:unset">לצפייה בהזמנה</a>
+                                    </button>
+                                </td>
+                            </tr>
+                         }
+                        </tbody>
+                </table>
+
+                } 
+                else
                 {
-                <div style="margin-top: 3%">
-                    <span>@order.OrderId</span>
-                    <span>@order.OrderSumPayment</span>
-                    <button class="btn btn-outline-info">
-                        <a asp-controller="Orders" asp-action="Index" style="all:unset">לצפייה בהזמנה</a>
-                    </button>
-                </div>
+                    <div style="margin-top: 2%">לא קיימות הזמנות</div>
                 }
-            } else
-            {
-                <div style="margin-top: 3%">לא קיימות הזמנות</div>
-            }
         }
     </div>
 
