@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,18 +21,29 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Stores
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Store.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.Store.Where(a => a.StoreName.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(string nameQuery, int idQuery)
+        {
+            var plantPlanetContext = _context.Store.Where(a => (a.StoreName.Contains(nameQuery) || nameQuery == null) &&
+            (a.StoreId == idQuery || idQuery == 0));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Stores/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +62,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Stores/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +71,7 @@ namespace PlantPlanet.Controllers
         // POST: Stores/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("StoreId,StoreName,StoreLocationX,StoreLocationY")] Store store)
@@ -72,6 +86,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Stores/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,6 +105,7 @@ namespace PlantPlanet.Controllers
         // POST: Stores/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("StoreId,StoreName,StoreLocationX,StoreLocationY")] Store store)
@@ -123,6 +139,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Stores/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,6 +158,7 @@ namespace PlantPlanet.Controllers
         }
 
         // POST: Stores/Delete/5
+        [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

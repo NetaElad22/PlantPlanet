@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="~/css/filter.css" />
 
 <div class="container">
     <div class="row">
@@ -13,12 +14,51 @@
 
         </div>
         <div class="col-md-4">
-            <form asp-action="Search" asp-controller="Stores" style="margin-right:3%">
-                <input name="query" class="search-input" type="search" placeholder="חיפוש חנות" />
-                <button class="search-container" style="border:none; background-color:transparent">
-                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-                </button>
-            </form>
+            <button id="filterProducts" style="all:unset; padding-right:10%">
+                <h6 class="fas fa-search"> סינון חנויות </h6>
+            </button>
+
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content" style="align-items:center">
+                    <span class="close">&times;</span>
+                    <form asp-action="Filter" asp-controller="Stores" style="margin-top: 4%">
+
+                        <div class="container" style="text-align:center">
+                            <h4>סינון חנויות</h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי שם החנות</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="NameQuery" class="search-input" type="search" placeholder="שם חנות" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי מספר סידורי</i>
+                                </div>
+                                <div class="col-md-5">
+                                    <input name="idQuery" class="search-input" type="number" placeholder="מספר סידורי" />
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="search-container" style="border:none; background-color:transparent">
+                                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @*<form asp-action="Search" asp-controller="Stores" style="margin-right:3%">
+                    <input name="query" class="search-input" type="search" placeholder="חיפוש חנות" />
+                    <button class="search-container" style="border:none; background-color:transparent">
+                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                    </button>
+                </form>*@
         </div>
     </div>
     <br />
@@ -45,4 +85,4 @@
         </div>
     }
 </div>
-     
+<script src="~/js/filter.js"></script>

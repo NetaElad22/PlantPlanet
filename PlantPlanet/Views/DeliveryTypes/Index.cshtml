@@ -3,8 +3,9 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="~/css/filter.css" />
 
-<div class="container" >
+<div class="container">
     <div class="row">
         <div class="col-md-4">
             <a asp-action="Create" class="btn btn-outline-info">יצירת סוג משלוח חדש</a>
@@ -13,12 +14,60 @@
 
         </div>
         <div class="col-md-4">
-            <form asp-action="Search" asp-controller="DeliveryTypes" style="margin-right:3%">
-                <input name="query" class="search-input" type="search" placeholder="חיפוש סוג משלוח" />
-                <button class="search-container" style="border:none; background-color:transparent">
-                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-                </button>
-            </form>
+            <button id="filterProducts" style="all:unset; padding-right:10%">
+                <h6 class="fas fa-search"> סינון סוגי משלוח </h6>
+            </button>
+
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content" style="align-items:center">
+                    <span class="close">&times;</span>
+                    <form asp-action="Filter" asp-controller="DeliveryTypes" style="margin-top: 4%">
+
+                        <div class="container" style="text-align:center">
+                            <h4>סינון סוגי משלוח</h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי שם</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="NameQuery" class="search-input" type="search" placeholder="שם סוג משלוח" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי תוספת תשלום מקסימלית</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="additionQuery" class="search-input" type="number" placeholder="תוספת תשלום" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי מספר סידורי</i>
+                                </div>
+                                <div class="col-md-5">
+                                    <input name="idQuery" class="search-input" type="number" placeholder="מספר סידורי" />
+                                </div>
+                                <div class="col-md-1">
+                                    <button class="search-container" style="border:none; background-color:transparent">
+                                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @*<form asp-action="Search" asp-controller="DeliveryTypes" style="margin-right:3%">
+            <input name="query" class="search-input" type="search" placeholder="חיפוש סוג משלוח" />
+            <button class="search-container" style="border:none; background-color:transparent">
+                <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+            </button>
+        </form>*@
         </div>
     </div>
     <br />
@@ -52,3 +101,4 @@
     }
 </div>
 
+<script src="~/js/filter.js"></script>

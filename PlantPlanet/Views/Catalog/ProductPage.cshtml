@@ -6,6 +6,8 @@
 <html>
 <head>
     <link rel="stylesheet" href="~/css/productPage.css" />
+    <link rel="stylesheet" href="~/css/filter.css" />
+
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     @*<script src="/js/productPage.js"></script>*@
 </head>
@@ -61,14 +63,14 @@
                 </div>
             </div>
             @*<div class="container">
-                <div class="card">
-                    <button onclick="decreaseCount()">-</button>
-                    <h2 id="quantity"></h2>
-                    <button onclick="increaseCount()">+</button>
-                    <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="document.getElementById('quantity').innerText">הוספה</a>
+                    <div class="card">
+                        <button onclick="decreaseCount()">-</button>
+                        <h2 id="quantity"></h2>
+                        <button onclick="increaseCount()">+</button>
+                        <a asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="document.getElementById('quantity').innerText">הוספה</a>
 
-                </div>
-            </div>*@
+                    </div>
+                </div>*@
             @*<div class="addToCart">
                     <div class="counter">
                         <button id="decrease" class="down">-</button>
@@ -93,13 +95,13 @@
             data = data - 1;
             document.getElementById("quantity").innerText = data;
         }
-        
+
         function increaseCount() {
             data = data + 1;
             @*@quantity = @quantity + 1;*@
             document.getElementById("quantity").innerText = data;
         }
-        </script>
+    </script>
     @*//document.getElementById("decrease").addEventListener("click", function () {
             //    alert("decrease")
             //});
@@ -134,22 +136,6 @@
         }
             </script>*@
 
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
+    <script src="~/js/dropdown.js"></script>
 </body>
 </html>

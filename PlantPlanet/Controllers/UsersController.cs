@@ -5,6 +5,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -43,12 +44,14 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Users
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.User.ToListAsync());
         }
 
         // GET: Users/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -73,16 +76,6 @@ namespace PlantPlanet.Controllers
             await HttpContext.SignOutAsync();
             return RedirectToAction(nameof(Index), "Home");
         }
-
-        // POST: Users/Login
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Logout(User u)
-        //{
-
-        //}
 
         // GET: Users/Login
         public IActionResult Login()
@@ -119,7 +112,16 @@ namespace PlantPlanet.Controllers
             return View(user);
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(string nameQuery, string typeQuery)
+        {
+            var plantPlanetContext = _context.User.Where(a => (a.UserName.Contains(nameQuery) || nameQuery == null) &&
+            (a.Type.Equals(typeQuery) || typeQuery.Equals("הכל")));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Users/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             return View();
@@ -128,6 +130,7 @@ namespace PlantPlanet.Controllers
         // POST: Users/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("UserName,Password")] User user)
@@ -142,6 +145,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Users/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -160,9 +164,10 @@ namespace PlantPlanet.Controllers
         // POST: Users/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("UserName,Password")] User user)
+        public async Task<IActionResult> Edit(string id, [Bind("UserName,Password,Type")] User user)
         {
             if (id != user.UserName)
             {

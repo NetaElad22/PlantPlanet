@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
 using PlantPlanet.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlantPlanet.Controllers
 {
@@ -26,19 +27,43 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: SubCategories
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoryList"] = categoryList;
+
             var plantPlanetContext = _context.SubCategory.Include(s => s.ParentCategory);
             return View(await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.SubCategory.Where(a => a.Name.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(string NameQuery, int idQuery, string CategoryQuery)
+        {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoryList"] = categoryList;
+
+            var plantPlanetContext = _context.SubCategory.Where(c =>
+            (c.Name.Contains(NameQuery) || NameQuery == null) &&
+            (c.SubCategoryId.Equals(idQuery) || idQuery == 0) &&
+            (c.ParentCategory.CategoryName.Equals(CategoryQuery) || CategoryQuery.Equals("הכל")));
+
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: SubCategories/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -58,6 +83,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: SubCategories/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             ViewData["ParentCategoryId"] = new SelectList(_context.Category, "CategoryId", "CategoryName");
@@ -67,6 +93,7 @@ namespace PlantPlanet.Controllers
         // POST: SubCategories/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(IFormFile ImageURL, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
@@ -95,6 +122,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: SubCategories/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -114,6 +142,7 @@ namespace PlantPlanet.Controllers
         // POST: SubCategories/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("SubCategoryId,Name,ImageURL,ParentCategoryId")] SubCategory subCategory)
@@ -158,6 +187,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: SubCategories/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -177,6 +207,7 @@ namespace PlantPlanet.Controllers
         }
 
         // POST: SubCategories/Delete/5
+        [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

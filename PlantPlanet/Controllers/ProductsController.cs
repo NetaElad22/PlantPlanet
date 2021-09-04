@@ -28,6 +28,11 @@ namespace PlantPlanet.Controllers
         // GET: Products
         public async Task<IActionResult> Index()
         {
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
             var plantPlanetContext = _context.Product.Include(p => p.Supplier);
             return View(await plantPlanetContext.ToListAsync());
         }
@@ -35,6 +40,23 @@ namespace PlantPlanet.Controllers
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery, int SaleQuery, string categoryQuery)
+        {
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
+            var plantPlanetContext = _context.Product.Where(p =>
+            (p.Name.Contains(NameQuery) || NameQuery == null) &&
+            (p.SellingPrice <= PriceQuery || PriceQuery == 0) &&
+            (p.Color.Contains(ColorQuery) || ColorQuery == null) &&
+            ((p.Discount > 0 && SaleQuery == 1) || SaleQuery != 1) &&
+            (p.SubCategories.Where(s => s.Name.Equals(categoryQuery)).Any() || categoryQuery.Equals("הכל")));
+
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
@@ -111,7 +133,8 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), nameof(Supplier.SupplierId), nameof(Supplier.CompanyName), product.SupplierId);
+            ViewData["subcategories"] = new SelectList(_context.SubCategory, nameof(SubCategory.SubCategoryId), nameof(SubCategory.Name));
             return View(product);
         }
 
@@ -129,6 +152,12 @@ namespace PlantPlanet.Controllers
 
             if (ModelState.IsValid)
             {
+                if(SubCategories.Count() != 0) 
+                {
+                    product.SubCategories = new List<SubCategory>();
+                    product.SubCategories.AddRange(_context.SubCategory.Where(x => SubCategories.Contains(x.SubCategoryId)));
+                }
+                
                 try
                 {
                     if (ImageURL == null)

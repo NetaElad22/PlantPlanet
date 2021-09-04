@@ -8,6 +8,7 @@ namespace PlantPlanet.Models
 {
     public class DeliveryType
     {
+        [Display(Name = "מספר סידורי")]
         public int DeliveryTypeId { get; set; }
 
         [Required(ErrorMessage = "יש להזין סוג משלוח")]

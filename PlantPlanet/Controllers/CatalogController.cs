@@ -41,6 +41,11 @@ namespace PlantPlanet.Controllers
             categoriesList = _context.Category.ToArray();
             ViewData["categoriesList"] = categoriesList;
 
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
             // selecting all the subcategories that belong to a certain category
             var plantPlanetContext = _context.SubCategory.Include(s => s.ParentCategory).Where(a => a.ParentCategoryId.Equals(id)).OrderBy(a => a.Name);
             return View(await plantPlanetContext.ToListAsync());           
@@ -91,7 +96,22 @@ namespace PlantPlanet.Controllers
 
             return View(product);
         }
-        
+
+        public async Task<IActionResult> Sales()
+        {
+            // sending all subcategories to the index catalog view
+            IList<Category> categoryList = new List<Category>();
+            categoryList = _context.Category.ToArray();
+            ViewData["categoriesList"] = categoryList;
+
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoriesList"] = subCategoryList;
+
+            var plantPlanetContext = _context.Product.Where(p => p.Discount > 0);
+            return View("Products",await plantPlanetContext.ToListAsync());
+        }
         public async Task<IActionResult> Search(string query)
         {
             // sending all subcategories to the index catalog view
@@ -129,5 +149,6 @@ namespace PlantPlanet.Controllers
 
             return View("Products", await plantPlanetContext.ToListAsync());
         }
+
     }
 }
