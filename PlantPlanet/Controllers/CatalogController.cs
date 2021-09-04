@@ -59,8 +59,8 @@ namespace PlantPlanet.Controllers
             ViewData["subCategoriesList"] = subCategoryList;
 
             // selecting all the products that belong to a certain subcategory
-            var productsByCategory = _context.Product.Include(p => p.Supplier).Include(p => p.SubCategories);
-               /* .Where(p => p.SubCategories.Where(subCategory => subCategory.SubCategoryId.Equals(id)).Any());*/
+            var productsByCategory = _context.Product.Include(p => p.Supplier).Include(p => p.SubCategories)
+                .Where(p => p.SubCategories.Where(subCategory => subCategory.SubCategoryId.Equals(id)).Any());
 
             var result = await productsByCategory.ToListAsync();
             return View(result);
