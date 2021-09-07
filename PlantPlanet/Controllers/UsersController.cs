@@ -133,7 +133,7 @@ namespace PlantPlanet.Controllers
         [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("UserName,Password")] User user)
+        public async Task<IActionResult> Create([Bind("UserName,Password,Type")] User user)
         {
             if (ModelState.IsValid)
             {

@@ -22,7 +22,7 @@ namespace PlantPlanet.Controllers
         {
             var userName = User.Identity.Name;
             var customer = _context.Customer.Where((customer) => customer.User.UserName == userName).Include(u => u.User).FirstOrDefault();
-            var customerOrders = _context.Order.Where((order) => order.CustomerId == customer.CustomerId).ToList();
+            var customerOrders = _context.Order.Where(order => order.CustomerId == customer.CustomerId).ToList();
             ViewData["customer"] = customer;
             ViewData["customerOrders"] = customerOrders;
 
