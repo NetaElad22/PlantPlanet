@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "OrderInfo";
+    Order order = (Order)ViewData["order"];
+    int payNum = order.PaymentsNumber % 1000;
+}
+
+<link rel="stylesheet" href="~/css/UserInfo.css" />
+
+<div>
+    <div class="order-num">הזמנה #@order.OrderId</div>
+    <table class="table order-items-table">
+        <thead>
+            <tr>
+                <th class="order-item-header">תמונת מוצר</th>
+                <th class="order-item-header">שם מוצר</th>
+                <th class="order-item-header">מק"ט</th>
+                <th class="order-item-header">מחיר</th>
+                <th class="order-item-header">כמות</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var orderItem in order.Products)
+            {
+                <tr>
+                    <td>
+                        <img style="width: 150px;" src="@orderItem.Product.ImageURL" />
+                    </td>
+                    <td>
+                        @orderItem.Product.Name
+                    </td>
+                    <td>@orderItem.ProductId</td>
+                    <td>
+                          @orderItem.Product.SellingPrice &#8362;
+                    </td>
+                    <td>@orderItem.Quantity</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <div class="total-order-sum">הסכום הכולל - @order.OrderSumPayment &#8362;</div>
+
+    <div style="width: 40%">
+        <div class="order-details-title">פרטי הזמנה</div>
+        <hr />
+        <div style="display: flex; justify-content: space-evenly;">
+            <div style="flex: 0.5;">
+                <span style="font-weight:bold">פרטי תשלום</span>
+                <div>@order.PaymentMethod</div>
+                <div>@payNum******</div>
+            </div>
+            <div>
+                <span style="font-weight:bold">כתובת משלוח</span>
+                <div>@order.City</div>
+                <div>@order.Street</div>
+                <div>@order.HouseNumber</div>
+                <div>@order.FloorNumber</div>
+                <div>@order.ZipCode</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

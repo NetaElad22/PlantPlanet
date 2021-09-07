@@ -1,21 +1,68 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 *@
+
+<link rel="stylesheet" href="~/css/Cart.css" />
+
 @{
     @using Microsoft.AspNetCore.Http
     @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
-    if (SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct> == null)
+    float totalSum = 0;
+
+    if (SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct> == null ||
+        SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart").Count() == 0)
     {
-        <div>dsd</div>
+        <div class="empty-cart">סל הקניות שלך ריק</div>
     }
     else
     {
-        @foreach (var product in SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct>)
-        {
-            <div>@product.product.Name</div>
-            <div>@product.quantity</div>
-        }
+        <table class="table order-items-table">
+            <thead>
+                <tr>
+                    <th class="order-item-header">תמונת מוצר</th>
+                    <th class="order-item-header">שם מוצר</th>
+                    <th class="order-item-header">מק"ט</th>
+                    <th class="order-item-header">מחיר</th>
+                    <th class="order-item-header">כמות</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var cartItem in SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct>)
+                {
+                    {
+                       totalSum += cartItem.quantity * cartItem.product.SellingPrice;
+                    } 
+                    <tr>
+                        <td>
+                            <img style="width: 150px;" src="@cartItem.product.ImageURL" />
+                        </td>
+                        <td>
+                            @cartItem.product.Name
+                        </td>
+                        <td>@cartItem.product.ProductId</td>
+                        <td>
+                            @cartItem.product.SellingPrice &#8362;
+                        </td>
+                        <td>@cartItem.quantity</td>
+                        <td>
+                            <a class="nav-link text-dark" asp-area="" asp-action="RemoveProduct" asp-route-id="@cartItem.product.ProductId">
+                                <span title="הסר פריט" class="cart-icon material-icons-outlined">
+                                    clear
+                                </span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+        <div class="total-order-sum">הסכום הכולל - @totalSum &#8362;</div>
+
+        <button class="btn btn-outline-success" style="margin-right: 45%; margin-top: 5%">
+            <a style="all:unset" asp-area="" asp-action="Order" asp-route-sum="@totalSum">
+                בצע הזמנה
+            </a>
+        </button>
     }
 }

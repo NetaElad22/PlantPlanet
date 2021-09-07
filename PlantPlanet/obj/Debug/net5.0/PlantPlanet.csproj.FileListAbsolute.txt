@@ -1542,3 +1542,5 @@ C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet
 C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.genruntimeconfig.cache
 C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.csproj.AssemblyReference.cache
 C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Facebook\index.cshtml.g.cs
+C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Cart\Order.cshtml.g.cs
+C:\Users\nurit\Source\Repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Order.cshtml.g.cs

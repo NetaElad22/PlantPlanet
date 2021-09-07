@@ -1,0 +1,20 @@
+﻿.order-items-table {
+    margin-top: 2%;
+    text-align-last: center;
+    border: 1px solid #dddddd;
+}
+
+    .order-items-table td {
+        vertical-align: middle
+    }
+
+
+.total-order-sum {
+    text-align: center;
+    font-weight: bold;
+}
+
+.empty-cart {
+    text-align: center;
+    font-size: 22px;
+}

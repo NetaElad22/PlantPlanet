@@ -76,13 +76,13 @@ namespace PlantPlanet.Models
 
         [Required(ErrorMessage = "יש להזין מספר בית")]
         [Display(Name = "מספר בית")]
-        public string HouseNumber { get; set; }
+        public int HouseNumber { get; set; }
 
         [Display(Name = "קומה")]
-        public string FloorNumber { get; set; }
+        public int FloorNumber { get; set; }
 
         [Display(Name = "מספר דירה")]
-        public string FlatNumber { get; set; }
+        public int FlatNumber { get; set; }
 
         [Required(ErrorMessage = "יש להזין מיקוד")]
         [Display(Name = "מיקוד")]

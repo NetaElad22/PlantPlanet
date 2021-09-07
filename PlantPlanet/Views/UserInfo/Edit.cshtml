@@ -1,4 +1,5 @@
-﻿@{
+﻿@model PlantPlanet.Models.Customer
+@{
     ViewData["Title"] = "EditUserInfo";
 
     Customer customer = (Customer)ViewData["customer"];
@@ -6,66 +7,95 @@
 
 <link rel="stylesheet" href="~/css/UserInfo.css" />
 
-<div class="edit-page">
-    <div class="edit-header">
-        עריכת פרטי הפרופיל
+<div class="row">
+    <div class="col-sm edit-page">
+        <div class="edit-header section-title">
+            עריכת פרטי הפרופיל
+        </div>
+
+        <form method="post" class="edit-form" asp-action="Edit" asp-route-id="@customer.CustomerId">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="@customer.CustomerId" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="@customer.FirstName" class="form-control"/>
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="@customer.LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="@customer.Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PhoneNumber" class="control-label"></label>
+                <input asp-for="@customer.PhoneNumber" class="form-control" />
+                <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="@customer.City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="@customer.Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HouseNumber" class="control-label"></label>
+                <input type="number" asp-for="@customer.HouseNumber" class="form-control" />
+                <span asp-validation-for="HouseNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FloorNumber" class="control-label"></label>
+                <input type="number" asp-for="@customer.FloorNumber" class="form-control" />
+                <span asp-validation-for="FloorNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FlatNumber" class="control-label"></label>
+                <input type="number" asp-for="@customer.FlatNumber" class="form-control" />
+                <span asp-validation-for="FlatNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ZipCode" class="control-label"></label>
+                <input asp-for="@customer.ZipCode" class="form-control" />
+                <span asp-validation-for="ZipCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="שמירת שינויים" class="btn btn-outline-success save-changes-button" />
+            </div>
+        </form>
     </div>
 
-    <form class="edit-form" asp-action="Edit">
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="@customer.CustomerId" />
-        <div class="form-group">
-            <label asp-for="@customer.FirstName" class="control-label"></label>
-            <input asp-for="@customer.FirstName" class="form-control" placeholder="@customer.FirstName"/>
-            <span asp-validation-for="@customer.FirstName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.LastName" class="control-label"></label>
-            <input asp-for="@customer.LastName" class="form-control" />
-            <span asp-validation-for="@customer.LastName" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.Email" class="control-label"></label>
-            <input asp-for="@customer.Email" class="form-control" />
-            <span asp-validation-for="@customer.Email" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.PhoneNumber" class="control-label"></label>
-            <input asp-for="@customer.PhoneNumber" class="form-control" />
-            <span asp-validation-for="@customer.PhoneNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.City" class="control-label"></label>
-            <input asp-for="@customer.City" class="form-control" />
-            <span asp-validation-for="@customer.City" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.Street" class="control-label"></label>
-            <input asp-for="@customer.Street" class="form-control" />
-            <span asp-validation-for="@customer.Street" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.HouseNumber" class="control-label"></label>
-            <input asp-for="@customer.HouseNumber" class="form-control" />
-            <span asp-validation-for="@customer.HouseNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.FloorNumber" class="control-label"></label>
-            <input asp-for="@customer.FloorNumber" class="form-control" />
-            <span asp-validation-for="@customer.FloorNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.FlatNumber" class="control-label"></label>
-            <input asp-for="@customer.FlatNumber" class="form-control" />
-            <span asp-validation-for="@customer.FlatNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="@customer.ZipCode" class="control-label"></label>
-            <input asp-for="@customer.ZipCode" class="form-control" />
-            <span asp-validation-for="@customer.ZipCode" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <input type="submit" value="שמירת שינויים" class="btn btn-primary" />
-        </div>
-    </form>
+    <div class="col-sm">
+        <div class="edit-header section-title">שינוי סיסמא</div>
+        <form class="edit-form" method="post" asp-action="ChangePassword">
+            <div class="form-group">
+                <label class="control-label">סיסמא נוכחית</label>
+                <input type="password" id="pass" name="prevPassword" class="form-control" />
+                <span asp-validation-for="@customer.User.Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">סיסמא חדשה</label>
+                <input type="password" name="currPassword" class="form-control" />
+                <span asp-validation-for="@customer.User.Password" class="text-danger"></span>
+            </div>
+            <div style="color: red; text-align: center">
+                @TempData["error"]
+            </div>
+            <div class="form-group">
+                <input type="submit" value="שינוי סיסמא" class="btn btn-outline-success save-changes-button" />
+            </div>
+        </form>
+    </div>
+
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

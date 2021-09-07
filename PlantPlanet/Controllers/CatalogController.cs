@@ -62,7 +62,8 @@ namespace PlantPlanet.Controllers
             var productsByCategory = _context.Product.Include(p => p.Supplier).Include(p => p.SubCategories)
                 .Where(p => p.SubCategories.Where(subCategory => subCategory.SubCategoryId.Equals(id)).Any());
 
-            return View(await productsByCategory.ToListAsync());
+            var result = await productsByCategory.ToListAsync();
+            return View(result);
         }
         public async Task<IActionResult> ProductPage(int? id)
         {

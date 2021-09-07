@@ -23,9 +23,57 @@
 .edit-header {
     font-size: 25px;
     text-align: right;
+    margin-top: 5%;
 }
 
 .edit-form {
     margin-top: 5%;
+    width: 80%;
+}
+
+.save-changes-button{
+    margin-right: 35%;
+    margin-top: 5%;
+}
+
+.orders-table {
     width: 50%;
+    text-align-last: center;
+}
+
+.prev-orders-title {
+    width: 50%;
+    font-size: 25px;
+    margin-top: 5%;
+    border-bottom: 1px solid #d5d9de;
+}
+
+.orders-table-header {
+    border: none !important;
+
+}
+
+.order-items-table {
+    margin-top: 2%;
+    text-align-last: center;
+    border: 1px solid #dddddd;
+}
+
+.order-items-table td {
+    vertical-align: middle
+}
+
+.order-num {
+    margin-top: 5%;
+    font-size: 22px
+}
+
+.total-order-sum {
+    text-align: center;
+    font-weight: bold;
+}
+
+.order-details-title {
+    margin-top: 10%;
+    font-size: 22px;
 }
