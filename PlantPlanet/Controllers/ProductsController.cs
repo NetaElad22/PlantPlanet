@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
 using PlantPlanet.Models;
+using System.Text.Json;
 
 namespace PlantPlanet.Controllers
 {
@@ -25,11 +26,46 @@ namespace PlantPlanet.Controllers
             _hosting = hosting;
         }
 
+
+
         // GET: Products
         public async Task<IActionResult> Index()
         {
+            List<Quantity> availableQuantity = new List<Quantity>();
+            string titles = "";
+
             var plantPlanetContext = _context.Product.Include(p => p.Supplier);
-            return View(await plantPlanetContext.ToListAsync());
+            var productsList = await plantPlanetContext.ToListAsync();
+            foreach(var item in productsList){
+                availableQuantity.Add(new Quantity(item.ProductId, item.Quantity));
+                titles += item.ProductId+",";
+            }
+            ViewData["availableQuantity"] = availableQuantity;
+            ViewBag.titles = titles;
+
+
+            //var oiList =  _context.OrderItem.Include(oi => oi.ProductId);
+            var orderItemList = await _context.OrderItem.ToListAsync();
+            List<Quantity> productsSold = new List<Quantity>();
+
+            foreach (var orderItem in orderItemList)
+            {
+                bool isProductExist = false;
+                productsSold.ForEach(ps => {
+                    if (ps.id == orderItem.ProductId)
+                    {
+                        ps.quantity += orderItem.Quantity;
+                        isProductExist = true;
+                    }
+                });
+                if (!isProductExist)
+                {
+                    productsSold.Add(new Quantity(orderItem.ProductId, orderItem.Quantity));
+                }
+            }
+            ViewData["productsSold"] = productsSold;
+
+            return View(productsList);
         }
 
         public async Task<IActionResult> Search(string query)

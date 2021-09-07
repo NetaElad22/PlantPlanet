@@ -3,19 +3,19 @@
 
 *@
 @{
-   @using Microsoft.AspNetCore.Http
-   @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+    @using Microsoft.AspNetCore.Http
+    @inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
 
     if (SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct> == null)
     {
-                            <div>dsd</div>
+        <div>dsd</div>
     }
     else
     {
         @foreach (var product in SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContextAccessor.HttpContext.Session, "cart") as IList<CartProduct>)
         {
-                <div>@product.product.Name</div>
-                <div>@product.quantity</div>
-        }
+            <div>@product.product.Name</div>
+            <div>@product.quantity</div>
         }
     }
+}
