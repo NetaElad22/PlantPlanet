@@ -1,13 +1,8 @@
-﻿@model PlantPlanet.Models.Product
+@model PlantPlanet.Models.Product
 
 @{
 
 }
-<script>
-    function getItemQuantity() {
-        return document.getElementById("quantity").value;
-    }
-</script>
 <html>
 
 <head>
@@ -57,12 +52,9 @@
                         <br />
                         <span class="title">צבע: </span>
                         <span>@Model.Color</span>
-                        <br />
-                        <span class="title">כמות: </span>
-                        <input id="quantity" style="width:45px" type="number" value="1" />
                         <br /><br />
                         <button class="btn btn-success" type="submit">
-                            <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="getItemQuantity()">
+                            <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="1">
                                 הוספה לסל
                             </a>
                         </button>
