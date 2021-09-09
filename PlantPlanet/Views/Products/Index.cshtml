@@ -124,3 +124,147 @@
         }
     </div>
     <script src="~/js/filter.js"></script>
+
+    @foreach (var item in Model)
+    {
+        <br />
+        <div class="row">
+            <div class="col-md-4">
+                @Html.DisplayFor(modelItem => item.Name)
+            </div>
+            <div class="col-md-4">
+                <img src="~/@item.ImageURL" style="width:200px; height:200px" />
+            </div>
+            <div class="col-md-4">
+                <a asp-action="Edit" asp-route-id="@item.ProductId">עריכה</a> |
+                <a asp-action="Details" asp-route-id="@item.ProductId">פרטים</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProductId">מחיקה</a>
+            </div>
+        </div>
+
+    }
+
+    <!-- Load d3.js -->
+    <script src="https://d3js.org/d3.v6.js"></script>
+
+    <!-- Create a div where the graph will take place -->
+    <div class="row" style="padding-top: 50px">
+        <div>
+            <div>זמינות המוצרים</div>
+            <div id="availableQuantity"></div>
+        </div>
+        <div class="col-md-4" style="margin-right:30px">
+            <div>המוצרים הנמכרים ביותר</div>
+            <div id="productsSold"></div>
+        </div>
+    </div>
+
+        <script>
+        // set the dimensions and margins of the graph
+        const margin = { top: 10, right: 30, bottom: 30, left: 60 },
+            width = 500 - margin.left - margin.right,
+            height = 450 - margin.top - margin.bottom;
+
+        // append the svg object to the body of the page
+        const svg = d3.select("#availableQuantity")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        // append the svg object to the body of the page
+        const svgProductsSold = d3.select("#productsSold")
+            .append("svg")
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+            .append("g")
+            .attr("transform", `translate(${margin.left},${margin.top})`);
+
+        var i = '@ViewBag.titles'
+        console.log(i.substr(0, i.length - 1).split(","))
+        i = i.substr(0, i.length - 1).split(",")
+
+        // X axis
+        var x = d3.scaleBand()
+            .range([0, width])
+            .domain(i)
+            .padding(0.2);
+
+        svg.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+
+
+        svgProductsSold.append("g")
+            .attr("transform", "translate(0," + height + ")")
+            .call(d3.axisBottom(x))
+            .selectAll("text")
+            .attr("transform", "translate(-10,0)rotate(-45)")
+            .style("text-anchor", "end");
+
+        //const x = d3.scaleLinear().domain([0, 9200]).range([0, width]);
+        //svg.append("g")
+        //    .attr("transform", "translate(0," + height + ")")
+        //    .call(d3.axisBottom(x));
+
+        // Add Y axis
+        const y = d3.scaleLinear()
+            .domain([0, 200])
+            .range([height, 0]);
+
+        svg.append("g")
+            .call(d3.axisLeft(y));
+
+        svgProductsSold.append("g")
+            .call(d3.axisLeft(y));
+        </script>
+        @foreach (var product in ViewData["availableQuantity"] as IList<Quantity>)
+        {
+            <script>
+
+            svg.selectAll("mybar")
+                .data([{ id: @product.id, quantity: @product.quantity }])
+                .enter()
+                .append("rect")
+                .attr("x", function (d) { return x(d.id); })
+                .attr("y", function (d) { return y(d.quantity); })
+                .attr("width", x.bandwidth())
+                .attr("height", function (d) { return height - y(d.quantity); })
+                .attr("fill", "#69b3a2")
+
+            @*svg
+                .append("g")
+                .selectAll("dot")
+                .data([{ id: @product.id, quantity: @product.quantity }])
+                .join("circle")
+                .attr("cx", d => x(d.id))
+                .attr("cy", d => y(d.quantity))
+                .attr("r", 5)
+                .attr("fill", "#69b3a2")*@
+
+            </script>
+        }
+
+        @foreach (var product in ViewData["productsSold"] as IList<Quantity>)
+        {
+
+            <script>
+
+            svgProductsSold.selectAll("mybar")
+                .data([{ id: @product.id, quantity: @product.quantity }])
+                .enter()
+                .append("rect")
+                .attr("x", function (d) { return x(d.id); })
+                .attr("y", function (d) { return y(d.quantity); })
+                .attr("width", x.bandwidth())
+                .attr("height", function (d) { return height - y(d.quantity); })
+                .attr("fill", "#69b3a2")
+
+            </script>
+        }
+    </div>
+
