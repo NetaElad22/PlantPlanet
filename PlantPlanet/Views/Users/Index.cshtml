@@ -85,7 +85,16 @@
                 @Html.DisplayFor(modelItem => item.UserName)
             </div>
             <div class="col-md-4">
-                @Html.DisplayFor(modelItem => item.Type)
+                @{
+                    if (item.Type.Equals("Customer"))
+                    {
+                        <div>לקוח.ה</div>
+                    }
+                    else if (item.Type.Equals("Manager"))
+                    {
+                        <div>מנהל.ת</div>
+                    }
+                }
             </div>
             <div class="col-md-4">
                 <a asp-action="Edit" asp-route-id="@item.UserName">עריכה</a> |

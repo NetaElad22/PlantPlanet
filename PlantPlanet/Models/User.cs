@@ -27,6 +27,7 @@ namespace PlantPlanet.Models
         [Display(Name = "סיסמא")]
         public string Password { get; set; }
 
+        [Display(Name = "סוג משתמש")]
         public string Type { get; set; } = "Customer";
 
         //public int CustomerId { get; set; }
