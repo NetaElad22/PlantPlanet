@@ -31,7 +31,13 @@ namespace PlantPlanet.Controllers
             var isAuth = HttpContext.User.IsInRole("Customer");
             isAuth = HttpContext.User.IsInRole("Manager");
 
-            return View();
+            if (HttpContext.User.IsInRole("Customer"))
+            {
+                return View();
+
+            }
+
+            return View("ManagerHome");
         }
 
         public async Task<IActionResult> ManagerHome()

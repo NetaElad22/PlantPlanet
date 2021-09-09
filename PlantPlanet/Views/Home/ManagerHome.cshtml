@@ -3,106 +3,91 @@
 }
 
 <div>
-<link rel="stylesheet" href="~/css/Home.css" />
+    <link rel="stylesheet" href="~/css/Home.css" />
 
-<div class="container">
-    <div class="home-title">
-        plant planet
-    </div>
-    <div style="display:flex; justify-content:center">   
-    <canvas id="canvas"></canvas>
+    <div class="container">
+        <div class="home-title">
+            plant planet
+        </div>
+        <div style="display:flex; justify-content:center">
+            <canvas id="canvas"></canvas>
+        </div>
+
+
+        <script>
+            const canvas = document.getElementById('canvas');
+            const ctx = canvas.getContext('2d');
+            const image = new Image(60, 45);
+            image.onload = drawImageActualSize;
+            image.src = '/Images/home-page-1.jpg';
+            function drawImageActualSize() {
+                canvas.width = this.naturalWidth;
+                canvas.height = this.naturalHeight;
+                ctx.drawImage(this, 0, 0);
+            }
+        </script>
     </div>
 
+    <script src="https://d3js.org/d3.v6.js"></script>
+
+    <div class="row" style="padding-top: 50px">
+        <div>
+            <div>זמינות המוצרים</div>
+            <div id="availableQuantity"></div>
+        </div>
+        <div class="col-md-4" style="margin-right:30px">
+            <div>המוצרים הנמכרים ביותר</div>
+            <div id="productsSold"></div>
+        </div>
+    </div>
 
     <script>
-        const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-
-        const image = new Image(60, 45);
-        image.onload = drawImageActualSize;
-
-        image.src = '/Images/home-page-1.jpg';
-
-        function drawImageActualSize() {
-            canvas.width = this.naturalWidth;
-            canvas.height = this.naturalHeight;
-
-            ctx.drawImage(this, 0, 0);
-        }
-    </script>
-</div>
-
-<script src="https://d3js.org/d3.v6.js"></script>
-
-<div class="row" style="padding-top: 50px">
-    <div>
-        <div>זמינות המוצרים</div>
-        <div id="availableQuantity"></div>
-    </div>
-    <div class="col-md-4" style="margin-right:30px">
-        <div>המוצרים הנמכרים ביותר</div>
-        <div id="productsSold"></div>
-    </div>
-</div>
-
-<script>
         const margin = { top: 10, right: 30, bottom: 30, left: 60 },
             width = 500 - margin.left - margin.right,
             height = 450 - margin.top - margin.bottom;
-
         const svg = d3.select("#availableQuantity")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
-
         const svgProductsSold = d3.select("#productsSold")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
             .attr("height", height + margin.top + margin.bottom)
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
-
         var i = '@ViewBag.titles'
         console.log(i.substr(0, i.length - 1).split(","))
         i = i.substr(0, i.length - 1).split(",")
-
         // X axis
         var x = d3.scaleBand()
             .range([0, width])
             .domain(i)
             .padding(0.2);
-
         svg.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
             .style("text-anchor", "end");
-
-
         svgProductsSold.append("g")
             .attr("transform", "translate(0," + height + ")")
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
         .style("text-anchor", "end");
-
         const y = d3.scaleLinear()
             .domain([0, 200])
             .range([height, 0]);
-
         svg.append("g")
             .call(d3.axisLeft(y));
-
         svgProductsSold.append("g")
             .call(d3.axisLeft(y));
-</script>
-@foreach (var product in ViewData["availableQuantity"] as IList<Quantity>)
-{
-    <script>
-
+    </script>
+    @foreach (var product in ViewData["availableQuantity"] as IList<Quantity>)
+    {
+        <script>
             svg.selectAll("mybar")
                 .data([{ id: @product.id, quantity: @product.quantity }])
                 .enter()
@@ -112,15 +97,13 @@
                 .attr("width", x.bandwidth())
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
+        </script>
+    }
 
-    </script>
-}
+    @foreach (var product in ViewData["productsSold"] as IList<Quantity>)
+    {
 
-@foreach (var product in ViewData["productsSold"] as IList<Quantity>)
-{
-
-    <script>
-
+        <script>
             svgProductsSold.selectAll("mybar")
                 .data([{ id: @product.id, quantity: @product.quantity }])
                 .enter()
@@ -130,8 +113,6 @@
                 .attr("width", x.bandwidth())
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
-
-    </script>
-}
-    </div>
-
+        </script>
+    }
+</div>
