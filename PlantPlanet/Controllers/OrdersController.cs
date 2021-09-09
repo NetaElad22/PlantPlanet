@@ -24,6 +24,11 @@ namespace PlantPlanet.Controllers
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
+            // sending all delivery types to the index view
+            IList<DeliveryType> DeliveryTypes = new List<DeliveryType>();
+            DeliveryTypes = _context.DeliveryType.ToArray();
+            ViewData["DeliveryTypes"] = DeliveryTypes;
+
             var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee);
             return View(await plantPlanetContext.ToListAsync());
         }
@@ -32,6 +37,20 @@ namespace PlantPlanet.Controllers
         public async Task<IActionResult> Search(int query)
         {
             var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee).Where(o => o.OrderId == query);
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(int numQuery, int sumQuery, string deliveryTypeQuery)
+        {
+            // sending all delivery types to the index view
+            IList<DeliveryType> DeliveryTypes = new List<DeliveryType>();
+            DeliveryTypes = _context.DeliveryType.ToArray();
+            ViewData["DeliveryTypes"] = DeliveryTypes;
+
+            var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee).Where(o => (o.OrderId == numQuery || numQuery == 0) &&
+            (o.OrderSumPayment >= sumQuery || sumQuery == 0) &&
+            (o.DeliveryType.Type.Equals(deliveryTypeQuery) || deliveryTypeQuery.Equals("הכל")));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
