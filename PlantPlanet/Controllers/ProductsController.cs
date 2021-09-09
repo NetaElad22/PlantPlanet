@@ -26,8 +26,6 @@ namespace PlantPlanet.Controllers
             _hosting = hosting;
         }
 
-
-
         // GET: Products
         public async Task<IActionResult> Index()
         {
@@ -41,6 +39,7 @@ namespace PlantPlanet.Controllers
 
             var plantPlanetContext = _context.Product.Include(p => p.Supplier);
             var productsList = await plantPlanetContext.ToListAsync();
+
             foreach(var item in productsList){
                 availableQuantity.Add(new Quantity(item.ProductId, item.Quantity));
                 titles += item.ProductId+",";
@@ -78,8 +77,6 @@ namespace PlantPlanet.Controllers
         {
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
-            var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
-            return View("Index", await plantPlanetContext.ToListAsync());
         }
 
         public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery, int SaleQuery, string categoryQuery)
@@ -95,6 +92,8 @@ namespace PlantPlanet.Controllers
             (p.Color.Contains(ColorQuery) || ColorQuery == null) &&
             ((p.Discount > 0 && SaleQuery == 1) || SaleQuery != 1) &&
             (p.SubCategories.Where(s => s.Name.Equals(categoryQuery)).Any() || categoryQuery.Equals("הכל")));
+            
+            return View("Index", await plantPlanetContext.ToListAsync());
         }
 
         // GET: Products/Details/5
