@@ -4,13 +4,16 @@
 @{
 }
 
-<div style="font-size: 24px;">פעולות אחרונות בחשבון</div>
-<div id="facebook"></div>
-<div id="facebookContainer">
-    <fb:login-button scope="public_profile,email"
-                     onlogin="checkLoginState();">
-    </fb:login-button>
+<div style="text-align:center">
+    <div style="font-size: 24px;">פעולות אחרונות בחשבון</div>
+    <div id="facebook"></div>
+    <div id="facebookContainer">
+        <fb:login-button scope="public_profile,email"
+                         onlogin="checkLoginState();">
+        </fb:login-button>
+    </div>
 </div>
+
 <script>
     window.fbAsyncInit = function () {
         FB.init({
