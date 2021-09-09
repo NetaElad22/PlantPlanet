@@ -44,7 +44,6 @@ namespace PlantPlanet.Controllers
             ViewBag.titles = titles;
 
 
-            //var oiList =  _context.OrderItem.Include(oi => oi.ProductId);
             var orderItemList = await _context.OrderItem.ToListAsync();
             List<Quantity> productsSold = new List<Quantity>();
 
