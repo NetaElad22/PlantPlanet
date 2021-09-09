@@ -64,16 +64,14 @@ namespace PlantPlanet.Controllers
         {
             if (ModelState.IsValid)
             {
-
-                //User user = new User();
-                //user.UserName = customer.User.UserName;
-                //user.Password = customer.User.Password;
-                //user.Type = "Customer";
-                //_context.User.Add(user);
-                //customer.Usename = user.UserName;
-                _context.Add(customer);
+                var q = from u in _context.User
+                        where u.UserName == customer.User.UserName
+                        select u;
+                if (q.Count() == 0) { 
+                    _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
+                }
             }
             return View(customer);
         }

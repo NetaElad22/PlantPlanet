@@ -134,9 +134,16 @@ namespace PlantPlanet.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                var q = from u in _context.User
+                        where u.UserName == user.UserName
+                        select u;
+                if (q.Count() == 0)
+                {
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+
             }
             return View(user);
         }

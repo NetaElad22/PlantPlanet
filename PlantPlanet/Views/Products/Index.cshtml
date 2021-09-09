@@ -37,6 +37,7 @@
             <h4>אפשרויות ניהול</h4>
         </div>
     </div>
+
     @foreach (var item in Model)
     {
         <br />
@@ -53,6 +54,8 @@
                 <a asp-action="Delete" asp-route-id="@item.ProductId">מחיקה</a>
             </div>
         </div>
+
     }
-</div>
+
+    </div>
 
