@@ -1019,3 +1019,7 @@ C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\System.Web.
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Edit.cshtml.g.cs
 C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\PlantPlanet.csprojAssemblyReference.cache
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Cart\Order.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\Facebook\index.cshtml.g.cs
+C:\Users\netae\source\repos\PlantPlanet\PlantPlanet\obj\Debug\net5.0\Razor\Views\UserInfo\Order.cshtml.g.cs
