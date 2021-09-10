@@ -1,4 +1,14 @@
-﻿table {
+﻿@font-face {
+    font-family: plantPlanetFont;
+    src: url(../fonts/Rubik-VariableFont_wght.ttf);
+}
+
+@font-face {
+    font-family: logoFont;
+    src: url(../fonts/Anydore.Otf);
+}
+
+table {
     font-family: arial, sans-serif;
     border-collapse: collapse;
     width: 100%;
