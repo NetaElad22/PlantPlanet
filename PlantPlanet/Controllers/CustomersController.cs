@@ -172,6 +172,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool CustomerExists(int id)
         {
             return _context.Customer.Any(e => e.CustomerId == id);

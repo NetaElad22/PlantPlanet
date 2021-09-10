@@ -25,12 +25,8 @@ namespace PlantPlanet.Controllers
             _context = context;
         }
 
-        //[Authorize]
         public async Task<IActionResult> Index()
         {
-            var isAuth = HttpContext.User.IsInRole("Customer");
-            isAuth = HttpContext.User.IsInRole("Manager");
-
             if (HttpContext.User.IsInRole("Customer"))
             {
                 return View();
@@ -69,7 +65,7 @@ namespace PlantPlanet.Controllers
             }
             ViewData["productsSold"] = productsSold;
 
-            return View(productsList);
+            return View("ManagerHome",productsList);
         }
 
         public async Task<IActionResult> ManagerHome()

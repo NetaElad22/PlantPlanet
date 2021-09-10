@@ -170,6 +170,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool DeliveryTypeExists(int id)
         {
             return _context.DeliveryType.Any(e => e.DeliveryTypeId == id);
