@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nurit\\Source\\Repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj": {}
+    "C:\\Users\\netae\\source\\repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nurit\\Source\\Repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj": {
+    "C:\\Users\\netae\\source\\repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nurit\\Source\\Repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj",
+        "projectUniqueName": "C:\\Users\\netae\\source\\repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj",
         "projectName": "PlantPlanet",
-        "projectPath": "C:\\Users\\nurit\\Source\\Repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj",
-        "packagesPath": "C:\\Users\\nurit\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nurit\\Source\\Repos\\PlantPlanet\\PlantPlanet\\obj\\",
+        "projectPath": "C:\\Users\\netae\\source\\repos\\PlantPlanet\\PlantPlanet\\PlantPlanet.csproj",
+        "packagesPath": "C:\\Users\\netae\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\netae\\source\\repos\\PlantPlanet\\PlantPlanet\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\nurit\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\netae\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -89,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.300\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

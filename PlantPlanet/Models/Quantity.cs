@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PlantPlanet.Models
 {
-   public class Quantity
+    public class Quantity
     {
         public int id;
         public int quantity;

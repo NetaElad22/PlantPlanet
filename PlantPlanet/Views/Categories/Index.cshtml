@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
 }
+<link rel="stylesheet" href="~/css/filter.css" />
 
 <div class="container" style="direction:rtl; text-align:center">
     <div class="row">
@@ -13,12 +14,72 @@
 
         </div>
         <div class="col-md-4">
-            <form asp-action="Search" asp-controller="Categories" style="margin-right:3%">
-                <input name="query" class="search-input" type="search" placeholder="חיפוש קטגוריה" />
-                <button class="search-container" style="border:none; background-color:transparent">
-                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-                </button>
-            </form>
+            <button id="filterProducts" style="all:unset; padding-right:10%">
+                <h6 class="fas fa-search"> סינון קטגוריות </h6>
+            </button>
+
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content" style="align-items:center">
+                    <span class="close">&times;</span>
+                    <form asp-action="Filter" asp-controller="Categories" style="margin-top: 4%">
+
+                        <div class="container" style="text-align:center">
+                            <h4>סינון קטגוריות</h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי שם הקטגוריה</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="NameQuery" class="search-input" type="search" placeholder="שם קטגוריה" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי מספר הקטגוריה</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="idQuery" class="search-input" type="search" placeholder="מספר קטגוריה" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי תת קטגוריה</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <select name="subCategoryQuery" class="search-input">
+                                        <option value="הכל">הכל</option>
+                                        @foreach (var subcategory in ViewData["subCategoryList"] as IList<SubCategory>)
+                                        {
+                                            <option value="@subcategory.Name">@subcategory.Name</option>
+
+                                        }
+                                    </select>
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <button class="search-container" style="border:none; background-color:transparent">
+                                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+
+            @*<form asp-action="Search" asp-controller="Categories" style="margin-right:3%">
+                    <input name="query" class="search-input" type="search" placeholder="חיפוש קטגוריה" />
+                    <button class="search-container" style="border:none; background-color:transparent">
+                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                    </button>
+                </form>*@
         </div>
     </div>
     <br />
@@ -51,4 +112,4 @@
         </div>
     }
 </div>
-
+<script src="~/js/filter.js"></script>

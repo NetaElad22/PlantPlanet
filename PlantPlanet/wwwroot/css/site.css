@@ -39,7 +39,7 @@ a {
 html {
     font-size: 20px;
     font-family: plantPlanetFont !important;
-    text-align: right
+    text-align: center;
 }
 
 @media (min-width: 768px) {

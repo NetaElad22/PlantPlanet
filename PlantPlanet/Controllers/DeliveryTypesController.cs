@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,18 +21,30 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: DeliveryTypes
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
             return View(await _context.DeliveryType.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.DeliveryType.Where(a => a.Type.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(string nameQuery, int additionQuery, int idQuery)
+        {
+            var plantPlanetContext = _context.DeliveryType.Where(a => (a.Type.Contains(nameQuery) || nameQuery == null) &&
+            (a.DeliveryCostAddition <= additionQuery || additionQuery == 0) &&
+            (a.DeliveryTypeId == idQuery || idQuery == 0));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: DeliveryTypes/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -50,6 +63,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: DeliveryTypes/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +72,7 @@ namespace PlantPlanet.Controllers
         // POST: DeliveryTypes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DeliveryTypeId,Type,DeliveryCostAddition")] DeliveryType deliveryType)
@@ -72,6 +87,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: DeliveryTypes/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,6 +106,7 @@ namespace PlantPlanet.Controllers
         // POST: DeliveryTypes/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DeliveryTypeId,Type,DeliveryCostAddition")] DeliveryType deliveryType)
@@ -123,6 +140,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: DeliveryTypes/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -141,6 +159,7 @@ namespace PlantPlanet.Controllers
         }
 
         // POST: DeliveryTypes/Delete/5
+        [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -151,6 +170,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool DeliveryTypeExists(int id)
         {
             return _context.DeliveryType.Any(e => e.DeliveryTypeId == id);

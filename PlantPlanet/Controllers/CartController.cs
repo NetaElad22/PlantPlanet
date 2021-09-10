@@ -37,7 +37,6 @@ namespace PlantPlanet.Controllers
 
 
             // if this item is already in the cart - increase the quantity instead of adding it
-
             if (cart.Exists((cartProduct) => cartProduct.product.ProductId == product.ProductId))
             {
                 cart.ForEach(cartItem =>

@@ -9,6 +9,7 @@ namespace PlantPlanet.Models
     public class Store
     {
         [Key]
+        [Display(Name = "מספר סידורי")]
         public int StoreId { get; set; }
 
         [Display(Name = "שם חנות")]
@@ -20,6 +21,4 @@ namespace PlantPlanet.Models
         [Display(Name = "Y")]
         public double StoreLocationY { get; set; }
     }
-
-
 }

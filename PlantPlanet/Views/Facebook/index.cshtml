@@ -67,6 +67,7 @@
             '/110158444618763/feed',
             'get',
             function (response) {
+                console.log(response);
                 response.data.forEach(i => {
                     var activity = document.createElement('div');
                     var createdDate = new Date(i.created_time)

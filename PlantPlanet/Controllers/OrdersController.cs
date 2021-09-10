@@ -24,17 +24,38 @@ namespace PlantPlanet.Controllers
         [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
+            // sending all delivery types to the index view
+            IList<DeliveryType> DeliveryTypes = new List<DeliveryType>();
+            DeliveryTypes = _context.DeliveryType.ToArray();
+            ViewData["DeliveryTypes"] = DeliveryTypes;
+
             var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee);
             return View(await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(int query)
         {
             var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee).Where(o => o.OrderId == query);
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(int numQuery, int sumQuery, string deliveryTypeQuery)
+        {
+            // sending all delivery types to the index view
+            IList<DeliveryType> DeliveryTypes = new List<DeliveryType>();
+            DeliveryTypes = _context.DeliveryType.ToArray();
+            ViewData["DeliveryTypes"] = DeliveryTypes;
+
+            var plantPlanetContext = _context.Order.Include(o => o.Customer).Include(o => o.DeliveryType).Include(o => o.Employee).Where(o => (o.OrderId == numQuery || numQuery == 0) &&
+            (o.OrderSumPayment >= sumQuery || sumQuery == 0) &&
+            (o.DeliveryType.Type.Equals(deliveryTypeQuery) || deliveryTypeQuery.Equals("הכל")));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Orders/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -56,6 +77,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Orders/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             ViewData["CustomerId"] = new SelectList(_context.Customer, "CustomerId", "City");
@@ -69,6 +91,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Create([Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,DeliveryTypeId,PaymentVerification,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Order order)
         {
             if (ModelState.IsValid)
@@ -84,6 +107,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Orders/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -105,6 +129,7 @@ namespace PlantPlanet.Controllers
         // POST: Orders/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("OrderId,CustomerId,OrderSumPayment,Message,EmployeeId,OrderComments,IsGift,PaymentMethod,PaymentsNumber,IsPremiumDiscount,DeliveryTypeId,PaymentVerification,City,Street,HouseNumber,FloorNumber,FlatNumber,ZipCode")] Order order)
@@ -141,6 +166,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Orders/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -162,6 +188,7 @@ namespace PlantPlanet.Controllers
         }
 
         // POST: Orders/Delete/5
+        [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

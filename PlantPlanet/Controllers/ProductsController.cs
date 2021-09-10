@@ -26,31 +26,33 @@ namespace PlantPlanet.Controllers
             _hosting = hosting;
         }
 
-
-
         // GET: Products
         public async Task<IActionResult> Index()
         {
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
+            List<Quantity> productsSold = new List<Quantity>();
             List<Quantity> availableQuantity = new List<Quantity>();
             string titles = "";
+            var productsList = await _context.Product.Include(p => p.Supplier).ToListAsync();
+            var orderItemList = await _context.OrderItem.ToListAsync();
 
-            var plantPlanetContext = _context.Product.Include(p => p.Supplier);
-            var productsList = await plantPlanetContext.ToListAsync();
-            foreach(var item in productsList){
+            foreach (var item in productsList){
                 availableQuantity.Add(new Quantity(item.ProductId, item.Quantity));
                 titles += item.ProductId+",";
             }
+
             ViewData["availableQuantity"] = availableQuantity;
             ViewBag.titles = titles;
-
-
-            var orderItemList = await _context.OrderItem.ToListAsync();
-            List<Quantity> productsSold = new List<Quantity>();
 
             foreach (var orderItem in orderItemList)
             {
                 bool isProductExist = false;
-                productsSold.ForEach(ps => {
+                productsSold.ForEach(ps =>
+                {
                     if (ps.id == orderItem.ProductId)
                     {
                         ps.quantity += orderItem.Quantity;
@@ -70,6 +72,23 @@ namespace PlantPlanet.Controllers
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
+        public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery, int SaleQuery, string categoryQuery)
+        {
+            // sending all subcategories to the index catalog view
+            IList<SubCategory> subCategoryList = new List<SubCategory>();
+            subCategoryList = _context.SubCategory.ToArray();
+            ViewData["subCategoryList"] = subCategoryList;
+
+            var plantPlanetContext = _context.Product.Where(p =>
+            (p.Name.Contains(NameQuery) || NameQuery == null) &&
+            (p.SellingPrice <= PriceQuery || PriceQuery == 0) &&
+            (p.Color.Contains(ColorQuery) || ColorQuery == null) &&
+            ((p.Discount > 0 && SaleQuery == 1) || SaleQuery != 1) &&
+            (p.SubCategories.Where(s => s.Name.Equals(categoryQuery)).Any() || categoryQuery.Equals("הכל")));
+            
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
@@ -146,7 +165,8 @@ namespace PlantPlanet.Controllers
             {
                 return NotFound();
             }
-            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), "SupplierId", "CompanyName", product.SupplierId);
+            ViewData["SupplierId"] = new SelectList(_context.Set<Supplier>(), nameof(Supplier.SupplierId), nameof(Supplier.CompanyName), product.SupplierId);
+            ViewData["subcategories"] = new SelectList(_context.SubCategory, nameof(SubCategory.SubCategoryId), nameof(SubCategory.Name));
             return View(product);
         }
 
@@ -155,7 +175,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product)
+        public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product, int[] SubCategories)
         {
             if (id != product.ProductId)
             {
@@ -164,6 +184,12 @@ namespace PlantPlanet.Controllers
 
             if (ModelState.IsValid)
             {
+                if(SubCategories.Count() != 0) 
+                {
+                    product.SubCategories = new List<SubCategory>();
+                    product.SubCategories.AddRange(_context.SubCategory.Where(x => SubCategories.Contains(x.SubCategoryId)));
+                }
+                
                 try
                 {
                     if (ImageURL == null)
