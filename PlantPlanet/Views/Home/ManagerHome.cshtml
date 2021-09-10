@@ -79,6 +79,7 @@
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
+            .on("click", redirectToProduct)
             .style("text-anchor", "end");
 
 
@@ -87,6 +88,7 @@
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
+            .on("click", redirectToProduct)
         .style("text-anchor", "end");
 
         const y = d3.scaleLinear()
@@ -97,7 +99,16 @@
             .call(d3.axisLeft(y));
 
         svgProductsSold.append("g")
-            .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y));
+
+    function redirectToProduct(event) { 
+        if (event.target?.__data__.id) {
+            window.location.replace('/Catalog/ProductPage/' + event.target.__data__.id, '/Home/ManagerHome');
+
+        } else {
+            window.location.replace('/Catalog/ProductPage/' + event.target.innerHTML, '/Home/ManagerHome');
+        }
+    }
 </script>
 @foreach (var product in ViewData["availableQuantity"] as IList<Quantity>)
 {
@@ -110,6 +121,7 @@
                 .attr("x", function (d) { return x(d.id); })
                 .attr("y", function (d) { return y(d.quantity); })
                 .attr("width", x.bandwidth())
+                .on("click", redirectToProduct)
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
 
@@ -128,6 +140,7 @@
                 .attr("x", function (d) { return x(d.id); })
                 .attr("y", function (d) { return y(d.quantity); })
                 .attr("width", x.bandwidth())
+                .on("click", redirectToProduct)
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
 
