@@ -205,6 +205,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Users/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)
@@ -233,6 +234,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool UserExists(string id)
         {
             return _context.User.Any(e => e.UserName == id);
