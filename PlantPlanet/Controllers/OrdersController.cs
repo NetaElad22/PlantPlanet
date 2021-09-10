@@ -199,6 +199,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool OrderExists(int id)
         {
             return _context.Order.Any(e => e.OrderId == id);

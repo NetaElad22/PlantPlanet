@@ -187,6 +187,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool SupplierExists(int id)
         {
             return _context.Supplier.Any(e => e.SupplierId == id);

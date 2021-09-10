@@ -21,8 +21,6 @@ namespace PlantPlanet.Controllers
 
         public async Task<IActionResult> Index()
         {
-
-
             List<Quantity> availableQuantity = new List<Quantity>();
             string titles = "";
 

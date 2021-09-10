@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using PlantPlanet.Data;
 using PlantPlanet.Models;
 using System.Text.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace PlantPlanet.Controllers
 {
@@ -27,6 +28,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Products
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
             // sending all subcategories to the index catalog view
@@ -69,12 +71,14 @@ namespace PlantPlanet.Controllers
             return View(productsList);
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.Product.Include(p => p.Supplier).Where(a => a.Name.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Filter(string NameQuery, string ColorQuery, int PriceQuery, int SaleQuery, string categoryQuery)
         {
             // sending all subcategories to the index catalog view
@@ -93,6 +97,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Products/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -112,6 +117,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Products/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             ViewData["subcategories"] = new SelectList(_context.SubCategory, nameof(SubCategory.SubCategoryId) ,nameof(SubCategory.Name));
@@ -124,6 +130,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Create(IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,ImageURL,NetIncome,UnitsSold")] Product product, int[] SubCategories)
         {
             if (ModelState.IsValid)
@@ -153,6 +160,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -175,6 +183,7 @@ namespace PlantPlanet.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int id, IFormFile ImageURL, [Bind("ProductId,Name,Description,Treatment,TreatmentTips,BuyingCost,SellingPrice,SupplierId,Discount,Color,Size,Quantity,ImageURL,NetIncome,UnitsSold")] Product product, int[] SubCategories)
         {
             if (id != product.ProductId)
@@ -224,6 +233,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -244,6 +254,7 @@ namespace PlantPlanet.Controllers
 
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = "Manager")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
@@ -253,6 +264,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool ProductExists(int id)
         {
             return _context.Product.Any(e => e.ProductId == id);

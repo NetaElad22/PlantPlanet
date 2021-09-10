@@ -218,6 +218,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool SubCategoryExists(int id)
         {
             return _context.SubCategory.Any(e => e.SubCategoryId == id);
