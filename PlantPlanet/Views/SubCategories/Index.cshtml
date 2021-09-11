@@ -12,8 +12,9 @@
             <a asp-action="Create" class="btn btn-outline-info">יצירת תת קטגוריה חדשה</a>
         </div>
         <div class="col-md-6">
-            <button id="filterProducts" style="all:unset; padding-right:10%">
-                <h6 class="fas fa-search"> סינון קטגוריות </h6>
+            <button id="filterProducts" style="all:unset; padding-right:10%; display: flex; cursor: pointer">
+                <i class="fa fa-search"></i>
+                <h6 style="margin-right: 5px"> סינון קטגוריות</h6>
             </button>
 
             <div id="myModal" class="modal">
@@ -71,11 +72,11 @@
 
             </div>
             @*<form asp-action="Search" asp-controller="SubCategories" style="margin-right:3%">
-                    <input name="query" class="search-input" type="search" placeholder="חיפוש תת קטגוריה" />
-                    <button class="search-container" style="border:none; background-color:transparent">
-                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-                    </button>
-                </form>*@
+            <input name="query" class="search-input" type="search" placeholder="חיפוש תת קטגוריה" />
+            <button class="search-container" style="border:none; background-color:transparent">
+                <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+            </button>
+        </form>*@
         </div>
     </div>
     <br />
