@@ -7,7 +7,7 @@
 
 <link rel="stylesheet" href="~/css/Cart.css" />
 
-<div style="width: 50%; margin-top: 5%">
+<div style="width: 50%; margin-top: 5%; text-align: right;">
     <form method="post" asp-action="Order">
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
@@ -19,11 +19,6 @@
             <label asp-for="PaymentsNumber" class="control-label"></label>
             <input asp-for="PaymentsNumber" value="1" class="form-control" />
             <span asp-validation-for="PaymentsNumber" class="text-danger"></span>
-        </div>
-        <div class="form-group">
-            <label asp-for="PaymentVerification" class="control-label"></label>
-            <input asp-for="PaymentVerification" class="form-control" />
-            <span asp-validation-for="PaymentVerification" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label asp-for="DeliveryTypeId" class="control-label"></label>
@@ -68,11 +63,6 @@
             <label asp-for="OrderComments" class="control-label"></label>
             <input asp-for="OrderComments" class="form-control" />
             <span asp-validation-for="OrderComments" class="text-danger"></span>
-        </div>
-        <div class="form-group form-check">
-            <input asp-for="IsPremiumDiscount" /> @Html.DisplayNameFor(model => model.IsPremiumDiscount)
-            <label class="form-check-label">
-            </label>
         </div>
         <div class="form-group form-check">
             <label class="form-check-label">
