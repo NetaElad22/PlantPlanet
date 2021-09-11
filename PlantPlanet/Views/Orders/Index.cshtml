@@ -8,8 +8,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-4">
-            <button id="filterProducts" style="all:unset; padding-right:10%">
-                <h6 class="fas fa-search"> סינון הזמנות </h6>
+            <button id="filterProducts" style="all:unset; padding-right:10%; display: flex; cursor: pointer">
+                <i class="fa fa-search"></i>
+                <h6 style="margin-right: 5px"> סינון הזמנות</h6>
             </button>
 
             <div id="myModal" class="modal">
@@ -43,7 +44,7 @@
                                 <div class="col-md-6">
                                     <i>סינון לפי סוג משלוח</i>
                                 </div>
-                                  <div class="col-md-6">
+                                <div class="col-md-6">
                                     <select name="deliveryTypeQuery" class="search-input">
                                         <option value="הכל">הכל</option>
                                         @foreach (var type in ViewData["DeliveryTypes"] as IList<DeliveryType>)
