@@ -1,12 +1,11 @@
 ﻿@{
     ViewData["Title"] = "OrderInfo";
     Order order = (Order)ViewData["order"];
-    int payNum = order.PaymentsNumber % 1000;
 }
 
 <link rel="stylesheet" href="~/css/UserInfo.css" />
 
-<div>
+<div style="text-align: right;">
     <div class="order-num">הזמנה #@order.OrderId</div>
     <table class="table order-items-table">
         <thead>
@@ -23,7 +22,7 @@
             {
                 <tr>
                     <td>
-                        <img style="width: 150px;" src="@orderItem.Product.ImageURL" />
+                        <img style="width: 150px;" src="~/@orderItem.Product.ImageURL" />
                     </td>
                     <td>
                         @orderItem.Product.Name
@@ -46,7 +45,7 @@
             <div style="flex: 0.5;">
                 <span style="font-weight:bold">פרטי תשלום</span>
                 <div>@order.PaymentMethod</div>
-                <div>@payNum******</div>
+                <div>מספר תשלומים - @order.PaymentsNumber</div>
             </div>
             <div>
                 <span style="font-weight:bold">כתובת משלוח</span>

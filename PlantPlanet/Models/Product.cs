@@ -28,7 +28,7 @@ namespace PlantPlanet.Models
 
         //[Required(ErrorMessage = "יש לשייך את המוצר לקטגוריה")]
         //public Category Category { get; set; }
-
+        
         [Required(ErrorMessage = "יש להזין את מחיר עלות המוצר")]
         [Display(Name = "מחיר עלות")]
         public float BuyingCost { get; set; }
@@ -45,11 +45,9 @@ namespace PlantPlanet.Models
         [Display(Name = "אחוזי הנחה")]
         public float Discount { get; set; }
 
-        [Required(ErrorMessage = "יש להזין את צבע המוצר")]
         [Display(Name = "צבע")]
         public string Color { get; set; }
 
-        [Required(ErrorMessage = "יש להזין את גודל המוצר")]
         [Display(Name = "גודל בסנטימטר")]
         public int Size { get; set; }
 

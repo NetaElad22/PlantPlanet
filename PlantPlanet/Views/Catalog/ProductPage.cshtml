@@ -1,17 +1,14 @@
-﻿@model PlantPlanet.Models.Product
+@model PlantPlanet.Models.Product
 
 @{
 
 }
-<script>
-    function getItemQuantity() {
-        return document.getElementById("quantity").value;
-    }
-</script>
 <html>
 
 <head>
     <link rel="stylesheet" href="~/css/productPage.css" />
+    <link rel="stylesheet" href="~/css/filter.css" />
+
     @*<script src="~/lib/jquery/dist/jquery.min.js"></script>*@
     @*<script src="/js/productPage.js"></script>*@
 </head>
@@ -57,12 +54,9 @@
                         <br />
                         <span class="title">צבע: </span>
                         <span>@Model.Color</span>
-                        <br />
-                        <span class="title">כמות: </span>
-                        <input id="quantity" style="width:45px" type="number" value="1" />
                         <br /><br />
                         <button class="btn btn-success" type="submit">
-                            <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="getItemQuantity()">
+                            <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="1">
                                 הוספה לסל
                             </a>
                         </button>
@@ -145,22 +139,6 @@
         }
             </script>*@
 
-    <script>
-        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-        var dropdown = document.getElementsByClassName("dropdown-btn");
-        var i;
-
-        for (i = 0; i < dropdown.length; i++) {
-            dropdown[i].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var dropdownContent = this.nextElementSibling;
-                if (dropdownContent.style.display === "block") {
-                    dropdownContent.style.display = "none";
-                } else {
-                    dropdownContent.style.display = "block";
-                }
-            });
-        }
-    </script>
+    <script src="~/js/dropdown.js"></script>
 </body>
 </html>

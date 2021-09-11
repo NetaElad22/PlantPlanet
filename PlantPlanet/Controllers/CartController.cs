@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,7 +37,6 @@ namespace PlantPlanet.Controllers
 
 
             // if this item is already in the cart - increase the quantity instead of adding it
-
             if (cart.Exists((cartProduct) => cartProduct.product.ProductId == product.ProductId))
             {
                 cart.ForEach(cartItem =>
@@ -79,9 +78,16 @@ namespace PlantPlanet.Controllers
 
         public async Task<IActionResult> Order(float sum)
         {
-            ViewBag.DeliveryTypeId = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type");
-            ViewData["sum"] = sum;
-            return View();
+            if (User.Identity.Name != null)
+            {
+                ViewBag.DeliveryTypeId = new SelectList(_context.DeliveryType, "DeliveryTypeId", "Type");
+                ViewData["sum"] = sum;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Users");
+            }
         }
 
         [HttpPost]
@@ -91,16 +97,23 @@ namespace PlantPlanet.Controllers
             {
                 List<CartProduct> cartItems = SessionHelper.GetObjectFromJson<List<CartProduct>>(HttpContext.Session, "cart");
                 List<OrderItem> orderItems = new List<OrderItem>();
+
+                float totalSum = 0;
                 cartItems.ForEach(cartItem => {
                     OrderItem orderItem = new OrderItem();
-                    /*orderItem.Product.Quantity = cartItem.quantity;*/
+                    totalSum += cartItem.product.SellingPrice * cartItem.quantity;
+                    orderItem.Quantity = cartItem.quantity;
                     orderItem.ProductId = cartItem.product.ProductId;
                     orderItems.Add(orderItem);
                 });
                 order.Products = orderItems;
-                order.OrderSumPayment = 0;
-                order.CustomerId = _context.Customer.Where((customer) => customer.User.UserName == User.Identity.Name).First().CustomerId;
                 order.EmployeeId = _context.Employee.First().EmployeeId;
+                order.OrderSumPayment = totalSum;
+                
+                Customer customer = _context.Customer.Where((customer) => customer.User.UserName == User.Identity.Name).First();
+                order.CustomerId = customer.CustomerId;
+                order.IsPremiumDiscount = customer.IsPremium;
+
                 _context.Add(order);
                 await _context.SaveChangesAsync();
                 ViewData["cart"] = null;

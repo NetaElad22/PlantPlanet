@@ -1,41 +1,39 @@
-﻿@model PlantPlanet.Models.User
+@model PlantPlanet.Models.User
 
 @{
     ViewData["Title"] = "Login";
 }
 
-<h1>התחברות</h1>
+<div style="text-align: right;">
+    <h1>התחברות</h1>
 
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Login">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="UserName" class="control-label"></label>
-                <input asp-for="UserName" class="form-control" />
-                <span asp-validation-for="UserName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Password" class="control-label"></label>
-                <input asp-for="Password" class="form-control" />
-                <span asp-validation-for="Password" class="text-danger"></span>
-            </div>
-            <div class="form-group" style="display: flex; justify-content: space-around">
-                <input type="submit" value="כניסה" class="btn btn-outline-primary" />
-                <span style="margin-top: auto; margin-bottom: auto">
-                    <button class="btn btn-outline-dark btn-sm">
-                        <a asp-controller="Customers" asp-action="Create" style="all:unset">לקוח חדש? הרשם</a>
-                    </button>
-                </span>
-            </div>
-        </form>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Login">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="UserName" class="control-label"></label>
+                    <input asp-for="UserName" class="form-control" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="control-label"></label>
+                    <input asp-for="Password" class="form-control" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group" style="display: flex; justify-content: space-around">
+                    <input type="submit" value="כניסה" class="btn btn-outline-primary" />
+                    <span style="margin-top: auto; margin-bottom: auto">
+                        <button class="btn btn-outline-dark btn-sm">
+                            <a asp-controller="Customers" asp-action="Create" style="all:unset">לקוח חדש? הרשם</a>
+                        </button>
+                    </span>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
-
-@*<div>
-    <a asp-action="Index">Back to List</a>
-</div>*@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

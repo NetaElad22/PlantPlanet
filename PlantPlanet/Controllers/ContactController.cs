@@ -22,13 +22,22 @@ namespace PlantPlanet.Controllers
         // GET: ContactController
         public ActionResult Index()
         {
-            IList<Store> storeLocations = _context.Store.ToArray();
-            //{double,double}[] array = { };
+            //getting all the stores' information from the dB
+            IList<Store> StoresList = new List<Store>();
+            StoresList = _context.Store.ToArray();
 
-
-
-
-            ViewData["subCategoryList"] = storeLocations;
+            //creating the array of addresses for the map
+            string markers = "[";
+            foreach (var item in StoresList)
+            {
+                markers += "{";
+                markers += string.Format("'description': '{0}',", item.StoreName);
+                markers += string.Format("'lat': '{0}',", item.StoreLocationX);
+                markers += string.Format("'lng': '{0}',", item.StoreLocationY);
+                markers += "},";
+            }
+            markers += "]";
+            ViewBag.Markers = markers;
 
             return View();
         }
@@ -41,6 +50,5 @@ namespace PlantPlanet.Controllers
             String phone = Request.Form["phone"];
             String reason = Request.Form["reason"];
         }
-
     }
 }

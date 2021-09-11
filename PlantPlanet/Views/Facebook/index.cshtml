@@ -4,12 +4,16 @@
 @{
 }
 
-<div id="facebook"></div>
-<div id="facebookContainer">
-    <fb:login-button scope="public_profile,email"
-                     onlogin="checkLoginState();">
-    </fb:login-button>
+<div style="text-align:center">
+    <div style="font-size: 24px;">פעולות אחרונות בחשבון</div>
+    <div id="facebook"></div>
+    <div id="facebookContainer">
+        <fb:login-button scope="public_profile,email"
+                         onlogin="checkLoginState();">
+        </fb:login-button>
+    </div>
 </div>
+
 <script>
     window.fbAsyncInit = function () {
         FB.init({
@@ -63,6 +67,7 @@
             '/110158444618763/feed',
             'get',
             function (response) {
+                console.log(response);
                 response.data.forEach(i => {
                     var activity = document.createElement('div');
                     var createdDate = new Date(i.created_time)

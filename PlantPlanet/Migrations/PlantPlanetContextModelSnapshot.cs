@@ -200,15 +200,14 @@ namespace PlantPlanet.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<string>("FlatNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("FlatNumber")
+                        .HasColumnType("int");
 
-                    b.Property<string>("FloorNumber")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("FloorNumber")
+                        .HasColumnType("int");
 
-                    b.Property<string>("HouseNumber")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("HouseNumber")
+                        .HasColumnType("int");
 
                     b.Property<bool>("IsGift")
                         .HasColumnType("bit");
@@ -273,6 +272,8 @@ namespace PlantPlanet.Migrations
 
                     b.HasIndex("OrderId");
 
+                    b.HasIndex("ProductId");
+
                     b.ToTable("OrderItem");
                 });
 
@@ -310,7 +311,6 @@ namespace PlantPlanet.Migrations
                         .HasColumnType("real");
 
                     b.Property<string>("Color")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Description")
@@ -540,7 +540,15 @@ namespace PlantPlanet.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("PlantPlanet.Models.Product", "Product")
+                        .WithMany()
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Order");
+
+                    b.Navigation("Product");
                 });
 
             modelBuilder.Entity("PlantPlanet.Models.Premuim", b =>

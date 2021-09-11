@@ -4,6 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
+<link rel="stylesheet" href="~/css/filter.css" />
+
 <div class="container">
     <div class="row">
         <div class="col-md-4">
@@ -13,12 +15,63 @@
 
         </div>
         <div class="col-md-4">
-            <form asp-action="Search" asp-controller="Customers" style="margin-right:3%">
-                <input name="query" class="search-input" type="search" placeholder="חיפוש לקוח.ה" />
-                <button class="search-container" style="border:none; background-color:transparent">
-                    <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
-                </button>
-            </form>
+
+            <button id="filterProducts" style="all:unset; padding-right:10%">
+                <h6 class="fas fa-search"> סינון לקוחות </h6>
+            </button>
+            <div id="myModal" class="modal">
+                <!-- Modal content -->
+                <div class="modal-content" style="align-items:center">
+                    <span class="close">&times;</span>
+                    <form asp-action="Filter" asp-controller="Customers" style="margin-top: 4%">
+
+                        <div class="container" style="text-align:center">
+                            <h4>סינון מוצרים</h4>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי שם הלקוח.ה</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="NameQuery" class="search-input" type="search" placeholder="שם לקוח.ה" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי מספר טלפון </i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="phoneQuery" class="search-input" type="search" placeholder="מספר טלפון" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <i>סינון לפי עיר מגורים</i>
+                                </div>
+                                <div class="col-md-6">
+                                    <input name="cityQuery" class="search-input" type="search" placeholder="עיר מגורים" />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-1">
+                                    <button class="search-container" style="border:none; background-color:transparent">
+                                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @*<form asp-action="Search" asp-controller="Customers" style="margin-right:3%">
+                    <input name="query" class="search-input" type="search" placeholder="חיפוש לקוח.ה" />
+                    <button class="search-container" style="border:none; background-color:transparent">
+                        <i class="fas fa-search" style="margin-right: 5px" aria-hidden="true"></i>
+                    </button>
+                </form>*@
         </div>
     </div>
     <br />
@@ -51,3 +104,4 @@
         </div>
     }
 </div>
+<script src="~/js/filter.js"></script>

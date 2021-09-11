@@ -5,18 +5,35 @@
 <div>
 <link rel="stylesheet" href="~/css/Home.css" />
 
-<div class="container">
+<div class="home-page">
+    <div style="display:flex; justify-content:center">   
+        <canvas id="canvas"></canvas>
+    </div>
     <div class="home-title">
         plant planet
     </div>
+    <div class="divider"></div>
 
-    <img class="top-image" src="/Images/home-page-1.jpg">
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        const image = new Image(60, 45);
+        image.onload = drawImageActualSize;
+
+        image.src = '/Images/nursery.jpg';
+
+        function drawImageActualSize() {
+            canvas.width = this.naturalWidth;
+            canvas.height = this.naturalHeight;
+
+            ctx.drawImage(this, 0, 0);
+        }
+    </script>
 </div>
 
-<!-- Load d3.js -->
 <script src="https://d3js.org/d3.v6.js"></script>
 
-<!-- Create a div where the graph will take place -->
 <div class="row" style="padding-top: 50px">
     <div>
         <div>זמינות המוצרים</div>
@@ -29,12 +46,10 @@
 </div>
 
 <script>
-        // set the dimensions and margins of the graph
         const margin = { top: 10, right: 30, bottom: 30, left: 60 },
             width = 500 - margin.left - margin.right,
             height = 450 - margin.top - margin.bottom;
 
-        // append the svg object to the body of the page
         const svg = d3.select("#availableQuantity")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -42,7 +57,6 @@
             .append("g")
             .attr("transform", `translate(${margin.left},${margin.top})`);
 
-        // append the svg object to the body of the page
         const svgProductsSold = d3.select("#productsSold")
             .append("svg")
             .attr("width", width + margin.left + margin.right)
@@ -65,6 +79,7 @@
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
+            .on("click", redirectToProduct)
             .style("text-anchor", "end");
 
 
@@ -73,23 +88,27 @@
             .call(d3.axisBottom(x))
             .selectAll("text")
             .attr("transform", "translate(-10,0)rotate(-45)")
-            .style("text-anchor", "end");
+            .on("click", redirectToProduct)
+        .style("text-anchor", "end");
 
-        //const x = d3.scaleLinear().domain([0, 9200]).range([0, width]);
-        //svg.append("g")
-        //    .attr("transform", "translate(0," + height + ")")
-        //    .call(d3.axisBottom(x));
-
-        // Add Y axis
         const y = d3.scaleLinear()
-            .domain([0, 200])
+            .domain([0, 100])
             .range([height, 0]);
 
         svg.append("g")
             .call(d3.axisLeft(y));
 
         svgProductsSold.append("g")
-            .call(d3.axisLeft(y));
+        .call(d3.axisLeft(y));
+
+    function redirectToProduct(event) { 
+        if (event.target?.__data__.id) {
+            window.location.replace('/Catalog/ProductPage/' + event.target.__data__.id, '/Home/ManagerHome');
+
+        } else {
+            window.location.replace('/Catalog/ProductPage/' + event.target.innerHTML, '/Home/ManagerHome');
+        }
+    }
 </script>
 @foreach (var product in ViewData["availableQuantity"] as IList<Quantity>)
 {
@@ -102,18 +121,9 @@
                 .attr("x", function (d) { return x(d.id); })
                 .attr("y", function (d) { return y(d.quantity); })
                 .attr("width", x.bandwidth())
+                .on("click", redirectToProduct)
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
-
-            @*svg
-                .append("g")
-                .selectAll("dot")
-                .data([{ id: @product.id, quantity: @product.quantity }])
-                .join("circle")
-                .attr("cx", d => x(d.id))
-                .attr("cy", d => y(d.quantity))
-                .attr("r", 5)
-                .attr("fill", "#69b3a2")*@
 
     </script>
 }
@@ -130,6 +140,7 @@
                 .attr("x", function (d) { return x(d.id); })
                 .attr("y", function (d) { return y(d.quantity); })
                 .attr("width", x.bandwidth())
+                .on("click", redirectToProduct)
                 .attr("height", function (d) { return height - y(d.quantity); })
                 .attr("fill", "#69b3a2")
 

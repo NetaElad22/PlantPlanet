@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,18 +21,42 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Suppliers
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Index()
         {
+            // sending all products to the suppliers view
+            IList<Product> productList = new List<Product>();
+            productList = _context.Product.Include(p => p.Supplier).ToArray();
+            ViewData["productList"] = productList;
+
             return View(await _context.Supplier.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Search(string query)
         {
             var plantPlanetContext = _context.Supplier.Where(a => a.CompanyName.Contains(query));
             return View("Index", await plantPlanetContext.ToListAsync());
         }
 
+        [Authorize(Roles = "Manager")]
+        public async Task<IActionResult> Filter(string nameQuery, string emailQuery, string phoneQuery, string productQuery)
+        {
+            // sending all products to the suppliers view
+            IList<Product> productList = new List<Product>();
+            productList = _context.Product.Include(p => p.Supplier).ToArray();
+            ViewData["productList"] = productList;
+
+            var plantPlanetContext = _context.Supplier.Where(a => a.CompanyName.Contains(nameQuery) || (nameQuery == null) &&
+            (a.SuppliedProducts.Where(p => p.Name.Equals(productQuery)).Any() || productQuery.Equals("הכל")) &&
+            (a.Email.Contains(emailQuery) || emailQuery == null) &&
+            (a.PhoneNumber.Contains(phoneQuery) || phoneQuery == null));
+
+            return View("Index", await plantPlanetContext.ToListAsync());
+        }
+
         // GET: Suppliers/Details/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -55,6 +80,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Suppliers/Create
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             return View();
@@ -63,6 +89,7 @@ namespace PlantPlanet.Controllers
         // POST: Suppliers/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("SupplierId,CompanyName,PhoneNumber,Email")] Supplier supplier)
@@ -77,6 +104,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Suppliers/Edit/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -95,6 +123,7 @@ namespace PlantPlanet.Controllers
         // POST: Suppliers/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("SupplierId,CompanyName,PhoneNumber,Email")] Supplier supplier)
@@ -128,6 +157,7 @@ namespace PlantPlanet.Controllers
         }
 
         // GET: Suppliers/Delete/5
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -146,6 +176,7 @@ namespace PlantPlanet.Controllers
         }
 
         // POST: Suppliers/Delete/5
+        [Authorize(Roles = "Manager")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
@@ -156,6 +187,7 @@ namespace PlantPlanet.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [Authorize(Roles = "Manager")]
         private bool SupplierExists(int id)
         {
             return _context.Supplier.Any(e => e.SupplierId == id);
