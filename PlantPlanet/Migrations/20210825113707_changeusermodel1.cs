@@ -25,30 +25,30 @@ namespace PlantPlanet.Migrations
                 nullable: false,
                 defaultValue: 0);
 
-            migrationBuilder.CreateIndex(
-                name: "IX_User_CustomerId",
-                table: "User",
-                column: "CustomerId",
-                unique: true);
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_User_CustomerId",
+            //    table: "User",
+            //    column: "CustomerId",
+            //    unique: true);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_User_Customer_CustomerId",
-                table: "User",
-                column: "CustomerId",
-                principalTable: "Customer",
-                principalColumn: "CustomerId",
-                onDelete: ReferentialAction.Cascade);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_User_Customer_CustomerId",
+            //    table: "User",
+            //    column: "CustomerId",
+            //    principalTable: "Customer",
+            //    principalColumn: "CustomerId",
+            //    onDelete: ReferentialAction.Cascade);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_User_Customer_CustomerId",
-                table: "User");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_User_Customer_CustomerId",
+            //    table: "User");
 
-            migrationBuilder.DropIndex(
-                name: "IX_User_CustomerId",
-                table: "User");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_User_CustomerId",
+            //    table: "User");
 
             migrationBuilder.DropColumn(
                 name: "CustomerId",

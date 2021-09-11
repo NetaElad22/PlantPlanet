@@ -308,44 +308,44 @@ namespace PlantPlanet.Migrations
                 table: "Order",
                 column: "EmployeeId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Order_ShippingAddressAddressId",
-                table: "Order",
-                column: "ShippingAddressAddressId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Order_ShippingAddressAddressId",
+            //    table: "Order",
+            //    column: "ShippingAddressAddressId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Employee_AddressId",
-                table: "Employee",
-                column: "AddressId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Employee_AddressId",
+            //    table: "Employee",
+            //    column: "AddressId");
 
-            migrationBuilder.CreateIndex(
-                name: "IX_Customer_AddressId",
-                table: "Customer",
-                column: "AddressId");
+            //migrationBuilder.CreateIndex(
+            //    name: "IX_Customer_AddressId",
+            //    table: "Customer",
+            //    column: "AddressId");
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Customer_Address_AddressId",
-                table: "Customer",
-                column: "AddressId",
-                principalTable: "Address",
-                principalColumn: "AddressId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Customer_Address_AddressId",
+            //    table: "Customer",
+            //    column: "AddressId",
+            //    principalTable: "Address",
+            //    principalColumn: "AddressId",
+            //    onDelete: ReferentialAction.Restrict);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Employee_Address_AddressId",
-                table: "Employee",
-                column: "AddressId",
-                principalTable: "Address",
-                principalColumn: "AddressId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Employee_Address_AddressId",
+            //    table: "Employee",
+            //    column: "AddressId",
+            //    principalTable: "Address",
+            //    principalColumn: "AddressId",
+            //    onDelete: ReferentialAction.Restrict);
 
-            migrationBuilder.AddForeignKey(
-                name: "FK_Order_Address_ShippingAddressAddressId",
-                table: "Order",
-                column: "ShippingAddressAddressId",
-                principalTable: "Address",
-                principalColumn: "AddressId",
-                onDelete: ReferentialAction.Restrict);
+            //migrationBuilder.AddForeignKey(
+            //    name: "FK_Order_Address_ShippingAddressAddressId",
+            //    table: "Order",
+            //    column: "ShippingAddressAddressId",
+            //    principalTable: "Address",
+            //    principalColumn: "AddressId",
+            //    onDelete: ReferentialAction.Restrict);
 
             migrationBuilder.AddForeignKey(
                 name: "FK_Order_DeliveryType_DeliveryTypeId",
@@ -430,17 +430,17 @@ namespace PlantPlanet.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Customer_Address_AddressId",
-                table: "Customer");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Customer_Address_AddressId",
+            //    table: "Customer");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Employee_Address_AddressId",
-                table: "Employee");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Employee_Address_AddressId",
+            //    table: "Employee");
 
-            migrationBuilder.DropForeignKey(
-                name: "FK_Order_Address_ShippingAddressAddressId",
-                table: "Order");
+            //migrationBuilder.DropForeignKey(
+            //    name: "FK_Order_Address_ShippingAddressAddressId",
+            //    table: "Order");
 
             migrationBuilder.DropForeignKey(
                 name: "FK_Order_DeliveryType_DeliveryTypeId",
@@ -525,17 +525,17 @@ namespace PlantPlanet.Migrations
                 name: "IX_Order_EmployeeId",
                 table: "Order");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Order_ShippingAddressAddressId",
-                table: "Order");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Order_ShippingAddressAddressId",
+            //    table: "Order");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Employee_AddressId",
-                table: "Employee");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Employee_AddressId",
+            //    table: "Employee");
 
-            migrationBuilder.DropIndex(
-                name: "IX_Customer_AddressId",
-                table: "Customer");
+            //migrationBuilder.DropIndex(
+            //    name: "IX_Customer_AddressId",
+            //    table: "Customer");
 
             migrationBuilder.DropColumn(
                 name: "ParentCategoryId",

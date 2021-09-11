@@ -250,8 +250,8 @@ namespace PlantPlanet.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "Address");
+            //migrationBuilder.DropTable(
+            //    name: "Address");
 
             migrationBuilder.DropTable(
                 name: "DeliveryType");

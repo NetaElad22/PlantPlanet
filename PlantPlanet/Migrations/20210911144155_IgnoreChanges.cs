@@ -2,12 +2,10 @@
 
 namespace PlantPlanet.Migrations
 {
-    public partial class hi : Migration
+    public partial class IgnoreChanges : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-
-            //migrationBuilder.CreateTable(name: "User", columns: table => new { });
 
         }
 

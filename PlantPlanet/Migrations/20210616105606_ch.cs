@@ -6,7 +6,7 @@ namespace PlantPlanet.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.CreateTable(name: "User", columns: table => new { });
+            //migrationBuilder.CreateTable(name: "User", columns: table => new { });
 
         }
 
