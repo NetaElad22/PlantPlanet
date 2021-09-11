@@ -109,7 +109,7 @@ namespace PlantPlanet.Controllers
                     Product product = _context.Product.Where((product) => product.ProductId == cartItem.product.ProductId).First();
                     product.UnitsSold += 1;
                     product.Quantity -= 1;
-                    _context.Add(product);
+                    _context.Update(product);
                 });
 
                 order.Products = orderItems;
