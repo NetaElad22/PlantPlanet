@@ -1,0 +1,9 @@
+﻿#accordionFlushExample {
+    margin-right: 10%;
+}
+
+.accordion-button {
+    all: unset;
+    font-size: 20px;
+    color:darkgreen;
+}
