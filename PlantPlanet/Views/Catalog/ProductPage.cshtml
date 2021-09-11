@@ -55,11 +55,19 @@
                         <span class="title">צבע: </span>
                         <span>@Model.Color</span>
                         <br /><br />
-                        <button class="btn btn-success" type="submit">
-                            <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="1">
-                                הוספה לסל
-                            </a>
-                        </button>
+                        @{
+                            if (@Model.Quantity > 0)
+                            {
+                                <button class="btn btn-success" type="submit">
+                                    <a style="all:unset" asp-controller="Cart" asp-action="AddToCart" asp-route-id="@Model.ProductId" asp-route-quantity="1">
+                                        הוספה לסל
+                                    </a>
+                                </button>
+                            } else
+                            {
+                              <span>המוצר אזל מהמלאי</span>
+                            }
+                        }
 
                     </form>
                 </div>
