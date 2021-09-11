@@ -105,7 +105,13 @@ namespace PlantPlanet.Controllers
                     orderItem.Quantity = cartItem.quantity;
                     orderItem.ProductId = cartItem.product.ProductId;
                     orderItems.Add(orderItem);
+
+                    Product product = _context.Product.Where((product) => product.ProductId == cartItem.product.ProductId).First();
+                    product.UnitsSold += 1;
+                    product.Quantity -= 1;
+                    _context.Add(product);
                 });
+
                 order.Products = orderItems;
                 order.EmployeeId = _context.Employee.First().EmployeeId;
                 order.OrderSumPayment = totalSum;
