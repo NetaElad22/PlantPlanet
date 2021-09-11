@@ -92,13 +92,13 @@
         <br />
         <div class="row">
             <div class="col-md-3">
-                <h4>@Html.DisplayFor(modelItem => item.OrderId)</h4>
+                @Html.DisplayFor(modelItem => item.OrderId)
             </div>
             <div class="col-md-3">
-                <h4>@Html.DisplayFor(modelItem => item.OrderSumPayment)</h4>
+                @Html.DisplayFor(modelItem => item.OrderSumPayment)
             </div>
             <div class="col-md-3">
-                <h4>@Html.DisplayFor(modelItem => item.DeliveryType.Type)</h4>
+                @Html.DisplayFor(modelItem => item.DeliveryType.Type)
             </div>
             <div class="col-md-3">
                 <a asp-action="Edit" asp-route-id="@item.OrderId">עריכה</a> |

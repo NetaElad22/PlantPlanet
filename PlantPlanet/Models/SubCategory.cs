@@ -17,6 +17,7 @@ namespace PlantPlanet.Models
         [Display(Name = "תמונה")]
         public string ImageURL { get; set; }
 
+        [Display(Name = "מזהה קטגוריית אם")]
         public int ParentCategoryId { get; set; }
 
         [Display(Name = "קטגוריית אם")]
