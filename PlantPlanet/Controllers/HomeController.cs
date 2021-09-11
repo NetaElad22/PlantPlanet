@@ -27,7 +27,7 @@ namespace PlantPlanet.Controllers
 
         public async Task<IActionResult> Index()
         {
-            if (HttpContext.User.IsInRole("Customer"))
+            if (HttpContext.User.IsInRole("Customer") || User.Identity.Name == null)
             {
                 return View();
             }
